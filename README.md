@@ -5,7 +5,7 @@ Java
 IntelliJ  
 Maven  
 Jersey  
-Jutty  
+Jetty  
 # Run Code
 Step 1. import this project by IDE  
 Step 2. Marven>Lifecycle>compile  
