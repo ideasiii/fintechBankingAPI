@@ -122,11 +122,57 @@ public class HelloRS
     @POST
     @Produces("text/html") // content type to output
     @Path("/trans_record")
-    public String bank_account(@QueryParam("id") String id, @QueryParam("token") String token,
+    public String trans_record(@QueryParam("id") String id, @QueryParam("token") String token,
             @Context HttpServletRequest request)
     {
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
         JSONObject jsonObject;
+        if (id != null && !id.equals("") && token != null && !token.equals(""))
+        {
+            try
+            {
+                SqliteHandler sqliteHandler = new SqliteHandler();
+                Connection conn = sqliteHandler.getConnection("database/huanan.db");
+                if (conn != null)
+                {
+                    String sql = "select * from trans_record where id = '" + id + "'";
+                    Statement stat = null;
+                    ResultSet rs = null;
+                    stat = conn.createStatement();
+                    rs = stat.executeQuery(sql);
+                    jsonObject = new JSONObject();
+                    if (rs.next())
+                    {
+                        jsonObject.put("id", rs.getInt("id"));
+                        jsonObject.put("account_id", rs.getString("account_id"));
+                        jsonObject.put("trans_bank", rs.getString("trans_bank"));
+                        jsonObject.put("trans_type", rs.getString("trans_type"));
+                        jsonObject.put("trans_date", rs.getString("trans_date"));
+                        jsonObject.put("trans_pay", rs.getInt("trans_pay"));
+                        jsonObject.put("trans_deposit", rs.getInt("trans_deposit"));
+                        return jsonObject.toString();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            return "account id is " + id + " token is " + token;
+        }
+        return strResponse;
     }
+    
+    /*
+    * CREATE TABLE "trans_record" (
+	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"account_id"	TEXT NOT NULL,
+	"trans_bank"	TEXT NOT NULL,
+	"trans_type"	TEXT NOT NULL,
+	"trans_date"	DATE NOT NULL,
+	"trans_pay"	INTEGER,
+	"trans_deposit"	INTEGER
+)
+    * */
 }
