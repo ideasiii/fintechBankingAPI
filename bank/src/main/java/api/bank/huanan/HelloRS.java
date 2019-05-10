@@ -1,6 +1,6 @@
 package api.bank.huanan;
 
-import org.json.simple.JSONObject;
+import org.json.*;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -102,22 +102,6 @@ public class HelloRS
         return strResponse;
     }
     
-    //=========================   Table Information ============================================//
-    
-    /*TABLE "bank_account" (
-	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
-	"balance"	INTEGER NOT NULL DEFAULT 0,
-	"birthday"	TEXT NOT NULL,
-	"career"	TEXT NOT NULL,
-	"residence"	TEXT,
-	"income"	INTEGER,
-	"service_units"	TEXT,
-	"marital"	TEXT,
-	"education"	TEXT,
-	"dependents"	INTEGER,
-	"balance_update_date"	TEXT,
-	"create_date"	TEXT DEFAULT CURRENT_TIMESTAMP
-)*/
     
     @POST
     @Produces("text/html") // content type to output
@@ -164,15 +148,70 @@ public class HelloRS
         return strResponse;
     }
     
-    /*
-    * CREATE TABLE "trans_record" (
-	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
-	"account_id"	TEXT NOT NULL,
-	"trans_bank"	TEXT NOT NULL,
-	"trans_type"	TEXT NOT NULL,
-	"trans_date"	DATE NOT NULL,
-	"trans_pay"	INTEGER,
-	"trans_deposit"	INTEGER
-)
-    * */
+    /**
+     * @param json Incoming request data will be deserialized directly into
+     *             this string
+     */
+    @POST
+    @Path("/account/asjson")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String account(String json)
+    {
+        String strResponse = "{\"message\":\"parameter error!!\"}";
+        String strRecord;
+        String id = null, token = null;
+        JSONObject jsonObject;
+        JSONObject jsonRequest = new JSONObject(json);
+        if (!jsonRequest.isEmpty())
+        {
+            System.out.println("request:" + json);
+            id = jsonRequest.getString("id");
+            token = jsonRequest.getString("token");
+        }
+        
+        if (id != null && !id.equals("") && token != null && !token.equals(""))
+        {
+            try
+            {
+                SqliteHandler sqliteHandler = new SqliteHandler();
+                Connection conn = sqliteHandler.getConnection("database/huanan.db");
+                if (conn != null)
+                {
+                    String sql = "select * from bank_account where id = " + id;
+                    Statement stat = null;
+                    ResultSet rs = null;
+                    stat = conn.createStatement();
+                    rs = stat.executeQuery(sql);
+                    jsonObject = new JSONObject();
+                    if (rs.next())
+                    {
+                        jsonObject.put("id", rs.getInt("id"));
+                        jsonObject.put("balance", rs.getInt("balance"));
+                        jsonObject.put("birthday", rs.getString("birthday"));
+                        jsonObject.put("career", rs.getString("career"));
+                        jsonObject.put("residence", rs.getString("residence"));
+                        jsonObject.put("income", rs.getInt("income"));
+                        jsonObject.put("service_units", rs.getString("service_units"));
+                        jsonObject.put("marital", rs.getString("marital"));
+                        jsonObject.put("education", rs.getString("education"));
+                        jsonObject.put("dependents", rs.getInt("dependents"));
+                        jsonObject.put("balance_update_date", rs.getString("balance_update_date"));
+                        jsonObject.put("create_date", rs.getString("create_date"));
+                        return jsonObject.toString();
+                    }
+                }
+                else
+                {
+                    System.out.println("Database Connect Fail");
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            return "account id is " + id + " token is " + token;
+        }
+        
+        return strResponse;
+    }
 }
