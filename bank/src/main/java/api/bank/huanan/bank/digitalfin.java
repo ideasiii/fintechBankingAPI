@@ -32,7 +32,7 @@ public class digitalfin {
 
         if(!jsonRequest.isEmpty()){
             System.out.println("request:" + json);
-            id = jsonRequest.getString("id");
+            id = jsonRequest.getString("account_id");
             token = jsonRequest.getString("token");
         }
 
