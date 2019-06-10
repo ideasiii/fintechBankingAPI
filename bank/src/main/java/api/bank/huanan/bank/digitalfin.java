@@ -18,12 +18,12 @@ public class digitalfin {
 
 
     @POST
-    @Path("/accounts")
+    @Path("/trans_records")
     @Consumes(MediaType.APPLICATION_JSON)
     public String accounts(String json){
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
-        String id = null;
+        int id = 0;
         String token = null;
         JSONObject jsonRequest = new JSONObject(json);
         JSONObject jsonObject, dataJson;
@@ -32,11 +32,11 @@ public class digitalfin {
 
         if(!jsonRequest.isEmpty()){
             System.out.println("request:" + json);
-            id = jsonRequest.getString("account_id");
+            id = jsonRequest.getInt("account_id");
             token = jsonRequest.getString("token");
         }
 
-        if(id != null && !id.equals("") && token != null && !token.equals("")){
+        if(id != 0 && token != null && !token.equals("")){
             try {
 
                 SqliteHandler sqliteHandler = new SqliteHandler();
@@ -44,37 +44,41 @@ public class digitalfin {
 
                 if(conn != null){
 
-                    String sql = "select * from trans_record where account_id = " + id;
+                    String sql = "select * from trans_record where account_id = " + id ;
                     Statement stat = null;
                     ResultSet rs = null;
                     stat = conn.createStatement();
                     rs = stat.executeQuery(sql);
                     jsonObject = new JSONObject();
                     jsonArray = new JSONArray();
-                    int payTotal = 0, depositTotal = 0;
+                    int account_id = 0;
 
 
                     while(rs.next()){
                         dataJson = new JSONObject();
-                        dataJson.put("id", rs.getInt("id"));
-                        dataJson.put("account_id", rs.getString("account_id"));
+                        dataJson.put("id", rs.getInt("trans_id"));
+//                        dataJson.put("account_id", rs.getInt("account_id"));
                         dataJson.put("trans_bank", rs.getString("trans_bank"));
                         dataJson.put("trans_type", rs.getString("trans_type"));
+                        dataJson.put("trans_channel", rs.getString("trans_channel"));
                         dataJson.put("trans_date", rs.getString("trans_date"));
-                        dataJson.put("trans_pay", rs.getInt("trans_pay"));
-                        dataJson.put("trans_deposit", rs.getInt("trans_deposit"));
+                        dataJson.put("amount", rs.getInt("amount"));
+                        dataJson.put("balance", rs.getInt("balance"));
 
-                        int pay = rs.getInt("trans_pay");
-                        int deposit = rs.getInt("trans_deposit");
+                        account_id = rs.getInt("account_id");
 
-                        payTotal = payTotal+pay;
-                        depositTotal = depositTotal+deposit;
-
+//                        int pay = rs.getInt("trans_pay");
+//                        int deposit = rs.getInt("trans_deposit");
+//
+//                        payTotal = payTotal+pay;
+//                        depositTotal = depositTotal+deposit;
+//
                         jsonArray.put(dataJson);
                     }
 
+                    jsonObject.put("account_id", account_id);
                     jsonObject.put("trans_record", jsonArray);
-                    jsonObject.put("balance", depositTotal - payTotal);
+
 
                     return jsonObject.toString();
 
@@ -93,7 +97,7 @@ public class digitalfin {
     }
 
     @POST
-    @Path("/customers")
+    @Path("/accounts")
     @Consumes(MediaType.APPLICATION_JSON)
     public String customers(String json){
 
@@ -130,8 +134,8 @@ public class digitalfin {
                     if(rs.next()){
 
                         jsonObject.put("id", rs.getInt("id"));
-                        jsonObject.put("balance", rs.getInt("balance"));
                         jsonObject.put("birthday", rs.getString("birthday"));
+                        jsonObject.put("sex", rs.getInt("sex"));
                         jsonObject.put("career", rs.getString("career"));
                         jsonObject.put("residence", rs.getString("residence"));
                         jsonObject.put("income", rs.getInt("income"));
@@ -139,7 +143,10 @@ public class digitalfin {
                         jsonObject.put("marital", rs.getString("marital"));
                         jsonObject.put("education", rs.getString("education"));
                         jsonObject.put("dependents", rs.getInt("dependents"));
-                        jsonObject.put("balance_update_date", rs.getString("balance_update_date"));
+                        jsonObject.put("is_SNY", rs.getInt("is_SNY"));
+                        jsonObject.put("is_register_web_bank", rs.getInt("is_register_web_bank"));
+                        jsonObject.put("is_app_bank", rs.getInt("is_app_bank"));
+                        jsonObject.put("is_register_mobile_pay", rs.getInt("is_register_mobile_pay"));
                         jsonObject.put("create_date", rs.getString("create_date"));
                         return jsonObject.toString();
 
