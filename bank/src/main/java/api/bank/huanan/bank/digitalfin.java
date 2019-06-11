@@ -1,13 +1,15 @@
 package api.bank.huanan.bank;
 
+import api.modules.ErrorHandler;
 import api.modules.SqliteHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -17,24 +19,24 @@ import java.sql.Statement;
 public class digitalfin {
 
 
-    @POST
+    @GET
     @Path("/trans_records")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String accounts(String json){
+//    @Consumes(MediaType.APPLICATION_JSON)
+    public String accounts(@QueryParam("account_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request){
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
-        int id = 0;
-        String token = null;
-        JSONObject jsonRequest = new JSONObject(json);
+//        int id = 0;
+//        String token = null;
+//        JSONObject jsonRequest = new JSONObject(json);
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
 
 
-        if(!jsonRequest.isEmpty()){
-            System.out.println("request:" + json);
-            id = jsonRequest.getInt("account_id");
-            token = jsonRequest.getString("token");
-        }
+//        if(!jsonRequest.isEmpty()){
+//            System.out.println("request:" + json);
+//            id = jsonRequest.getInt("account_id");
+//            token = jsonRequest.getString("token");
+//        }
 
         if(id != 0 && token != null && !token.equals("")){
             try {
@@ -53,19 +55,19 @@ public class digitalfin {
                     jsonArray = new JSONArray();
                     int account_id = 0;
 
-
-                    while(rs.next()){
-                        dataJson = new JSONObject();
-                        dataJson.put("id", rs.getInt("trans_id"));
+                    if(rs.getRow() > 0){
+                        while(rs.next()){
+                            dataJson = new JSONObject();
+                            dataJson.put("id", rs.getInt("trans_id"));
 //                        dataJson.put("account_id", rs.getInt("account_id"));
-                        dataJson.put("trans_bank", rs.getString("trans_bank"));
-                        dataJson.put("trans_type", rs.getString("trans_type"));
-                        dataJson.put("trans_channel", rs.getString("trans_channel"));
-                        dataJson.put("trans_date", rs.getString("trans_date"));
-                        dataJson.put("amount", rs.getInt("amount"));
-                        dataJson.put("balance", rs.getInt("balance"));
+                            dataJson.put("trans_bank", rs.getString("trans_bank"));
+                            dataJson.put("trans_type", rs.getString("trans_type"));
+                            dataJson.put("trans_channel", rs.getString("trans_channel"));
+                            dataJson.put("trans_date", rs.getString("trans_date"));
+                            dataJson.put("amount", rs.getInt("amount"));
+                            dataJson.put("balance", rs.getInt("balance"));
 
-                        account_id = rs.getInt("account_id");
+                            account_id = rs.getInt("account_id");
 
 //                        int pay = rs.getInt("trans_pay");
 //                        int deposit = rs.getInt("trans_deposit");
@@ -73,14 +75,17 @@ public class digitalfin {
 //                        payTotal = payTotal+pay;
 //                        depositTotal = depositTotal+deposit;
 //
-                        jsonArray.put(dataJson);
+                            jsonArray.put(dataJson);
+                        }
+                        jsonObject.put("account_id", account_id);
+                        jsonObject.put("trans_record", jsonArray);
+                        return jsonObject.toString();
+                    }else{
+                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CODE);
+                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_ACCOUNT);
+                        return jsonObject.toString();
                     }
 
-                    jsonObject.put("account_id", account_id);
-                    jsonObject.put("trans_record", jsonArray);
-
-
-                    return jsonObject.toString();
 
                 }else {
                     System.out.println("Database Connect Fail");
@@ -96,24 +101,16 @@ public class digitalfin {
         return strResponse;
     }
 
-    @POST
+    @GET
     @Path("/accounts")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String customers(String json){
+
+    public String customers(@QueryParam("user_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request){
 
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
-        int id = 0;
-        String token = null;
+
         JSONObject jsonObject;
-        JSONObject jsonRequest = new JSONObject(json);
 
-        if(!jsonRequest.isEmpty()){
-
-            System.out.println("resquest:" + json);
-            id = jsonRequest.getInt("id");
-            token = jsonRequest.getString("token");
-        }
 
         if(id != 0 && token != null && !token.equals("")){
 

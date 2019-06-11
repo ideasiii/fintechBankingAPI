@@ -6,6 +6,8 @@ package api.modules;
 
 public abstract class ErrorHandler
 {
-    final static int ERROR_OK = 0;
-    final static int ERROR_EXCEPTION = -1;
+    public final static int ERROR_OK = 0;
+    public final static int ERROR_EXCEPTION = -1;
+    public final static int ERROR_CODE = 1;
+    public final static String ERROR_NO_ACCOUNT = "沒有此帳戶";
 }
