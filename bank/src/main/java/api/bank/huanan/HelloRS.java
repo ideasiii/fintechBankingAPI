@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import api.modules.ErrorHandler;
 import api.modules.SqliteHandler;
 
 
@@ -214,4 +215,5 @@ public class HelloRS
         
         return strResponse;
     }
+    
 }
