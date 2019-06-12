@@ -22,7 +22,7 @@ public class digitalfin {
     @GET
     @Path("/trans_records")
 //    @Consumes(MediaType.APPLICATION_JSON)
-    public String accounts(@QueryParam("account_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request){
+    public String accounts(@QueryParam("account_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request) {
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
 //        int id = 0;
@@ -30,6 +30,7 @@ public class digitalfin {
 //        JSONObject jsonRequest = new JSONObject(json);
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
+        jsonObject = new JSONObject();
 
 
 //        if(!jsonRequest.isEmpty()){
@@ -38,25 +39,25 @@ public class digitalfin {
 //            token = jsonRequest.getString("token");
 //        }
 
-        if(id != 0 && token != null && !token.equals("")){
+        if (id != 0 && token != null && !token.equals("")) {
             try {
 
                 SqliteHandler sqliteHandler = new SqliteHandler();
                 Connection conn = sqliteHandler.getConnection("database/huanan.db");
 
-                if(conn != null){
+                if (conn != null) {
 
-                    String sql = "select * from trans_record where account_id = " + id ;
+                    String sql = "select * from trans_record where account_id = " + id;
                     Statement stat = null;
                     ResultSet rs = null;
                     stat = conn.createStatement();
                     rs = stat.executeQuery(sql);
-                    jsonObject = new JSONObject();
                     jsonArray = new JSONArray();
                     int account_id = 0;
 
-                    if(rs.getRow() > 0){
-                        while(rs.next()){
+
+                    if (rs.next()) {
+                        do {
                             dataJson = new JSONObject();
                             dataJson.put("id", rs.getInt("trans_id"));
 //                        dataJson.put("account_id", rs.getInt("account_id"));
@@ -76,59 +77,73 @@ public class digitalfin {
 //                        depositTotal = depositTotal+deposit;
 //
                             jsonArray.put(dataJson);
-                        }
+
+                        } while (rs.next());
+
                         jsonObject.put("account_id", account_id);
                         jsonObject.put("trans_record", jsonArray);
                         return jsonObject.toString();
-                    }else{
-                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CODE);
+                    } else {
+                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_ACCOUNT_CODE);
                         jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_ACCOUNT);
                         return jsonObject.toString();
                     }
 
 
-                }else {
+                } else {
+
                     System.out.println("Database Connect Fail");
+                    jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CONNECT_DB_CODE);
+                    jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_CONNECT_DB);
+                    return jsonObject.toString();
                 }
 
-            }catch (Exception e) {
+            } catch (Exception e) {
+
+
                 System.out.println(e.getMessage());
+
+                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_EXCEPTION);
+                jsonObject.put("ERROR_MESSAGE", e.getMessage());
+
+                return jsonObject.toString();
             }
 
-            return "account id is " + id + " token is " + token;
+//            return "account id is " + id + " token is " + token;
         }
 
-        return strResponse;
+        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_PARM_CODE);
+        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_PARM);
+        return jsonObject.toString();
     }
 
     @GET
     @Path("/accounts")
 
-    public String customers(@QueryParam("user_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request){
+    public String customers(@QueryParam("user_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request) {
 
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
 
         JSONObject jsonObject;
+        jsonObject = new JSONObject();
 
+        if (id != 0 && token != null && !token.equals("")) {
 
-        if(id != 0 && token != null && !token.equals("")){
-
-            try{
+            try {
 
                 SqliteHandler sqliteHandler = new SqliteHandler();
                 Connection conn = sqliteHandler.getConnection("database/huanan.db");
 
-                if(conn != null){
+                if (conn != null) {
 
                     String sql = "select * from bank_account where id = " + id;
                     Statement stat = null;
                     ResultSet rs = null;
                     stat = conn.createStatement();
                     rs = stat.executeQuery(sql);
-                    jsonObject = new JSONObject();
 
-                    if(rs.next()){
+                    if (rs.next()) {
 
                         jsonObject.put("id", rs.getInt("id"));
                         jsonObject.put("birthday", rs.getString("birthday"));
@@ -148,19 +163,32 @@ public class digitalfin {
                         return jsonObject.toString();
 
                     } else {
-                        System.out.println("Database Connect Fail");
+                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_USER_CODE);
+                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_USER);
+                        return jsonObject.toString();
                     }
+                } else {
+//
+                    System.out.println("Database Connect Fail");
+                    jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CONNECT_DB_CODE);
+                    jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_CONNECT_DB);
+                    return jsonObject.toString();
                 }
 
 
-            }catch (Exception e){
+            } catch (Exception e) {
+
                 System.out.println(e.getMessage());
+
+                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_EXCEPTION);
+                jsonObject.put("ERROR_MESSAGE", e.getMessage());
+
+                return jsonObject.toString();
             }
-
-            return "customer id is " + id + " token is " + token;
         }
-
-        return strResponse;
+        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_PARM_CODE);
+        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_PARM);
+        return jsonObject.toString();
     }
 
 }
