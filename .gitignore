@@ -17,6 +17,7 @@ out
 .idea/workspace.xml
 bank/target
 bank/.idea/workspace.xml
+bank/.idea
 
 # Package Files #
 *.war
