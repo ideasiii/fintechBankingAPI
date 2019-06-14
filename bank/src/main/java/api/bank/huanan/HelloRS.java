@@ -19,6 +19,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import api.bank.huanan.utility.LogHandler;
 import api.modules.SqliteHandler;
 
 
@@ -58,12 +59,20 @@ public class HelloRS
         return "Hello, " + name;
     }
     
-    @POST
-    @Produces("text/html") // content type to output
+    /**
+     * Test: http://127.0.0.1:8080/bank/huanan/hello/account?id=1&token=1
+     * @param id
+     * @param token
+     * @param request
+     * @return
+     */
+    @GET
+    @Produces("application/json;charset=utf8")
     @Path("/account")
     public String bank_account(@QueryParam("id") String id, @QueryParam("token") String token,
             @Context HttpServletRequest request)
     {
+        LogHandler.log("75",request);
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
         JSONObject jsonObject;
@@ -76,7 +85,8 @@ public class HelloRS
                 Connection conn = sqliteHandler.getConnection("database/huanan.db");
                 if (conn != null)
                 {
-                    String sql = "select * from bank_account where id = '" + id + "'";
+                    String sql = "select * from bank_account where id = " + id ;
+                    System.out.println(sql);
                     Statement stat = null;
                     ResultSet rs = null;
                     stat = conn.createStatement();
@@ -85,7 +95,6 @@ public class HelloRS
                     if (rs.next())
                     {
                         jsonObject.put("id", rs.getInt("id"));
-                        jsonObject.put("balance", rs.getInt("balance"));
                         jsonObject.put("birthday", rs.getString("birthday"));
                         jsonObject.put("career", rs.getString("career"));
                         jsonObject.put("residence", rs.getString("residence"));
@@ -94,7 +103,6 @@ public class HelloRS
                         jsonObject.put("marital", rs.getString("marital"));
                         jsonObject.put("education", rs.getString("education"));
                         jsonObject.put("dependents", rs.getInt("dependents"));
-                        jsonObject.put("balance_update_date", rs.getString("balance_update_date"));
                         jsonObject.put("create_date", rs.getString("create_date"));
                         return jsonObject.toString();
                     }
@@ -164,8 +172,9 @@ public class HelloRS
     @Path("/account/asjson")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json;charset=utf8")
-    public String account(String json)
+    public String account(String json,@Context HttpServletRequest request)
     {
+        LogHandler.log("123456",request);
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
         String id = null, token = null;
