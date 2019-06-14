@@ -1,7 +1,7 @@
 $(function () {
 	var id = localStorage.getItem("userId");
 	var name = localStorage.getItem("name");
-	if (id == null && name == null) location.href = '../login.html';
+	// if (id == null && name == null) location.href = '../login.html';
 	var url = "";
 	var lang = localStorage.getItem('lang').toLowerCase();
 	if(sessionStorage.getItem("SwaggerUrl") !== null){
