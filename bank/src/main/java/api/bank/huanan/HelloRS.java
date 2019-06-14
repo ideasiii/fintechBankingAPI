@@ -1,6 +1,6 @@
 package api.bank.huanan;
 
-import org.json.*;
+import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -9,14 +9,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 
-import api.modules.ErrorHandler;
 import api.modules.SqliteHandler;
 
 
 @Path("/huanan/hello")
+@Produces("application/json;charset=utf8")
 public class HelloRS
 {
     @GET
@@ -105,7 +112,7 @@ public class HelloRS
     
     
     @POST
-    @Produces("text/html") // content type to output
+    @Produces("application/json;charset=utf8")
     @Path("/trans_record")
     public String trans_record(@QueryParam("id") String id, @QueryParam("token") String token,
             @Context HttpServletRequest request)
@@ -156,6 +163,7 @@ public class HelloRS
     @POST
     @Path("/account/asjson")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json;charset=utf8")
     public String account(String json)
     {
         String strResponse = "{\"message\":\"parameter error!!\"}";

@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1692d02b-f103-4f24-b10b-adbc135de358" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jetty/database/huanan.db" beforeDir="false" afterPath="$PROJECT_DIR$/../jetty/database/huanan.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jetty/database/huanan.db-journal" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jetty/bin/jetty.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../jetty/bin/jetty.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jetty/webapps/bank.war" beforeDir="false" afterPath="$PROJECT_DIR$/../jetty/webapps/bank.war" afterDir="false" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,11 +35,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
               <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="46" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,6 +55,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/api/modules/ErrorHandler.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -55,6 +72,17 @@
               <caret line="64" column="83" selection-start-line="64" selection-start-column="83" selection-end-line="64" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#451#452#0" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
               </folding>
             </state>
           </provider>
@@ -81,10 +109,10 @@
         <option value="$PROJECT_DIR$/src/main/java/api/bank/huanan/example/sqliteHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/bank/huanan/example/SqliteHandler.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/modules/ErrorHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/bank/huanan/bank/digitalfin.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java" />
       </list>
     </option>
   </component>
@@ -108,15 +136,19 @@
           <item name="bank Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="bank Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
       </expand>
       <select />
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1421" />
-    <option name="y" value="138" />
-    <option name="width" value="1921" />
-    <option name="height" value="1089" />
+    <option name="x" value="-3" />
+    <option name="width" value="1926" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -126,16 +158,91 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane" />
+=======
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="bank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="huanan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="huanan" type="462c0819:PsiDirectoryNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bank" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bank" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="huanan" type="462c0819:PsiDirectoryNode" />
+              <item name="insurance" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556856346902" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
     <property name="project.structure.last.edited" value="SDKs" />
+=======
+    <property name="project.structure.last.edited" value="Global Libraries" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
@@ -153,7 +260,11 @@
     </option>
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
     <configuration name="TestAPI" type="JettyRunner-By-GuiKeller" factoryName="Jetty Runner">
+=======
+    <configuration name="jetty-runner" type="JettyRunner-By-GuiKeller" factoryName="Jetty Runner">
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
       <option name="JettyRunnerV130-SelectedModuleName" value="&lt;all modules&gt;" />
       <option name="JettyRunnerV130-WebAppPath" value="/bank" />
       <option name="JettyRunnerV130-WebAppFolder" value="$PROJECT_DIR$/src/main/webapp" />
@@ -197,9 +308,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="112" width="1920" height="1177" extended-state="6" />
+    <frame x="-3" y="0" width="1926" height="1047" extended-state="6" />
+    <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12955032" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15245202" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -209,6 +325,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32551596" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -218,12 +335,27 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5005353" side_tool="true" weight="0.26641652" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3292683" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3261105" />
+=======
+      <window_info anchor="bottom" id="Run" order="2" weight="0.55266017" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3299539" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.18241042" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3299539" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3257329" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
       <window_info active="true" anchor="bottom" id="REST Client" order="11" visible="true" weight="0.3299539" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
+<<<<<<< HEAD
       <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.22537473" />
+=======
+      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.18550107" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -296,41 +428,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/bank/digitalfin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+        <state relative-caret-position="1508">
+          <caret line="63" column="83" selection-start-line="63" selection-start-column="83" selection-end-line="63" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-            <element signature="e#487#488#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/modules/ErrorHandler.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state>
+=======
+        <state relative-caret-position="267">
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
           <caret line="14" column="43" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/bank/digitalfin.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state>
           <caret line="64" column="83" selection-start-line="64" selection-start-column="83" selection-end-line="64" selection-end-column="83" />
+=======
+        <state relative-caret-position="276">
+          <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="46" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="360">
           <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+=======
+        <state relative-caret-position="231">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -352,6 +498,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -391,6 +538,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
