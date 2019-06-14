@@ -18,7 +18,6 @@ import java.sql.Statement;
 @Path("/huanan/digitalfin")
 public class digitalfin {
 
-
     @GET
     @Path("/trans_records")
 //    @Consumes(MediaType.APPLICATION_JSON)
