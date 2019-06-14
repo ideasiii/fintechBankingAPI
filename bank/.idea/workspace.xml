@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1692d02b-f103-4f24-b10b-adbc135de358" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/api/bank/huanan/utility/LogHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/bank/huanan/utility/LogHandler.java" afterDir="false" />
+=======
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jetty/database/huanan.db" beforeDir="false" afterPath="$PROJECT_DIR$/../jetty/database/huanan.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jetty/database/huanan.db-journal" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jetty/bin/jetty.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../jetty/bin/jetty.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jetty/webapps/bank.war" beforeDir="false" afterPath="$PROJECT_DIR$/../jetty/webapps/bank.war" afterDir="false" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,6 +40,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/utility/LogHandler.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -36,11 +53,26 @@
           </provider>
         </entry>
       </file>
+=======
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/insurance/insurance.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+=======
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/bank/digitalfin.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="319">
               <caret line="23" column="125" selection-start-line="23" selection-start-column="107" selection-end-line="23" selection-end-column="125" />
+=======
+            <state relative-caret-position="276">
+              <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="46" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,13 +80,41 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
+=======
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/modules/ErrorHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="14" column="43" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/bank/digitalfin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="64" column="83" selection-start-line="64" selection-start-column="83" selection-end-line="64" selection-end-column="83" />
+              <folding>
+                <element signature="imports" expanded="true" />
+=======
+      <file pinned="false" current-in-tab="true">
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
         <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
+<<<<<<< HEAD
+=======
+                <element signature="e#451#452#0" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
               </folding>
             </state>
           </provider>
@@ -126,6 +186,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+=======
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -204,16 +269,21 @@
           <select />
         </subPane>
       </pane>
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556856346902" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
+    <property name="project.structure.last.edited" value="SDKs" />
+=======
     <property name="project.structure.last.edited" value="Global Libraries" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -228,7 +298,11 @@
     </option>
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
+    <configuration name="TestAPI" type="JettyRunner-By-GuiKeller" factoryName="Jetty Runner">
+=======
     <configuration name="jetty-runner" type="JettyRunner-By-GuiKeller" factoryName="Jetty Runner">
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
       <option name="JettyRunnerV130-SelectedModuleName" value="&lt;all modules&gt;" />
       <option name="JettyRunnerV130-WebAppPath" value="/bank" />
       <option name="JettyRunnerV130-WebAppFolder" value="$PROJECT_DIR$/src/main/webapp" />
@@ -275,7 +349,15 @@
     <frame x="-3" y="0" width="1926" height="1047" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19402985" />
+=======
+<<<<<<< HEAD
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12955032" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15245202" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -285,7 +367,22 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33333334" />
+=======
+<<<<<<< HEAD
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32551596" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3292683" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946466" weight="0.26641652" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5005353" side_tool="true" weight="0.26641652" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3292683" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3261105" />
+=======
+      <window_info anchor="bottom" id="Run" order="2" weight="0.55266017" />
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -294,12 +391,21 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3299539" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3257329" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
       <window_info active="true" anchor="bottom" id="REST Client" order="11" visible="true" weight="0.3299539" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
+<<<<<<< HEAD
       <window_info anchor="right" id="Maven" order="4" weight="0.18550107" />
+=======
+<<<<<<< HEAD
+      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.22537473" />
+=======
+      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.18550107" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
@@ -391,18 +497,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/bank/digitalfin.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="319">
           <caret line="23" column="125" selection-start-line="23" selection-start-column="107" selection-end-line="23" selection-end-column="125" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+<<<<<<< HEAD
+        <state>
+=======
+        <state relative-caret-position="267">
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="43" />
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/HelloRS.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="187">
           <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+=======
+<<<<<<< HEAD
+        <state>
+          <caret line="64" column="83" selection-start-line="64" selection-start-column="83" selection-end-line="64" selection-end-column="83" />
+=======
+        <state relative-caret-position="276">
+          <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="46" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -411,8 +536,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/bank/huanan/utility/LogHandler.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="232">
           <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="360">
+          <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+=======
+        <state relative-caret-position="231">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+>>>>>>> 7d079a78c7ab0b32f30675052f896b0055ebedcb
+>>>>>>> d7052031b3b65c438733710e05236e9251f047eb
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -497,6 +632,17 @@
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
           <last-edited>Maven: javax.activation:activation:1.1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

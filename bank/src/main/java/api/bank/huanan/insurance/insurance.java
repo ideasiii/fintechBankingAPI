@@ -1,19 +1,21 @@
 package api.bank.huanan.insurance;
 
 
-import api.modules.ErrorHandler;
-import api.modules.SqliteHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
+import api.modules.ErrorHandler;
+import api.modules.SqliteHandler;
 
 @Path("huanan/insurance")
 public class insurance {
