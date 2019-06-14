@@ -146,7 +146,7 @@ public class digitalfin {
 
                         jsonObject.put("id", rs.getInt("id"));
                         jsonObject.put("birthday", rs.getString("birthday"));
-                        jsonObject.put("sex", rs.getInt("sex"));
+                        jsonObject.put("gender", rs.getInt("gender"));
                         jsonObject.put("career", rs.getString("career"));
                         jsonObject.put("residence", rs.getString("residence"));
                         jsonObject.put("income", rs.getInt("income"));
