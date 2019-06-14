@@ -19,7 +19,7 @@ import java.sql.Statement;
 public class digitalfin {
 
     @GET
-    @Path("/trans_records")
+    @Path("/account_records")
 //    @Consumes(MediaType.APPLICATION_JSON)
     public String accounts(@QueryParam("account_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request) {
         String strResponse = "{\"message\":\"parameter error!!\"}";
@@ -117,7 +117,7 @@ public class digitalfin {
     }
 
     @GET
-    @Path("/accounts")
+    @Path("/customers")
 
     public String customers(@QueryParam("user_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request) {
 
