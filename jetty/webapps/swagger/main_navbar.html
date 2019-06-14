@@ -1,0 +1,47 @@
+<script type="text/javascript" src="js/main_navbar.js?v2"></script>
+
+<div class="navbar-header">
+	<!-- <a class="navbar-brand" href="index.html"><img src="images/more_logo1.png" alt="">MORE API</a> -->
+	<a class="navbar-brand" href="../login.html">Digital Sandbox</a>
+	<ul class="nav navbar-nav pull-right visible-xs-block">
+		<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+	</ul>
+
+</div>
+<div class="navbar-collapse collapse" id="navbar-mobile">
+	<ul class="nav navbar-nav navbar-right" id="navbar-logined">
+		<li>
+			<a href="../assets/MORE_API_instroctions.pdf" data-localize="main_navbar.swagger-href"><i class="icon-file-pdf"></i> <span data-localize="main_navbar.tutorial">使用手冊</span></a>
+		</li>
+		<li id="sample_code">
+			<a href="../postman.html"><i class="icon-embed2"></i> <span data-localize="main_navbar.postman">範例程式生成</span></a>
+		</li>
+		<li id="CH">
+			<a class="deutsch" href="" onclick="getlang('CH');"><img src="../assets/images/flags/tw.png" class="position-left" alt=""> CH</a>
+		</li>
+		<li id="EN">
+			<a class="english" href="" onclick="getlang('EN');"><img src="../assets/images/flags/gb.png" class="position-left" alt=""> EN</a>
+		</li>
+
+		<li class="dropdown dropdown-user" id="user">
+			<a class="dropdown-toggle" data-toggle="dropdown">
+				<img src="../assets/images/placeholder.jpg" alt="">
+				<span id="name"></span>
+				<i class="caret"></i>
+			</a>
+
+			<ul class="dropdown-menu dropdown-menu-right" id="namedrop">
+				<li><a href="../Signby_edit.html"><i class="icon-cog5"></i><span data-localize="main_navbar.settings">Account settings</span></a></li>
+				<li><a id="myHref"><i class="icon-switch2"></i><span data-localize="main_navbar.logout">Logout</span></a></li>
+			</ul>
+		</li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right" id="navbar-unlogin" style="top:1px; position: relative;">
+		<li>
+			<a href="../login_registration_advanced.html"><i class="icon-user-plus"></i> <span data-localize="main_navbar.register">Register</span></a>
+		</li>
+		<li>
+			<a href="../login.html"><i class="icon-enter"></i> <span data-localize="main_navbar.login">Login</span></a>
+		</li>
+	</ul>
+</div>
