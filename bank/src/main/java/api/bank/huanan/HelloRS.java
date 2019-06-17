@@ -19,7 +19,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import api.bank.huanan.utility.LogHandler;
+import api.modules.LogHandler;
 import api.modules.SqliteHandler;
 
 
@@ -72,7 +72,7 @@ public class HelloRS
     public String bank_account(@QueryParam("id") String id, @QueryParam("token") String token,
             @Context HttpServletRequest request)
     {
-        LogHandler.log("75",request);
+        LogHandler.log(token,request);
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
         JSONObject jsonObject;
@@ -125,6 +125,7 @@ public class HelloRS
     public String trans_record(@QueryParam("id") String id, @QueryParam("token") String token,
             @Context HttpServletRequest request)
     {
+        LogHandler.log(token,request);
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
         JSONObject jsonObject;
@@ -174,7 +175,7 @@ public class HelloRS
     @Produces("application/json;charset=utf8")
     public String account(String json,@Context HttpServletRequest request)
     {
-        LogHandler.log("123456",request);
+        
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
         String id = null, token = null;
@@ -185,6 +186,7 @@ public class HelloRS
             System.out.println("request:" + json);
             id = jsonRequest.getString("id");
             token = jsonRequest.getString("token");
+            LogHandler.log(token,request);
         }
         
         if (id != null && !id.equals("") && token != null && !token.equals(""))

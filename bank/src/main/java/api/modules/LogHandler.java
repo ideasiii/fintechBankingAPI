@@ -1,4 +1,4 @@
-package api.bank.huanan.utility;
+package api.modules;
 
 
 import com.mongodb.MongoClient;
@@ -6,10 +6,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import org.bson.Document;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 
