@@ -10,6 +10,7 @@ import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -20,6 +21,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import api.modules.LogHandler;
+import api.modules.Logs;
 import api.modules.SqliteHandler;
 
 
@@ -59,6 +61,18 @@ public class HelloRS
         return "Hello, " + name;
     }
     
+    /***
+     * HTML <FORM>
+     * The parameters would be annotated using @FormParam:
+     */
+    @POST
+    @Path("/formparam")
+    public String create(@QueryParam("id") String id, @QueryParam("token") String token,
+            @Context HttpServletRequest request)
+    {
+        return "ok";
+    }
+    
     /**
      * Test: http://127.0.0.1:8080/bank/huanan/hello/account?id=1&token=1
      * @param id
@@ -66,7 +80,7 @@ public class HelloRS
      * @param request
      * @return
      */
-    @GET
+    @POST
     @Produces("application/json;charset=utf8")
     @Path("/account")
     public String bank_account(@QueryParam("id") String id, @QueryParam("token") String token,
@@ -76,7 +90,7 @@ public class HelloRS
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
         JSONObject jsonObject;
-        
+        Logs.showTrace("[HelloRS] bank_account id = " + id + " token = " + token);
         if (id != null && !id.equals("") && token != null && !token.equals(""))
         {
             try
