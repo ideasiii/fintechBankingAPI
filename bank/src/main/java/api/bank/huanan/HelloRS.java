@@ -61,20 +61,50 @@ public class HelloRS
         return "Hello, " + name;
     }
     
-    /***
-     * HTML <FORM>
-     * The parameters would be annotated using @FormParam:
+    /**
+     * For API Gateway test POST method
+     *
+     * @param id
+     * @param token
+     * @param request
+     * @return
      */
     @POST
-    @Path("/formparam")
-    public String create(@QueryParam("id") String id, @QueryParam("token") String token,
+    @Path("/apiPOST")
+    @Produces("application/json;charset=utf8")
+    public String apiPOST(@FormParam("id") String id, @FormParam("token") String token,
             @Context HttpServletRequest request)
     {
-        return "ok";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+        jsonObject.put("token", token);
+        Logs.showTrace(jsonObject.toString());
+        return jsonObject.toString();
+    }
+    
+    /**
+     * For API Gateway test GET method
+     *
+     * @param id
+     * @param token
+     * @param request
+     * @return
+     */
+    @GET
+    @Path("/apiGET")
+    public String apiGET(@QueryParam("id") String id, @QueryParam("token") String token,
+            @Context HttpServletRequest request)
+    {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", id);
+        jsonObject.put("token", token);
+        Logs.showTrace(jsonObject.toString());
+        return jsonObject.toString();
     }
     
     /**
      * Test: http://127.0.0.1:8080/bank/huanan/hello/account?id=1&token=1
+     *
      * @param id
      * @param token
      * @param request
@@ -86,7 +116,7 @@ public class HelloRS
     public String bank_account(@QueryParam("id") String id, @QueryParam("token") String token,
             @Context HttpServletRequest request)
     {
-        LogHandler.log(token,request);
+        LogHandler.log(token, request);
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
         JSONObject jsonObject;
@@ -99,7 +129,7 @@ public class HelloRS
                 Connection conn = sqliteHandler.getConnection("database/huanan.db");
                 if (conn != null)
                 {
-                    String sql = "select * from bank_account where id = " + id ;
+                    String sql = "select * from bank_account where id = " + id;
                     System.out.println(sql);
                     Statement stat = null;
                     ResultSet rs = null;
@@ -139,7 +169,7 @@ public class HelloRS
     public String trans_record(@QueryParam("id") String id, @QueryParam("token") String token,
             @Context HttpServletRequest request)
     {
-        LogHandler.log(token,request);
+        LogHandler.log(token, request);
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
         JSONObject jsonObject;
@@ -187,7 +217,7 @@ public class HelloRS
     @Path("/account/asjson")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json;charset=utf8")
-    public String account(String json,@Context HttpServletRequest request)
+    public String account(String json, @Context HttpServletRequest request)
     {
         
         String strResponse = "{\"message\":\"parameter error!!\"}";
@@ -200,7 +230,7 @@ public class HelloRS
             System.out.println("request:" + json);
             id = jsonRequest.getString("id");
             token = jsonRequest.getString("token");
-            LogHandler.log(token,request);
+            LogHandler.log(token, request);
         }
         
         if (id != null && !id.equals("") && token != null && !token.equals(""))

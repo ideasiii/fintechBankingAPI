@@ -53,6 +53,7 @@ public abstract class Http
             output.close();
             
             response.Code = con.getResponseCode();
+            
             if (response.Code == HttpURLConnection.HTTP_OK)
             {
                 response.Data = "";
@@ -65,6 +66,7 @@ public abstract class Http
             }
             else
             {
+                response.Data = con.getResponseMessage();
                 Logs.showTrace("[Http] ERROR HTTP Response Code:" + response.Code);
             }
             jsonResponse.put("code", response.Code);
@@ -73,6 +75,8 @@ public abstract class Http
         catch (Exception e)
         {
             Logs.showError("[Http] POST Exception: " + e.getMessage());
+            jsonResponse.put("code", -1);
+            jsonResponse.put("data", e.getMessage());
         }
         
         if (null != eventListener)
