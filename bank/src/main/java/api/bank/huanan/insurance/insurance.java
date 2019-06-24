@@ -15,6 +15,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 
 import api.modules.ErrorHandler;
+import api.modules.LogHandler;
 import api.modules.SqliteHandler;
 
 @Path("huanan/insurance")
@@ -23,6 +24,7 @@ public class insurance {
     @GET
     @Path("/record")
     public String record(@QueryParam("user_id") int id, @QueryParam("type") String type, @QueryParam("api_key") String token, @Context HttpServletRequest request) {
+        LogHandler.log(token, request);
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();

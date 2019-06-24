@@ -1,6 +1,7 @@
 package api.bank.huanan.bank;
 
 import api.modules.ErrorHandler;
+import api.modules.LogHandler;
 import api.modules.SqliteHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -8,6 +9,7 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import java.sql.Connection;
@@ -19,9 +21,11 @@ import java.sql.Statement;
 public class digitalfin {
 
     @GET
+    @Produces("application/json;charset=utf8")
     @Path("/account_records")
 //    @Consumes(MediaType.APPLICATION_JSON)
     public String accounts(@QueryParam("account_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request) {
+        LogHandler.log(token,request);
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
 //        int id = 0;
@@ -117,10 +121,10 @@ public class digitalfin {
     }
 
     @GET
+    @Produces("application/json;charset=utf8")
     @Path("/customers")
-
     public String customers(@QueryParam("user_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request) {
-
+        LogHandler.log(token,request);
         String strResponse = "{\"message\":\"parameter error!!\"}";
         String strRecord;
 
