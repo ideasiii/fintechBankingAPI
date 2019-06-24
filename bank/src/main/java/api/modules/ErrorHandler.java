@@ -20,4 +20,6 @@ public abstract class ErrorHandler
     public final static String ERROR_NO_USER = "Can't find this user";
     public final static int ERROR_NO_RECORD_CODE = 6;
     public final static String ERROR_NO_RECORD = "No Record";
+    public final static int ERROR_TYPE_CODE = 7;
+    public final static String ERROR_TYPE = "Wrong type";
 }

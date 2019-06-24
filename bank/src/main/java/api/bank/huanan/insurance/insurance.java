@@ -239,8 +239,7 @@ public class insurance
                 if (conn != null)
                 {
                     String sql =
-                            "select * from insurance_exp_date where identity_id ='" + identity_id +
-                            "'";
+                            "select * from insurance_exp_date where identity_id ='" + identity_id + "'";
                     Statement stat = null;
                     ResultSet rs = null;
                     stat = conn.createStatement();
@@ -257,11 +256,12 @@ public class insurance
                             dataJson.put("id", rs.getString("id"));
                             dataJson.put("policy_no", rs.getString("policy_no"));
                             dataJson.put("exp_date", rs.getString("exp_date"));
-                            dataJson.put("is_active",rs.getInt("is_active"));
+                            dataJson.put("is_active", rs.getInt("is_active"));
                             
                             jsonArray.put(dataJson);
                             
-                            if(rs.getInt("is_active") == 1){
+                            if (rs.getInt("is_active") == 1)
+                            {
                                 active = 1;
                             }
                             
@@ -302,6 +302,115 @@ public class insurance
                 
             }
             
+            
+        }
+        
+        
+        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_PARM_CODE);
+        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_PARM);
+        return jsonObject.toString();
+        
+        
+    }
+    
+    @GET
+    @Path("/blacklist")
+    public String blacklist(@QueryParam("number") String number, @QueryParam("type") String type,
+            @QueryParam("api_key") String token, @Context HttpServletRequest request)
+    {
+        LogHandler.log(token, request);
+        JSONObject jsonObject;
+        jsonObject = new JSONObject();
+        String para = "";
+        if (number != null && !number.equals("") && token != null && !token.equals(""))
+        {
+            if (type != null && !type.equals(""))
+            {
+                try
+                {
+                    
+                    SqliteHandler sqliteHandler = new SqliteHandler();
+                    Connection conn = sqliteHandler.getConnection("database/huanan.db");
+                    
+                    
+                    if (conn != null)
+                    {
+                        
+                        if (0 == type.compareTo("0")) // 字串的比較方式，compareTo 成立回傳 0，不成立回傳 -1
+                        {
+                            para = "identity_id";
+                            if(number.length() != 10){
+                                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TYPE_CODE);
+                                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TYPE);
+                                return jsonObject.toString();
+                            }
+                        }
+                        else if (0 == type.compareTo("1"))
+                        {
+                            para = "license_no";
+                            if(number.length() > 8){
+                                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TYPE_CODE);
+                                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TYPE);
+                                return jsonObject.toString();
+                            }
+                        }
+                        
+                        String Sql = String.format("select * from blacklist where %s = '%s'",
+                                para, number);
+                        System.out.println(Sql);
+                        Statement stat = null;
+                        ResultSet rs = null;
+                        stat = conn.createStatement();
+                        rs = stat.executeQuery(Sql);
+                        
+                        if (rs.next())
+                        {
+                            do
+                            {
+                                jsonObject.put("id", rs.getString("id"));
+                                jsonObject.put(para, number);
+                                jsonObject.put("is_blacklist", 1);
+                                
+                            } while (rs.next());
+                            
+                            
+                            return jsonObject.toString();
+                            
+                        }
+                        else
+                        {
+                            jsonObject.put(para, number);
+                            jsonObject.put("is_blacklist", 0);
+                            return jsonObject.toString();
+                        }
+                        
+                    }
+                    else
+                    {
+                        System.out.println("Database Connect Fail");
+                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CONNECT_DB_CODE);
+                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_CONNECT_DB);
+                        return jsonObject.toString();
+                    }
+                    
+                }
+                catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                    
+                    jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_EXCEPTION);
+                    jsonObject.put("ERROR_MESSAGE", e.getMessage());
+                    
+                    return jsonObject.toString();
+                    
+                }
+            }
+            else
+            {
+                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_PARM_CODE);
+                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_PARM + ", type is required");
+                return jsonObject.toString();
+            }
             
         }
         
