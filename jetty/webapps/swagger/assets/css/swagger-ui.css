@@ -9227,7 +9227,8 @@
 .swagger-ui a.nostyle:visited {
 	text-decoration: inherit;
 	color: inherit;
-	cursor: pointer
+	cursor: pointer;
+	border-bottom: none;
 }
 
 .swagger-ui .version-pragma {
