@@ -266,11 +266,11 @@
 	var getSpecies = strUrl.split("?");
 	if (getSpecies[1] != undefined) {
 
-		$.getScript("js/swaggerJS/" + getSpecies[1] + ".js?v1");
+		$.getScript("assets/js/swaggerJS/" + getSpecies[1] + ".js");
 
 	} else {
 
-		$.getScript("js/swaggerJS/digitalfin.js");
+		$.getScript("assets/js/swaggerJS/digitalfin.js");
 
 	}
 
