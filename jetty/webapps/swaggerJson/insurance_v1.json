@@ -13,6 +13,9 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/iii_fintech/insurance/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
     "url" : "http://54.92.0.255/bank/huanan/insurance/",
     "description" : "Server"
   } ],
@@ -38,29 +41,6 @@
           "explode" : true,
           "schema" : {
             "type" : "integer"
-          }
-        }, {
-          "name" : "number",
-          "in" : "query",
-          "description" : "身分證字號 or 車牌號碼",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string",
-            "example" : "A123456789 or SVQ-014"
-          }
-        }, {
-          "name" : "type",
-          "in" : "query",
-          "description" : "當 number 輸入身分證字號時請帶 0, 當 number 輸入車牌號碼時請帶 1",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "number",
-            "default" : 0,
-            "enum" : [ 0, 1 ]
           }
         } ],
         "responses" : {
@@ -330,7 +310,7 @@
           },
           "car_type" : {
             "type" : "string",
-            "format" : "車種(當查詢type為1時才會回傳)",
+            "format" : "車種",
             "example" : "03自小客"
           }
         }
