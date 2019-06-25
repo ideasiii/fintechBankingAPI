@@ -9274,7 +9274,9 @@
 	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 	font-family: sans-serif;
-	color: #3b4151
+	color: #3b4151;
+	height: 0em;
+    letter-spacing: 0em;
 }
 
 .swagger-ui .btn.btn-sm {
