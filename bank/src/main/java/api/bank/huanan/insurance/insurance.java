@@ -17,6 +17,7 @@ import javax.ws.rs.core.Context;
 import api.modules.ErrorHandler;
 import api.modules.LogHandler;
 import api.modules.SqliteHandler;
+import api.modules.TypeHandler;
 
 @Path("huanan/insurance")
 public class insurance
@@ -331,56 +332,45 @@ public class insurance
                     
                     SqliteHandler sqliteHandler = new SqliteHandler();
                     Connection conn = sqliteHandler.getConnection("database/huanan.db");
-                    
+                    para = TypeHandler.TypeHandler(number, type);
                     
                     if (conn != null)
                     {
-                        
-                        if (0 == type.compareTo("0")) // 字串的比較方式，compareTo 成立回傳 0，不成立回傳 -1
+                        if (para != null)
                         {
-                            para = "identity_id";
-                            if(number.length() != 10){
-                                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TYPE_CODE);
-                                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TYPE);
-                                return jsonObject.toString();
-                            }
-                        }
-                        else if (0 == type.compareTo("1"))
-                        {
-                            para = "license_no";
-                            if(number.length() > 8){
-                                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TYPE_CODE);
-                                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TYPE);
-                                return jsonObject.toString();
-                            }
-                        }
-                        
-                        String Sql = String.format("select * from blacklist where %s = '%s'",
-                                para, number);
-                        System.out.println(Sql);
-                        Statement stat = null;
-                        ResultSet rs = null;
-                        stat = conn.createStatement();
-                        rs = stat.executeQuery(Sql);
-                        
-                        if (rs.next())
-                        {
-                            do
+                            String Sql = String.format("select * from blacklist where %s = '%s'",
+                                    para, number);
+                            System.out.println(Sql);
+                            Statement stat = null;
+                            ResultSet rs = null;
+                            stat = conn.createStatement();
+                            rs = stat.executeQuery(Sql);
+                            
+                            if (rs.next())
                             {
-                                jsonObject.put("id", rs.getString("id"));
-                                jsonObject.put(para, number);
-                                jsonObject.put("is_blacklist", 1);
+                                do
+                                {
+                                    jsonObject.put("id", rs.getString("id"));
+                                    jsonObject.put(para, number);
+                                    jsonObject.put("is_blacklist", 1);
+                                    
+                                } while (rs.next());
                                 
-                            } while (rs.next());
-                            
-                            
-                            return jsonObject.toString();
-                            
+                                
+                                return jsonObject.toString();
+                                
+                            }
+                            else
+                            {
+                                jsonObject.put(para, number);
+                                jsonObject.put("is_blacklist", 0);
+                                return jsonObject.toString();
+                            }
                         }
                         else
                         {
-                            jsonObject.put(para, number);
-                            jsonObject.put("is_blacklist", 0);
+                            jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TYPE_CODE);
+                            jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TYPE);
                             return jsonObject.toString();
                         }
                         
@@ -424,8 +414,8 @@ public class insurance
     
     @GET
     @Path("/payments")
-    public String payments(@QueryParam("user_id") int id,
-            @QueryParam("api_key") String token, @Context HttpServletRequest request)
+    public String payments(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+            @Context HttpServletRequest request)
     {
         LogHandler.log(token, request);
         JSONObject jsonObject, dataJson;
@@ -443,8 +433,7 @@ public class insurance
                 
                 if (conn != null)
                 {
-                    String sql =
-                            "select * from payment_method where user_id =" + id ;
+                    String sql = "select * from payment_method where user_id =" + id;
                     Statement stat = null;
                     ResultSet rs = null;
                     stat = conn.createStatement();
@@ -534,67 +523,56 @@ public class insurance
                     
                     SqliteHandler sqliteHandler = new SqliteHandler();
                     Connection conn = sqliteHandler.getConnection("database/huanan.db");
-                    
+                    para = TypeHandler.TypeHandler(number, type);
                     if (conn != null)
                     {
-    
-                        if (0 == type.compareTo("0")) // 字串的比較方式，compareTo 成立回傳 0，不成立回傳 -1
+                        if (para != null)
                         {
-                            para = "identity_id";
-                            if(number.length() != 10){
-                                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TYPE_CODE);
-                                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TYPE);
-                                return jsonObject.toString();
-                            }
-                        }
-                        else if (0 == type.compareTo("1"))
-                        {
-                            para = "license_no";
-                            if(number.length() > 8){
-                                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TYPE_CODE);
-                                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TYPE);
-                                return jsonObject.toString();
-                            }
-                        }
-                        
-                        String Sql = String.format("select * from online_report where %s = '%s'",
-                                para, number);
-                        Statement stat = null;
-                        ResultSet rs = null;
-                        stat = conn.createStatement();
-                        rs = stat.executeQuery(Sql);
-                        jsonArray = new JSONArray();
-                        
-                        
-                        if (rs.next())
-                        {
-                            do
+                            String Sql = String.format("select * from online_report where %s = " +
+                                    "'%s'", para, number);
+                            Statement stat = null;
+                            ResultSet rs = null;
+                            stat = conn.createStatement();
+                            rs = stat.executeQuery(Sql);
+                            jsonArray = new JSONArray();
+                            
+                            
+                            if (rs.next())
                             {
-                                dataJson = new JSONObject();
-                                dataJson.put("id", rs.getString("id"));
-                                dataJson.put("policy_no", rs.getString("policy_no"));
-                                dataJson.put("claim_date", rs.getString(
-                                        "claim_date"));
-                                dataJson.put("create_date", rs.getString("create_date"));
+                                do
+                                {
+                                    dataJson = new JSONObject();
+                                    dataJson.put("id", rs.getString("id"));
+                                    dataJson.put("policy_no", rs.getString("policy_no"));
+                                    dataJson.put("claim_date", rs.getString("claim_date"));
+                                    dataJson.put("create_date", rs.getString("create_date"));
+                                    
+                                    
+                                    jsonArray.put(dataJson);
+                                    
+                                    
+                                } while (rs.next());
                                 
-                               
-                                jsonArray.put(dataJson);
+                                jsonObject.put(para, number);
+                                jsonObject.put("records", jsonArray);
                                 
+                                return jsonObject.toString();
                                 
-                            } while (rs.next());
-                            
-                            jsonObject.put(para, number);
-                            jsonObject.put("records", jsonArray);
-                            
-                            return jsonObject.toString();
-                            
+                            }
+                            else
+                            {
+                                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_USER_CODE);
+                                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_USER);
+                                return jsonObject.toString();
+                            }
                         }
                         else
                         {
-                            jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_USER_CODE);
-                            jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_USER);
+                            jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TYPE_CODE);
+                            jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TYPE);
                             return jsonObject.toString();
                         }
+                        
                         
                     }
                     else
