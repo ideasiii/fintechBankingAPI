@@ -9351,7 +9351,8 @@
 }
 
 .swagger-ui .authorization__btn.locked {
-	opacity: 1
+	opacity: 1;
+	box-shadow: 0;
 }
 
 .swagger-ui .authorization__btn.unlocked {
