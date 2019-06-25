@@ -12,10 +12,7 @@
     },
     "version" : "1.0.0"
   },
-  "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/iii_fintech/digitalfin/1.0.0",
-    "description" : "SwaggerHub API Auto Mocking"
-  }, {
+  "servers" : [{
     "url" : "http://54.92.0.255/bank/huanan/digitalfin/",
     "description" : "Server"
   } ],
