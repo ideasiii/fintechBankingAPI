@@ -1,8 +1,6 @@
 package api.bank.huanan.insurance;
 
 
-import com.sun.xml.internal.fastinfoset.util.StringArray;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -71,11 +69,11 @@ public class insurance
                             dataJson.put("insurance_date", rs.getString("insurance_date"));
                             dataJson.put("insurance_expiration_date", rs.getString(
                                     "insurance_expiration_date"));
+    
                             
-                            
-                            if (list.contains(rs.getString("classification")))
-                            {
-                                dataJson.put("car_type", rs.getString("car_type"));
+                            if(list.contains(rs.getString("classification"))){
+                                dataJson.put("car_type", rs.getString(
+                                        "car_type"));
                             }
                             
                             jsonArray.put(dataJson);
