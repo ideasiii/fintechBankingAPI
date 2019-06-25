@@ -262,6 +262,7 @@
 	// Load Swagger
 		var strUrl = location.search;
 		var getSpecies = strUrl.split("?");
+		console.log(getSpecies);
 		if (getSpecies[1] != undefined) {
 
 			$.getScript("js/swagger/" + getSpecies[1] + ".js");
