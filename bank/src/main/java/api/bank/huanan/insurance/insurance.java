@@ -219,7 +219,7 @@ public class insurance
     }
     
     @GET
-    @Path("/expiration")
+    @Path("/effective")
     public String expiration(@QueryParam("identity_id") String identity_id,
             @QueryParam("api_key") String token, @Context HttpServletRequest request)
     {
