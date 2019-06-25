@@ -9352,7 +9352,7 @@
 
 .swagger-ui .authorization__btn.locked {
 	opacity: 1;
-	box-shadow: 0;
+	box-shadow: none;
 }
 
 .swagger-ui .authorization__btn.unlocked {
