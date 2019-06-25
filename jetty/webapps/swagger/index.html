@@ -46,7 +46,7 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">Homepage</a></li>
+										<li><a href="index.html?digitalfin">數位金融</a></li>
 										<li><a href="generic.html">Generic</a></li>
 										<li><a href="elements.html">Elements</a></li>
 										<li>
@@ -132,28 +132,6 @@
 			<script src="./swagger-ui-bundle.js"> </script>
 			<script src="./swagger-ui-standalone-preset.js"> </script>
 			<script>
-				window.onload = function () {
-					// Begin Swagger UI call region
-					const ui = SwaggerUIBundle({
-						url: "http://54.92.0.255/swaggerJson/digitalfin_v1.json",
-						dom_id: '#swagger-ui',
-						deepLinking: true,
-						presets: [
-							SwaggerUIBundle.presets.apis,
-							SwaggerUIStandalonePreset
-						],
-						plugins: [
-							SwaggerUIBundle.plugins.DownloadUrl,
-							HideTopbarPlugin,
-							HideInfoUrlPlugin
-						],
-						layout: "StandaloneLayout"
-					})
-					// End Swagger UI call region
-
-					window.ui = ui
-				}
-
 				function HideTopbarPlugin() {
 					// this plugin overrides the Topbar component to return nothing
 					return {

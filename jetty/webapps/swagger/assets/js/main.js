@@ -259,4 +259,17 @@
 
 			});
 
+	// Load Swagger
+		var strUrl = location.search;
+		var getSpecies = strUrl.split("?");
+		if (getSpecies[1] != undefined) {
+
+			$.getScript("js/swagger/" + getSpecies[1] + ".js");
+
+		} else {
+			
+			$.getScript("js/swagger/digitalfin.js");
+			
+		}
+
 })(jQuery);
