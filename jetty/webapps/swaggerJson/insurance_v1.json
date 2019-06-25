@@ -13,9 +13,6 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/iii_fintech/insurance/1.0.0",
-    "description" : "SwaggerHub API Auto Mocking"
-  }, {
     "url" : "http://54.92.0.255/bank/huanan/insurance/",
     "description" : "Server"
   } ],
