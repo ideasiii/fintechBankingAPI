@@ -3520,7 +3520,7 @@ input, select, textarea {
 			color: inherit;
 			cursor: pointer;
 			display: block;
-			font-size: 0.9em;
+			font-size: 16px;
 			padding: 0.625em 0;
 		}
 
