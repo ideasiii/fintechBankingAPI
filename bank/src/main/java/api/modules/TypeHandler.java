@@ -7,6 +7,12 @@ package api.modules;
 
 public abstract class TypeHandler
 {
+    /***
+     *
+     * @param number 身分證ID (長度10) or 車牌號碼 (長度小於8)
+     * @param type 0表示為身分證ID, 1表示為車牌號碼
+     * @return
+     */
     public static String TypeHandler(String number, String type){
         
         String para = "";
