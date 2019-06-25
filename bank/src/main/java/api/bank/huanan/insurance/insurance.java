@@ -1,12 +1,16 @@
 package api.bank.huanan.insurance;
 
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
@@ -25,8 +29,8 @@ public class insurance
     
     @GET
     @Path("/record")
-    public String record(@QueryParam("user_id") int id, @QueryParam("type") String type,
-            @QueryParam("api_key") String token, @Context HttpServletRequest request)
+    public String record(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+            @Context HttpServletRequest request)
     {
         LogHandler.log(token, request);
         JSONObject jsonObject, dataJson;
@@ -35,88 +39,83 @@ public class insurance
         
         if (id != 0 && token != null && !token.equals(""))
         {
-            if (type != null && !type.equals(""))
+            
+            
+            try
             {
-                try
+                
+                SqliteHandler sqliteHandler = new SqliteHandler();
+                Connection conn = sqliteHandler.getConnection("database/huanan.db");
+                
+                if (conn != null)
                 {
+                    String sql = "select * from insurance_record where user_id =" + id;
+                    Statement stat = null;
+                    ResultSet rs = null;
+                    stat = conn.createStatement();
+                    rs = stat.executeQuery(sql);
+                    jsonArray = new JSONArray();
+                    String[] classify = {"車損險", "車責險", "強制險"};
+                    List<String> list = Arrays.asList(classify);
                     
-                    SqliteHandler sqliteHandler = new SqliteHandler();
-                    Connection conn = sqliteHandler.getConnection("database/huanan.db");
-                    
-                    if (conn != null)
+                    if (rs.next())
                     {
-                        String sql = "select * from insurance_record where user_id =" + id;
-                        Statement stat = null;
-                        ResultSet rs = null;
-                        stat = conn.createStatement();
-                        rs = stat.executeQuery(sql);
-                        jsonArray = new JSONArray();
-                        
-                        
-                        if (rs.next())
+                        do
                         {
-                            do
+                            dataJson = new JSONObject();
+                            dataJson.put("id", rs.getString("id"));
+                            dataJson.put("policy_no", rs.getString("policy_no"));
+                            dataJson.put("insurance_category", rs.getString("insurance_category"));
+                            dataJson.put("insurance_name", rs.getString("insurance_name"));
+                            dataJson.put("insurance_premiums", rs.getInt("insurance_premiums"));
+                            dataJson.put("insurance_date", rs.getString("insurance_date"));
+                            dataJson.put("insurance_expiration_date", rs.getString(
+                                    "insurance_expiration_date"));
+                            
+                            
+                            if (list.contains(rs.getString("classification")))
                             {
-                                dataJson = new JSONObject();
-                                dataJson.put("id", rs.getString("id"));
-                                dataJson.put("policy_no", rs.getString("policy_no"));
-                                dataJson.put("insurance_category", rs.getString(
-                                        "insurance_category"));
-                                dataJson.put("insurance_name", rs.getString("insurance_name"));
-                                dataJson.put("insurance_premiums", rs.getInt("insurance_premiums"));
-                                dataJson.put("insurance_date", rs.getString("insurance_date"));
-                                dataJson.put("insurance_expiration_date", rs.getString(
-                                        "insurance_expiration_date"));
-                                
-                                if (type == "1")
-                                {
-                                    dataJson.put("car_type", rs.getString("car_type"));
-                                }
-                                
-                                jsonArray.put(dataJson);
-                                
-                                
-                            } while (rs.next());
+                                dataJson.put("car_type", rs.getString("car_type"));
+                            }
                             
-                            jsonObject.put("user_id", id);
-                            jsonObject.put("insurance_record", jsonArray);
-                            return jsonObject.toString();
+                            jsonArray.put(dataJson);
                             
-                        }
-                        else
-                        {
-                            jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_USER_CODE);
-                            jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_USER);
-                            return jsonObject.toString();
-                        }
+                            
+                        } while (rs.next());
+                        
+                        jsonObject.put("user_id", id);
+                        jsonObject.put("insurance_record", jsonArray);
+                        return jsonObject.toString();
                         
                     }
                     else
                     {
-                        System.out.println("Database Connect Fail");
-                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CONNECT_DB_CODE);
-                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_CONNECT_DB);
+                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_USER_CODE);
+                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_USER);
                         return jsonObject.toString();
                     }
                     
                 }
-                catch (Exception e)
+                else
                 {
-                    System.out.println(e.getMessage());
-                    
-                    jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_EXCEPTION);
-                    jsonObject.put("ERROR_MESSAGE", e.getMessage());
-                    
+                    System.out.println("Database Connect Fail");
+                    jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CONNECT_DB_CODE);
+                    jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_CONNECT_DB);
                     return jsonObject.toString();
-                    
                 }
+                
             }
-            else
+            catch (Exception e)
             {
-                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_PARM_CODE);
-                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_PARM + ", type is required");
+                System.out.println(e.getMessage());
+                
+                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_EXCEPTION);
+                jsonObject.put("ERROR_MESSAGE", e.getMessage());
+                
                 return jsonObject.toString();
+                
             }
+            
             
         }
         
@@ -528,8 +527,9 @@ public class insurance
                     {
                         if (para != null)
                         {
-                            String Sql = String.format("select * from online_report where %s = " +
-                                    "'%s'", para, number);
+                            String Sql =
+                                    String.format("select * from online_report where %s = " +
+                                            "'%s'", para, number);
                             Statement stat = null;
                             ResultSet rs = null;
                             stat = conn.createStatement();
