@@ -1,6 +1,6 @@
 $(function () {
 	
-	url = "http://54.92.0.255/swaggerJson/digitalfin_v1.json";
+	url = "http://54.92.0.255/swaggerJson/digitalfin_v2.json";
 	
 	const ui = SwaggerUIBundle({
 		url: url,
