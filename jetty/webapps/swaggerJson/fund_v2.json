@@ -1,0 +1,430 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Investment Fund API",
+    "description" : "Huanan bank of Investment Department",
+    "contact" : {
+      "email" : "digisandboxreport@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.1"
+  },
+  "servers" : [ {
+    "url" : "http://54.92.0.255/bank/huanan/yongchang/investing",
+    "description" : "Server"
+  } ],
+  "security" : [ {
+    "ApiKeyAuth" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Fund",
+    "description" : "基金相關資料"
+  }, {
+    "name" : "Beneficiary",
+    "description" : "受益人相關資料"
+  } ],
+  "paths" : {
+    "/fund/information" : {
+      "get" : {
+        "tags" : [ "Fund" ],
+        "summary" : "查詢客戶投資的基金基本資訊",
+        "description" : "利用 User ID 查詢客戶所擁有的基金基本資訊\n",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "query",
+          "description" : "User ID",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳基金基本資訊",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/information"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/fund/net" : {
+      "get" : {
+        "tags" : [ "Fund" ],
+        "summary" : "查詢客戶投資的基金淨值",
+        "description" : "利用 User ID 查詢客戶所投資的基金淨值\n",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "query",
+          "description" : "客戶編號",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳基金淨值資料",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Net"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/beneficiary/information" : {
+      "get" : {
+        "tags" : [ "Beneficiary" ],
+        "summary" : "查詢受益人基本資料",
+        "description" : "利用 User ID 查詢受益人基本資料\n",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "query",
+          "description" : "客戶編號",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳受益人基本資料",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Benef_info"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/beneficiary/account" : {
+      "get" : {
+        "tags" : [ "Beneficiary" ],
+        "summary" : "查詢受益人帳戶資料",
+        "description" : "利用 User ID 查詢受益人帳戶資料\n",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "query",
+          "description" : "客戶編號",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳所有帳戶資料",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/BenefAccount"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/beneficiary/inventory" : {
+      "get" : {
+        "tags" : [ "Beneficiary" ],
+        "summary" : "查詢受益人基金庫存資料",
+        "description" : "利用 User ID 查詢受益人所有基金庫存資料\n",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "query",
+          "description" : "客戶編號",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳受益人所有基金庫存資料",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Inventory"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "information" : {
+        "required" : [ "fund_records", "user_id" ],
+        "type" : "object",
+        "properties" : {
+          "user_id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "fund_records" : {
+            "$ref" : "#/components/schemas/fund_records"
+          }
+        }
+      },
+      "fund_records" : {
+        "required" : [ "dividend_category", "fund_code", "fund_name", "id", "price_currency" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "fund_code" : {
+            "type" : "string",
+            "example" : "D100000001"
+          },
+          "fund_name" : {
+            "type" : "string",
+            "format" : "基金名稱",
+            "example" : "華南永昌永昌證券投資信託基金"
+          },
+          "price_currency" : {
+            "type" : "string",
+            "format" : "基金名稱",
+            "example" : "汽車駕駛人傷害險"
+          },
+          "dividend_category" : {
+            "type" : "string",
+            "format" : "基金配息種類(浮動)",
+            "example" : "月配"
+          },
+          "creat_date" : {
+            "type" : "string",
+            "format" : "YYYY-MM-DD",
+            "example" : "2019-01-01"
+          }
+        }
+      },
+      "Net" : {
+        "required" : [ "net_info", "user_id" ],
+        "type" : "object",
+        "properties" : {
+          "user_id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "net_info" : {
+            "$ref" : "#/components/schemas/net_info"
+          }
+        }
+      },
+      "net_info" : {
+        "required" : [ "fund_code", "id", "net", "net_datetime" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "fund_code" : {
+            "type" : "string",
+            "example" : "D100000001 //基金代碼"
+          },
+          "net_datetime" : {
+            "type" : "string",
+            "format" : "YYYY-MM-DD",
+            "example" : "2019-06-01"
+          },
+          "net" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
+      "Benef_info" : {
+        "required" : [ "birth", "risk", "risk_exp_date", "user_id", "user_name" ],
+        "type" : "object",
+        "properties" : {
+          "user_id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "user_name" : {
+            "type" : "string"
+          },
+          "birth" : {
+            "type" : "string",
+            "format" : "YYYY-MM-DD",
+            "example" : "1991-12-31"
+          },
+          "risk" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "risk_exp_date" : {
+            "type" : "string",
+            "format" : "YYYY-MM-DD",
+            "example" : "2019-01-01 //KYC有效期限"
+          }
+        }
+      },
+      "BenefAccount" : {
+        "required" : [ "account_records", "user_id" ],
+        "type" : "object",
+        "properties" : {
+          "user_id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "account_records" : {
+            "$ref" : "#/components/schemas/benef_account"
+          }
+        }
+      },
+      "benef_account" : {
+        "required" : [ "account_category", "account_number", "bank_code", "capital" ],
+        "type" : "object",
+        "properties" : {
+          "account_category" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "capital" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "bank_code" : {
+            "type" : "string",
+            "example" : "008 //銀行代碼"
+          },
+          "account_number" : {
+            "type" : "string",
+            "example" : "121200668858 //銀行帳號"
+          },
+          "create_date" : {
+            "type" : "string",
+            "format" : "YYYY-MM-DD",
+            "example" : "2019-10-10"
+          }
+        }
+      },
+      "Inventory" : {
+        "required" : [ "inventory_records", "user_id" ],
+        "type" : "object",
+        "properties" : {
+          "user_id" : {
+            "type" : "integer",
+            "format" : "uuid"
+          },
+          "inventory_records" : {
+            "$ref" : "#/components/schemas/inventory_records"
+          }
+        }
+      },
+      "inventory_records" : {
+        "required" : [ "fund_code", "fund_name", "id", "inventory_cost", "inventory_unit", "price_currency" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "fund_code" : {
+            "type" : "string",
+            "example" : "D100000001 //基金代碼"
+          },
+          "fund_name" : {
+            "type" : "string",
+            "example" : "華南永昌永昌證券投資信託基金 //基金名稱"
+          },
+          "price_currency" : {
+            "type" : "string",
+            "example" : "台幣(TWN) //計價幣別"
+          },
+          "inventory_unit" : {
+            "type" : "integer",
+            "format" : "int64",
+            "example" : 10
+          },
+          "inventory_cost" : {
+            "type" : "integer",
+            "format" : "int64",
+            "example" : 1000
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "ApiKeyAuth" : {
+        "type" : "apiKey",
+        "name" : "api_key",
+        "in" : "query"
+      }
+    }
+  }
+}
