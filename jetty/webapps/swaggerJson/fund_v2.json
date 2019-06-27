@@ -12,7 +12,7 @@
     },
     "version" : "1.0.1"
   },
-  "servers" : [ {
+  "servers" : [{
     "url" : "http://54.92.0.255/bank/huanan/yongchang/investing",
     "description" : "Server"
   } ],
@@ -79,9 +79,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "integer",
-            "format" : "uuid",
-            "example" : 1
+            "type" : "integer"
           }
         } ],
         "responses" : {
@@ -150,9 +148,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "integer",
-            "format" : "uuid",
-            "example" : 1
+            "type" : "integer"
           }
         } ],
         "responses" : {
@@ -188,9 +184,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "integer",
-            "format" : "uuid",
-            "example" : 1
+            "type" : "integer"
           }
         } ],
         "responses" : {
