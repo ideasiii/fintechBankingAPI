@@ -12,7 +12,7 @@
     },
     "version" : "1.0.1"
   },
-  "servers" : [{
+  "servers" : [ {
     "url" : "http://54.92.0.255/bank/huanan/yongchang/investing",
     "description" : "Server"
   } ],
@@ -215,9 +215,7 @@
         "type" : "object",
         "properties" : {
           "user_id" : {
-            "type" : "integer",
-            "format" : "uuid",
-            "example" : 1
+            "type" : "integer"
           },
           "fund_records" : {
             "$ref" : "#/components/schemas/fund_records"
@@ -264,9 +262,7 @@
         "type" : "object",
         "properties" : {
           "user_id" : {
-            "type" : "integer",
-            "format" : "uuid",
-            "example" : 1
+            "type" : "integer"
           },
           "net_info" : {
             "$ref" : "#/components/schemas/net_info"
@@ -330,9 +326,7 @@
         "type" : "object",
         "properties" : {
           "user_id" : {
-            "type" : "integer",
-            "format" : "uuid",
-            "example" : 1
+            "type" : "integer"
           },
           "account_records" : {
             "$ref" : "#/components/schemas/benef_account"
@@ -371,8 +365,7 @@
         "type" : "object",
         "properties" : {
           "user_id" : {
-            "type" : "integer",
-            "format" : "uuid"
+            "type" : "integer"
           },
           "inventory_records" : {
             "$ref" : "#/components/schemas/inventory_records"

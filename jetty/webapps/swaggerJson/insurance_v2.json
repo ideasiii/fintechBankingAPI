@@ -272,9 +272,7 @@
         "type" : "object",
         "properties" : {
           "user_id" : {
-            "type" : "integer",
-            "format" : "uuid",
-            "example" : 1
+            "type" : "integer"
           },
           "insurance_records" : {
             "$ref" : "#/components/schemas/Insurance_records"
@@ -306,8 +304,7 @@
           },
           "insurance_premiums" : {
             "type" : "integer",
-            "format" : "承保金額",
-            "example" : 10000
+            "format" : "int64"
           },
           "insurance_date" : {
             "type" : "string",
@@ -361,6 +358,7 @@
           },
           "claim_amount" : {
             "type" : "integer",
+            "format" : "int64",
             "example" : 1000000
           },
           "claim_descript" : {
@@ -396,8 +394,7 @@
         "properties" : {
           "is_blacklist" : {
             "type" : "integer",
-            "format" : "0 為沒在名單中, 1 為在名單中",
-            "example" : 1
+            "format" : "int64"
           },
           "identity_id" : {
             "type" : "string",
@@ -416,8 +413,7 @@
         "type" : "object",
         "properties" : {
           "user_id" : {
-            "type" : "integer",
-            "format" : "uuid"
+            "type" : "integer"
           },
           "payments" : {
             "$ref" : "#/components/schemas/payments_records"
@@ -440,8 +436,7 @@
           },
           "pay_status" : {
             "type" : "integer",
-            "format" : "0 為未繳費, 1 為已繳費",
-            "example" : 1
+            "format" : "int64"
           },
           "pay_date" : {
             "type" : "string",
