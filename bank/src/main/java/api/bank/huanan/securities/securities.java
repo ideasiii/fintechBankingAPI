@@ -117,17 +117,16 @@ public class securities
     
     @GET
     @Path("/trade")
-    public String trade(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+    public String trade(@QueryParam("stock_code") String code, @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         
         LogHandler.log(token, request);
-        JSONObject jsonObject, dataJson;
-        JSONArray jsonArray;
+        JSONObject jsonObject;
         jsonObject = new JSONObject();
         
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (code != null && !code.equals("") && token != null && !token.equals(""))
         {
             
             
@@ -139,41 +138,35 @@ public class securities
                 
                 if (conn != null)
                 {
-                    String sql = "select * from stock_price where user_id =" + id;
+                    String sql = "select * from stock_price where stock_code =" + code;
                     Statement stat = null;
                     ResultSet rs = null;
                     stat = conn.createStatement();
                     rs = stat.executeQuery(sql);
-                    jsonArray = new JSONArray();
                     
                     
                     if (rs.next())
                     {
                         do
                         {
-                            dataJson = new JSONObject();
-                            dataJson.put("id", rs.getString("id"));
-                            dataJson.put("stock_code", rs.getString("stock_code"));
-                            dataJson.put("stock_name", rs.getString("stock_name"));
-                            dataJson.put("ex_price", rs.getFloat("ex_price"));
-                            dataJson.put("close_price", rs.getFloat("close_price"));
-                            dataJson.put("max_price", rs.getFloat("max_price"));
-                            dataJson.put("min_price", rs.getFloat("min_price"));
                             
-                            jsonArray.put(dataJson);
+                            jsonObject.put("stock_code", rs.getString("stock_code"));
+                            jsonObject.put("stock_name", rs.getString("stock_name"));
+                            jsonObject.put("ex_price", rs.getFloat("ex_price"));
+                            jsonObject.put("close_price", rs.getFloat("close_price"));
+                            jsonObject.put("max_price", rs.getFloat("max_price"));
+                            jsonObject.put("min_price", rs.getFloat("min_price"));
                             
                             
                         } while (rs.next());
                         
-                        jsonObject.put("user_id", id);
-                        jsonObject.put("stock_history", jsonArray);
                         return jsonObject.toString();
                         
                     }
                     else
                     {
-                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_USER_CODE);
-                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_USER);
+                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_RECORD_CODE);
+                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_RECORD);
                         return jsonObject.toString();
                     }
                     
