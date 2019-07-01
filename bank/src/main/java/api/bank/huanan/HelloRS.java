@@ -82,6 +82,17 @@ public class HelloRS
         return jsonObject.toString();
     }
     
+    
+    @GET
+    @Path("/token/generate")
+    public String tokenGenerate(@QueryParam("count") int nCount)
+    {
+        String strResult;
+        
+        strResult = String.format("%d Generate Finish", nCount);
+        return strResult;
+    }
+    
     /**
      * For API Gateway test GET method
      *
