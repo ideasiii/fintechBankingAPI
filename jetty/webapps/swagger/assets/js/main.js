@@ -264,7 +264,7 @@
 	});
 	var strUrl = location.search;
 	var getSpecies = strUrl.split("?")[1];
-	if (getSpecies[1] != undefined) {
+	if (getSpecies != undefined) {
 
 		$.getScript("assets/js/swaggerJS/" + getSpecies + ".js");
 
