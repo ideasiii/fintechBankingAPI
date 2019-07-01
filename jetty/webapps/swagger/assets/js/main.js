@@ -263,15 +263,18 @@
 		cache: true
 	});
 	var strUrl = location.search;
-	var getSpecies = strUrl.split("?");
+	var getSpecies = strUrl.split("?")[1];
 	if (getSpecies[1] != undefined) {
 
-		$.getScript("assets/js/swaggerJS/" + getSpecies[1] + ".js");
+		$.getScript("assets/js/swaggerJS/" + getSpecies + ".js");
 
 	} else {
 
 		$.getScript("assets/js/swaggerJS/digitalfin.js");
 
 	}
+
+	$('#' + getSpecies).addClass("active");
+	$('#api_category').html('<strong>'+$('#' + getSpecies).text()+'</strong>');
 
 })(jQuery);
