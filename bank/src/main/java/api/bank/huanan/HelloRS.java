@@ -7,6 +7,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -82,12 +83,46 @@ public class HelloRS
         return jsonObject.toString();
     }
     
-    
+    /**
+     * http://127.0.0.1:8080/bank/huanan/hello/token/generate?count=100
+     * @param nCount 產生的筆數
+     * @return 筆數完成訊息
+     */
     @GET
     @Path("/token/generate")
     public String tokenGenerate(@QueryParam("count") int nCount)
     {
         String strResult;
+        SqliteHandler sqliteHandler = new SqliteHandler();
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet rs = null;
+        String strSQL;
+        int insCount;
+        String strToken = null;
+        
+        try
+        {
+            conn = sqliteHandler.getConnection("database/huanan.db");
+            if (conn != null)
+            {
+                stat = conn.createStatement();
+                insCount = 0;
+                while (nCount >= ++insCount)
+                {
+                    strSQL = String.format("INSERT INTO tokens(token) VALUES('%s')",
+                            UUID.randomUUID().toString());
+                    stat.executeUpdate(strSQL);
+                }
+                stat.close();
+                conn.close();
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
         
         strResult = String.format("%d Generate Finish", nCount);
         return strResult;
