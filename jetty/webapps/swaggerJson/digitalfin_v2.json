@@ -28,12 +28,12 @@
       "get" : {
         "tags" : [ "accounts" ],
         "summary" : "查詢帳戶交易紀錄",
-        "description" : "利用 Account ID 查詢帳戶交易紀錄\n",
+        "description" : "利用 User ID 查詢帳戶交易紀錄\n",
         "operationId" : "searchInventory",
         "parameters" : [ {
-          "name" : "account_id",
+          "name" : "user_id",
           "in" : "query",
-          "description" : "Account ID",
+          "description" : "User ID",
           "required" : true,
           "style" : "form",
           "explode" : true,
