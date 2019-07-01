@@ -114,4 +114,97 @@ public class securities
         return jsonObject.toString();
         
     }
+    
+    @GET
+    @Path("/trade")
+    public String trade(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+            @Context HttpServletRequest request)
+    {
+        
+        LogHandler.log(token, request);
+        JSONObject jsonObject, dataJson;
+        JSONArray jsonArray;
+        jsonObject = new JSONObject();
+        
+        
+        if (id != 0 && token != null && !token.equals(""))
+        {
+            
+            
+            try
+            {
+                
+                SqliteHandler sqliteHandler = new SqliteHandler();
+                Connection conn = sqliteHandler.getConnection("database/huanan.db");
+                
+                if (conn != null)
+                {
+                    String sql = "select * from stock_price where user_id =" + id;
+                    Statement stat = null;
+                    ResultSet rs = null;
+                    stat = conn.createStatement();
+                    rs = stat.executeQuery(sql);
+                    jsonArray = new JSONArray();
+                    
+                    
+                    if (rs.next())
+                    {
+                        do
+                        {
+                            dataJson = new JSONObject();
+                            dataJson.put("id", rs.getString("id"));
+                            dataJson.put("stock_code", rs.getString("stock_code"));
+                            dataJson.put("stock_name", rs.getString("stock_name"));
+                            dataJson.put("ex_price", rs.getFloat("ex_price"));
+                            dataJson.put("close_price", rs.getFloat("close_price"));
+                            dataJson.put("max_price", rs.getFloat("max_price"));
+                            dataJson.put("min_price", rs.getFloat("min_price"));
+                            
+                            jsonArray.put(dataJson);
+                            
+                            
+                        } while (rs.next());
+                        
+                        jsonObject.put("user_id", id);
+                        jsonObject.put("stock_history", jsonArray);
+                        return jsonObject.toString();
+                        
+                    }
+                    else
+                    {
+                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_USER_CODE);
+                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_USER);
+                        return jsonObject.toString();
+                    }
+                    
+                }
+                else
+                {
+                    System.out.println("Database Connect Fail");
+                    jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CONNECT_DB_CODE);
+                    jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_CONNECT_DB);
+                    return jsonObject.toString();
+                }
+                
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                
+                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_EXCEPTION);
+                jsonObject.put("ERROR_MESSAGE", e.getMessage());
+                
+                return jsonObject.toString();
+                
+            }
+            
+            
+        }
+        
+        
+        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_PARM_CODE);
+        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_PARM);
+        return jsonObject.toString();
+        
+    }
 }
