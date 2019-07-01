@@ -26,8 +26,8 @@ import java.sql.*;
 public class ApiGateway
 {
     private final String url =" jdbc:mysql://localhost:3306/apigateway";
-    String user="root";
-    String password="123456";
+    String user="apim";
+    String password="apim";
     
     private String gateway(HttpServletRequest request)
     {
