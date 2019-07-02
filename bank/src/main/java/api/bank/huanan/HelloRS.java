@@ -24,6 +24,7 @@ import javax.ws.rs.core.MediaType;
 import api.modules.LogHandler;
 import api.modules.Logs;
 import api.modules.SqliteHandler;
+import api.modules.TokenHandler;
 
 
 @Path("/huanan/hello")
@@ -85,6 +86,7 @@ public class HelloRS
     
     /**
      * http://127.0.0.1:8080/bank/huanan/hello/token/generate?count=100
+     *
      * @param nCount 產生的筆數
      * @return 筆數完成訊息
      */
@@ -92,40 +94,8 @@ public class HelloRS
     @Path("/token/generate")
     public String tokenGenerate(@QueryParam("count") int nCount)
     {
-        String strResult;
-        SqliteHandler sqliteHandler = new SqliteHandler();
-        Connection conn = null;
-        Statement stat = null;
-        ResultSet rs = null;
-        String strSQL;
-        int insCount;
-        String strToken = null;
-        
-        try
-        {
-            conn = sqliteHandler.getConnection("database/huanan.db");
-            if (conn != null)
-            {
-                stat = conn.createStatement();
-                insCount = 0;
-                while (nCount >= ++insCount)
-                {
-                    strSQL = String.format("INSERT INTO tokens(token) VALUES('%s')",
-                            UUID.randomUUID().toString());
-                    stat.executeUpdate(strSQL);
-                }
-                stat.close();
-                conn.close();
-            }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        
-        
-        strResult = String.format("%d Generate Finish", nCount);
-        return strResult;
+        TokenHandler.genericToken(nCount);
+        return String.format("%d Generate Finish", nCount);
     }
     
     /**
