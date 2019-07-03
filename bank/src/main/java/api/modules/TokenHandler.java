@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.UUID;
 
 /**
  * Created by Jugo on 2019/6/27
@@ -50,8 +51,37 @@ public abstract class TokenHandler
      * 產生token新增到資料庫
      * @param count 產生的筆數
      */
-    public void genericToken(int count)
+    public static void genericToken(int count)
     {
-
+        String strResult;
+        SqliteHandler sqliteHandler = new SqliteHandler();
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet rs = null;
+        String strSQL;
+        int insCount;
+        String strToken = null;
+    
+        try
+        {
+            conn = sqliteHandler.getConnection("database/huanan.db");
+            if (conn != null)
+            {
+                stat = conn.createStatement();
+                insCount = 0;
+                while (count >= ++insCount)
+                {
+                    strSQL = String.format("INSERT INTO tokens(token) VALUES('%s')",
+                            UUID.randomUUID().toString());
+                    stat.executeUpdate(strSQL);
+                }
+                stat.close();
+                conn.close();
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
