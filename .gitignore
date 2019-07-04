@@ -21,7 +21,6 @@ bank/.idea/*
 bank/.idea/misc.xml
 
 # Package Files #
-*.war
 *.nar
 *.ear
 *.zip
@@ -30,6 +29,5 @@ bank/.idea/misc.xml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-bin
 jetty.state
 jetty/jetty.state
