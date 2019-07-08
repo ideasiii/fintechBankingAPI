@@ -48,10 +48,10 @@ public class marketing {
                             data.put("birthday", rs.getString("birthday"));
                             data.put("career", rs.getString("career"));
                             data.put("residence", rs.getString("residence"));
-                            data.put("income", rs.getString("income"));
+                            data.put("income", rs.getInt("income"));
                             data.put("marital", rs.getString("marital"));
                             data.put("education", rs.getString("education"));
-                            data.put("dependents", rs.getString("dependents"));
+                            data.put("dependents", rs.getInt("dependents"));
                             data.put("credit_level", rs.getString("credit_level"));
                         }
 
@@ -110,23 +110,23 @@ public class marketing {
                         data = new JSONObject();
                         JSONArray dataJsonArray = new JSONArray();
                         while (rs.next()){
-                            data.put("amount", rs.getString("amount"));
-                            data.put("percent", rs.getString("percent"));
+                            data.put("amount", rs.getInt("amount"));
+                            data.put("percent", rs.getInt("percent"));
                             data.put("usage", rs.getString("usage"));
                             data.put("period", rs.getString("period"));
                             data.put("payment_sources", rs.getString("payment_sources"));
                             data.put("grace_period", rs.getString("grace_period"));
                             data.put("property", rs.getString("property"));
                             data.put("appraisal", rs.getString("appraisal"));
-                            data.put("balance", rs.getString("balance"));
-                            data.put("value", rs.getString("value"));
+                            data.put("balance", rs.getInt("balance"));
+                            data.put("value", rs.getInt("value"));
                             data.put("situation", rs.getString("situation"));
-                            data.put("interest_rate", rs.getString("interest_rate"));
+                            data.put("interest_rate", rs.getInt("interest_rate"));
                             dataJsonArray.put(data);
                         }
 
                         result.put("user_id", id);
-                        result.put("data", dataJsonArray);
+                        result.put("loan_conditions_data", dataJsonArray);
                         return result.toString();
                     }
 
@@ -191,7 +191,7 @@ public class marketing {
                         }
 
                         result.put("user_id", id);
-                        result.put("data", dataJsonArray);
+                        result.put("loan_conditions_data", dataJsonArray);
                         return result.toString();
                     }
 
