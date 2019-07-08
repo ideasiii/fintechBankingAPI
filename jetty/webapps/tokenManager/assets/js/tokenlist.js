@@ -108,9 +108,12 @@ function list() {
 				}
 
 				$("input").focusout(function () {
-					var content = $("#demo-name").val();
-					console.log(content);
-					if (content != "" || content != null) {
+					var content = $(this).val();
+					
+					if (content.length == 0 || content == null) {
+						
+						cell.data("").draw;
+					}else{
 						$.ajax({
 							url: 'http://localhost:8080/bank/huanan/token/list/' + rowID,
 							type: "PATCH",
@@ -127,8 +130,6 @@ function list() {
 								}
 							}
 						});
-					}else{
-						cell.data().draw;
 					}
 
 				})
