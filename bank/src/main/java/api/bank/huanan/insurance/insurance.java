@@ -247,7 +247,7 @@ public class insurance
         
         if (identity_id != null && !identity_id.equals("") && token != null && !token.equals(""))
         {
-            if (t == true)
+            if (t)
             {
                 try
                 {

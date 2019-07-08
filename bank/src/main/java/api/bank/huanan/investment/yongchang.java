@@ -138,7 +138,7 @@ public class yongchang
         if (id != 0 && token != null && !token.equals(""))
         {
             
-            if (t == true)
+            if (t)
             {
                 try
                 {
