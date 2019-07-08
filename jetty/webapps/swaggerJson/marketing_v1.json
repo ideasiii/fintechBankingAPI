@@ -17,9 +17,6 @@
     "description" : "SwaggerHub API Auto Mocking"
   } ],
   "tags" : [ {
-    "name" : "developers",
-    "description" : "Operations available to regular developers"
-  }, {
     "name" : "marketing_info",
     "description" : "提供查詢客戶基本資料/房屋貸款條件/建物擔保狀況"
   } ],
