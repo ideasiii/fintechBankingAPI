@@ -111,17 +111,17 @@ public class marketing {
                         JSONArray dataJsonArray = new JSONArray();
                         while (rs.next()){
                             data.put("amount", rs.getInt("amount"));
-                            data.put("percent", rs.getInt("percent"));
+                            data.put("percent", rs.getFloat("percent"));
                             data.put("usage", rs.getString("usage"));
                             data.put("period", rs.getString("period"));
                             data.put("payment_sources", rs.getString("payment_sources"));
                             data.put("grace_period", rs.getString("grace_period"));
                             data.put("property", rs.getString("property"));
-                            data.put("appraisal", rs.getString("appraisal"));
+                            data.put("appraisal", rs.getInt("appraisal"));
                             data.put("balance", rs.getInt("balance"));
                             data.put("value", rs.getInt("value"));
                             data.put("situation", rs.getString("situation"));
-                            data.put("interest_rate", rs.getInt("interest_rate"));
+                            data.put("interest_rate", rs.getFloat("interest_rate"));
                             dataJsonArray.put(data);
                         }
 
