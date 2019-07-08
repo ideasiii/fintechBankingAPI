@@ -112,7 +112,7 @@ function list() {
 					console.log(content);
 					if (content != "" || content != null) {
 						$.ajax({
-							url: 'http://localhost:8080/bank/huanan/token/list/' + rowID,
+							url: 'http://54.92.0.255/bank/huanan/token/list/' + rowID,
 							type: "PATCH",
 							dataType: 'json',
 							contentType: "application/json",
@@ -146,7 +146,7 @@ function list() {
 		mounted() {
 			let vm = this;
 			$.ajax({
-				url: 'http://localhost:8080/bank/huanan/token/list',
+				url: 'http://54.92.0.255/bank/huanan/token/list',
 				type: "GET",
 				dataType: 'json',
 				statusCode: {
