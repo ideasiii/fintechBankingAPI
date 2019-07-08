@@ -78,7 +78,6 @@ public class digitalfin
                                 dataJson = new JSONObject();
                                 dataJson.put("id", rs.getInt("trans_id"));
                                 dataJson.put("account_num", rs.getString("account_num"));
-                                dataJson.put("trans_bank", rs.getString("trans_bank"));
                                 dataJson.put("trans_type", rs.getString("trans_type"));
                                 dataJson.put("trans_channel", rs.getString("trans_channel"));
                                 dataJson.put("trans_date", rs.getString("trans_date"));
