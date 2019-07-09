@@ -129,7 +129,8 @@ public class securities
     {
         
         LogHandler.log(token, request);
-        JSONObject jsonObject;
+        JSONObject jsonObject, dataJson;
+        JSONArray jsonArray;
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
@@ -151,22 +152,28 @@ public class securities
                         ResultSet rs = null;
                         stat = conn.createStatement();
                         rs = stat.executeQuery(sql);
+                        jsonArray = new JSONArray();
                         
                         
                         if (rs.next())
                         {
                             do
                             {
-                                
-                                jsonObject.put("stock_code", rs.getString("stock_code"));
-                                jsonObject.put("stock_name", rs.getString("stock_name"));
-                                jsonObject.put("ex_price", rs.getFloat("ex_price"));
-                                jsonObject.put("close_price", rs.getFloat("close_price"));
-                                jsonObject.put("max_price", rs.getFloat("max_price"));
-                                jsonObject.put("min_price", rs.getFloat("min_price"));
+    
+                                dataJson = new JSONObject();
+                                dataJson.put("stock_name", rs.getString("stock_name"));
+                                dataJson.put("ex_price", rs.getFloat("ex_price"));
+                                dataJson.put("close_price", rs.getFloat("close_price"));
+                                dataJson.put("max_price", rs.getFloat("max_price"));
+                                dataJson.put("min_price", rs.getFloat("min_price"));
+                                dataJson.put("date",rs.getString("Date"));
+                                jsonArray.put(dataJson);
                                 
                                 
                             } while (rs.next());
+    
+                            jsonObject.put("stock_code", code);
+                            jsonObject.put("stock_price", jsonArray);
                             
                             return jsonObject.toString();
                             
