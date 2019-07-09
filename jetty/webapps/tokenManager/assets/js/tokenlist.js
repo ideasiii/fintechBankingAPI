@@ -104,7 +104,7 @@ function list() {
 					// cell.data('<div class="row"><div class="col-12"><input type="text" name="demo-name" id="demo-name" value="'+cell.data()+'" placeholder="Name"></div></div>').draw;
 					// $(node).html('<input type="text" name="demo-name" id="demo-name" value="'+cell.data()+'">');
 				} else if ($('#tableList').find('input').length == 0 && column.index() == 2) {
-					$(node).append('<div class="row"><div class="col-12"><input type="text" name="demo-name" id="demo-name" value="" placeholder="Name"></div></div>');
+					$(node).append('<div class="row"><div class="col-12"><input type="text" name="demo-name" value="" placeholder="Team"></div></div>');
 				}
 
 				$("input").focusout(function () {
