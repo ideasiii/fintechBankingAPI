@@ -279,6 +279,6 @@
 		$('.opener').addClass("active");
 	}
 	$('#' + getSpecies).addClass("active");
-	$('#api_category').html('<strong>'+$('#' + getSpecies).text()+'</strong>');
+	// $('#api_category').html('<strong>'+$('#' + getSpecies).text()+'</strong>');
 
 })(jQuery);
