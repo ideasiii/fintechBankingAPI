@@ -30,3 +30,7 @@ bank/.idea/misc.xml
 hs_err_pid*
 jetty.state
 jetty/jetty.state
+
+# database
+bank/database/*.db
+jetty/database/*.db
