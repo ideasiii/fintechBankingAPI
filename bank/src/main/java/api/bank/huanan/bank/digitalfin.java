@@ -4,6 +4,7 @@ import api.modules.ErrorHandler;
 import api.modules.LogHandler;
 import api.modules.SqliteHandler;
 import api.modules.TokenHandler;
+import api.modules.TransUUID;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,7 +29,7 @@ public class digitalfin
     @Produces("application/json;charset=utf8")
     @Path("/account_records")
 //    @Consumes(MediaType.APPLICATION_JSON)
-    public String accounts(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+    public String accounts(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         LogHandler.log(token, request);
@@ -41,7 +42,7 @@ public class digitalfin
         JSONArray jsonArray;
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
-
+        
 
 //        if(!jsonRequest.isEmpty()){
 //            System.out.println("request:" + json);
@@ -49,9 +50,10 @@ public class digitalfin
 //            token = jsonRequest.getString("token");
 //        }
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
-            
+    
+            int id = TransUUID.UUIDHandler(uuid);
             if (t)
             {
                 try
@@ -63,7 +65,7 @@ public class digitalfin
                     if (conn != null)
                     {
                         
-                        String sql = "select * from trans_record where user_id = " + id;
+                        String sql = "select * from trans_record where user_id = " + id ;
                         Statement stat = null;
                         ResultSet rs = null;
                         stat = conn.createStatement();
@@ -95,7 +97,7 @@ public class digitalfin
                                 
                             } while (rs.next());
                             
-                            jsonObject.put("user_id", id);
+                            jsonObject.put("uuid", uuid);
                             jsonObject.put("trans_record", jsonArray);
                             return jsonObject.toString();
                         }
@@ -149,7 +151,7 @@ public class digitalfin
     @GET
     @Produces("application/json;charset=utf8")
     @Path("/customers")
-    public String customers(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+    public String customers(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         LogHandler.log(token, request);
@@ -160,10 +162,11 @@ public class digitalfin
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
+//            int id = TransUUID.UUIDHandler(uuid);
             
-            if (t == true)
+            if (t)
             {
                 try
                 {
@@ -174,7 +177,7 @@ public class digitalfin
                     if (conn != null)
                     {
                         
-                        String sql = "select * from bank_account where id = " + id;
+                        String sql = "select * from bank_account where uuid = '" + uuid + "'";
                         Statement stat = null;
                         ResultSet rs = null;
                         stat = conn.createStatement();
@@ -183,7 +186,8 @@ public class digitalfin
                         if (rs.next())
                         {
                             
-                            jsonObject.put("id", rs.getInt("id"));
+//                            jsonObject.put("id", rs.getInt("id"));
+                            jsonObject.put("uuid", rs.getString("uuid"));
                             jsonObject.put("birthday", rs.getString("birthday"));
                             jsonObject.put("gender", rs.getInt("gender"));
                             jsonObject.put("career", rs.getString("career"));

@@ -20,13 +20,14 @@ import api.modules.ErrorHandler;
 import api.modules.LogHandler;
 import api.modules.SqliteHandler;
 import api.modules.TokenHandler;
+import api.modules.TransUUID;
 
 @Path("huanan/yongchang/investing")
 public class yongchang
 {
     @GET
     @Path("/fund/information")
-    public String fund_info(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+    public String fund_info(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         
@@ -36,10 +37,10 @@ public class yongchang
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
-            
-            if (t == true)
+            int id = TransUUID.UUIDHandler(uuid);
+            if (t)
             {
                 try
                 {
@@ -75,7 +76,7 @@ public class yongchang
                                 
                             } while (rs.next());
                             
-                            jsonObject.put("user_id", id);
+                            jsonObject.put("uuid", uuid);
                             jsonObject.put("fund_information", jsonArray);
                             return jsonObject.toString();
                             
@@ -125,7 +126,7 @@ public class yongchang
     
     @GET
     @Path("/fund/net")
-    public String net(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+    public String net(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         
@@ -135,9 +136,9 @@ public class yongchang
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
-            
+            int id = TransUUID.UUIDHandler(uuid);
             if (t)
             {
                 try
@@ -172,7 +173,7 @@ public class yongchang
                                 
                             } while (rs.next());
                             
-                            jsonObject.put("user_id", id);
+                            jsonObject.put("uuid", uuid);
                             jsonObject.put("net_inf_records", jsonArray);
                             return jsonObject.toString();
                             
@@ -221,7 +222,8 @@ public class yongchang
     
     @GET
     @Path("/beneficiary/information")
-    public String benef_info(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+    public String benef_info(@QueryParam("uuid") String uuid,
+            @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         
@@ -230,9 +232,10 @@ public class yongchang
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
-            if (t == true)
+            int id = TransUUID.UUIDHandler(uuid);
+            if (t)
             {
                 try
                 {
@@ -255,7 +258,7 @@ public class yongchang
                             {
                                 
                                 jsonObject.put("id", rs.getString("id"));
-                                jsonObject.put("user_id", id);
+                                jsonObject.put("benefit_id", rs.getString("benefit_id"));
                                 jsonObject.put("user_name", rs.getString("user_name"));
                                 jsonObject.put("birth", rs.getString("birth"));
                                 jsonObject.put("risk", rs.getInt("risk"));
@@ -311,7 +314,7 @@ public class yongchang
     
     @GET
     @Path("/beneficiary/account")
-    public String benef_account(@QueryParam("user_id") int id,
+    public String benef_account(@QueryParam("uuid") String uuid,
             @QueryParam("api_key") String token, @Context HttpServletRequest request)
     {
         
@@ -321,10 +324,10 @@ public class yongchang
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
-            
-            if (t == true)
+            int id = TransUUID.UUIDHandler(uuid);
+            if (t)
             {
                 try
                 {
@@ -360,7 +363,7 @@ public class yongchang
                                 
                             } while (rs.next());
                             
-                            jsonObject.put("user_id", id);
+                            jsonObject.put("uuid", uuid);
                             jsonObject.put("account_records", jsonArray);
                             return jsonObject.toString();
                             
@@ -410,7 +413,7 @@ public class yongchang
     
     @GET
     @Path("/beneficiary/inventory")
-    public String benef_inventory(@QueryParam("user_id") int id,
+    public String benef_inventory(@QueryParam("uuid") String uuid,
             @QueryParam("api_key") String token, @Context HttpServletRequest request)
     {
         
@@ -420,10 +423,10 @@ public class yongchang
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
-            
-            if (t == true)
+            int id = TransUUID.UUIDHandler(uuid);
+            if (t)
             {
                 try
                 {
@@ -459,7 +462,7 @@ public class yongchang
                                 
                             } while (rs.next());
                             
-                            jsonObject.put("user_id", id);
+                            jsonObject.put("uuid", uuid);
                             jsonObject.put("inventory_records", jsonArray);
                             return jsonObject.toString();
                             

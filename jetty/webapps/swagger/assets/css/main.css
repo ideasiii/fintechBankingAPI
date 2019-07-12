@@ -3760,9 +3760,15 @@ button:disabled,
 	padding-top: 0;
 }
 
-#menu>ul>li>ul>li img, #menu>ul>li img, #menu>ul>li i {
+#menu>ul>li>ul>li img, #menu>ul>li img {
 	width: 100%;
 	height: fit-content;
+	display: flex;
+	margin: 5px;
+	flex: 0 0 2vw;
+}
+
+#menu>ul>li i {
 	display: flex;
 	margin: 5px;
 	flex: 0 0 2vw;

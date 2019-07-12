@@ -22,4 +22,6 @@ public abstract class ErrorHandler
     public final static String ERROR_NO_RECORD = "No Record";
     public final static int ERROR_TYPE_CODE = 7;
     public final static String ERROR_TYPE = "Wrong type";
+    public final static int ERROR_UUID_CODE = 8;
+    public final static String ERROR_UUID = "Wrong UUID";
 }

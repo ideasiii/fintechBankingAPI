@@ -20,6 +20,7 @@ import api.modules.ErrorHandler;
 import api.modules.LogHandler;
 import api.modules.SqliteHandler;
 import api.modules.TokenHandler;
+import api.modules.TransUUID;
 import api.modules.TypeHandler;
 
 @Path("huanan/insurance")
@@ -28,7 +29,7 @@ public class insurance
     
     @GET
     @Path("/record")
-    public String record(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+    public String record(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         LogHandler.log(token, request);
@@ -37,10 +38,10 @@ public class insurance
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
-            
-            if (t == true)
+            int id = TransUUID.UUIDHandler(uuid);
+            if (t)
             {
                 try
                 {
@@ -85,7 +86,7 @@ public class insurance
                                 
                             } while (rs.next());
                             
-                            jsonObject.put("user_id", id);
+                            jsonObject.put("uuid", uuid);
                             jsonObject.put("insurance_record", jsonArray);
                             return jsonObject.toString();
                             
@@ -148,7 +149,7 @@ public class insurance
         
         if (policy_no != null && !policy_no.equals("") && token != null && !token.equals(""))
         {
-            if (t == true)
+            if (t)
             {
                 try
                 {
@@ -351,7 +352,7 @@ public class insurance
         {
             if (type != null && !type.equals(""))
             {
-                if (t == true)
+                if (t)
                 {
                     try
                     {
@@ -448,7 +449,7 @@ public class insurance
     
     @GET
     @Path("/payments")
-    public String payments(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+    public String payments(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         LogHandler.log(token, request);
@@ -457,10 +458,11 @@ public class insurance
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
-            if (t == true)
+            if (t)
             {
+                int id = TransUUID.UUIDHandler(uuid);
                 try
                 {
                     
@@ -495,7 +497,7 @@ public class insurance
                                 
                             } while (rs.next());
                             
-                            jsonObject.put("user_id", id);
+                            jsonObject.put("uuid", uuid);
                             jsonObject.put("payments_record", jsonArray);
                             return jsonObject.toString();
                             
@@ -560,7 +562,7 @@ public class insurance
         {
             if (type != null && !type.equals(""))
             {
-                if (t == true)
+                if (t)
                 {
                     try
                     {
