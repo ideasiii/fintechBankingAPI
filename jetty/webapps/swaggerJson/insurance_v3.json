@@ -1,0 +1,507 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Insurance API",
+    "description" : "Huanan bank of Insurance Department",
+    "contact" : {
+      "email" : "digisandboxreport@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.1"
+  },
+  "servers" : [ {
+    "url" : "http://54.92.0.255/bank/huanan/insurance/",
+    "description" : "Server"
+  } ],
+  "security" : [ {
+    "ApiKeyAuth" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Insurance",
+    "description" : "產險相關資料"
+  } ],
+  "paths" : {
+    "/record" : {
+      "get" : {
+        "tags" : [ "Insurance" ],
+        "summary" : "查詢客戶承保紀錄",
+        "description" : "利用 UUID 查詢客戶承保紀錄\n",
+        "parameters" : [ {
+          "name" : "uuid",
+          "in" : "query",
+          "description" : "UUID",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳承保紀錄",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Insurance"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/claim" : {
+      "get" : {
+        "tags" : [ "Insurance" ],
+        "summary" : "查詢理賠資料",
+        "description" : "利用保單號碼查詢理賠資料\n",
+        "parameters" : [ {
+          "name" : "policy_no",
+          "in" : "query",
+          "description" : "保單號碼",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "SPF000001"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳保單理賠資料",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Claim"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/effective" : {
+      "get" : {
+        "tags" : [ "Insurance" ],
+        "summary" : "查詢有效客戶",
+        "description" : "利用身分證字號查詢是否為有效客戶\n",
+        "parameters" : [ {
+          "name" : "identity_id",
+          "in" : "query",
+          "description" : "身分證字號",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳是否為有效客戶及到期日",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/effective"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/blacklist" : {
+      "get" : {
+        "tags" : [ "Insurance" ],
+        "summary" : "查詢是否為關懷名單",
+        "description" : "利用身分證字號 or 車牌號碼查詢客戶是否為關懷名單\n",
+        "parameters" : [ {
+          "name" : "number",
+          "in" : "query",
+          "description" : "身分證字號 or 車牌號碼",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "A123456789 or SVQ-014"
+          }
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "當 number 輸入身分證字號時請帶 0, 當 number 輸入車牌號碼時請帶 1",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "default" : 0,
+            "enum" : [ 0, 1 ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳是否在關懷名單中",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/blacklist"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/payments" : {
+      "get" : {
+        "tags" : [ "Insurance" ],
+        "summary" : "查詢客戶繳費狀況及方式",
+        "description" : "利用 UUID 查詢客戶繳費狀況及方式\n",
+        "parameters" : [ {
+          "name" : "uuid",
+          "in" : "query",
+          "description" : "UUID",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳繳費狀況及方式紀錄",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Payments"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/reports" : {
+      "get" : {
+        "tags" : [ "Insurance" ],
+        "summary" : "查詢線上報案紀錄",
+        "description" : "利用身分證字號 or 車牌號碼查詢線上報案紀錄\n",
+        "parameters" : [ {
+          "name" : "number",
+          "in" : "query",
+          "description" : "身分證字號 or 車牌號碼",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "A123456789 or SVQ-014"
+          }
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "當 number 輸入身分證字號時請帶 0, 當 number 輸入車牌號碼時請帶 1",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "default" : 0,
+            "enum" : [ 0, 1 ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳線上報案紀錄",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Reports"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Insurance" : {
+        "required" : [ "insurance_records", "uuid" ],
+        "type" : "object",
+        "properties" : {
+          "uuid" : {
+            "type" : "string"
+          },
+          "insurance_records" : {
+            "$ref" : "#/components/schemas/Insurance_records"
+          }
+        }
+      },
+      "Insurance_records" : {
+        "required" : [ "car_type", "id", "insurance_category", "insurance_date", "insurance_exp_date", "insurance_name", "insurance_premiums", "policy_no" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "policy_no" : {
+            "type" : "string",
+            "example" : "SPF000001"
+          },
+          "insurance_category" : {
+            "type" : "string",
+            "format" : "投保種類",
+            "example" : "強制險"
+          },
+          "insurance_name" : {
+            "type" : "string",
+            "format" : "承保名稱",
+            "example" : "汽車駕駛人傷害險"
+          },
+          "insurance_premiums" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "insurance_date" : {
+            "type" : "string",
+            "format" : "起保日(YYYY-MM-DD)",
+            "example" : "2019-06-01"
+          },
+          "insurance_exp_date" : {
+            "type" : "string",
+            "format" : "到期日(YYYY-MM-DD)",
+            "example" : "2020-06-01"
+          },
+          "car_type" : {
+            "type" : "string",
+            "format" : "車種",
+            "example" : "03自小客"
+          }
+        }
+      },
+      "Claim" : {
+        "required" : [ "claim_records", "policy_no" ],
+        "type" : "object",
+        "properties" : {
+          "policy_no" : {
+            "type" : "string",
+            "format" : "保單號碼",
+            "example" : "SPF000001"
+          },
+          "claim_records" : {
+            "$ref" : "#/components/schemas/claim_records"
+          }
+        }
+      },
+      "claim_records" : {
+        "required" : [ "claim_amount", "claim_date", "claim_descript", "claim_no", "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "claim_no" : {
+            "type" : "string",
+            "format" : "理賠號碼",
+            "example" : "SCF000001"
+          },
+          "claim_date" : {
+            "type" : "string",
+            "format" : "出險日(YYYY-MM-DD)",
+            "example" : "2019-06-01"
+          },
+          "claim_amount" : {
+            "type" : "integer",
+            "format" : "int64",
+            "example" : 1000000
+          },
+          "claim_descript" : {
+            "type" : "string",
+            "format" : "出險原因",
+            "example" : "駕駛人過失"
+          }
+        }
+      },
+      "effective" : {
+        "required" : [ "exp_date", "identity_id", "is_active" ],
+        "type" : "object",
+        "properties" : {
+          "identity_id" : {
+            "type" : "string",
+            "format" : "身分證字號",
+            "example" : "A123456789"
+          },
+          "exp_date" : {
+            "type" : "string",
+            "format" : "到期日(YYYY-MM-DD)",
+            "example" : "2020-06-10"
+          },
+          "is_active" : {
+            "type" : "integer",
+            "format" : "0 為無效客戶, 1為有效客戶",
+            "example" : 1
+          }
+        }
+      },
+      "blacklist" : {
+        "type" : "object",
+        "properties" : {
+          "is_blacklist" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "identity_id" : {
+            "type" : "string",
+            "format" : "身分證字號",
+            "example" : "A196690935"
+          },
+          "license_no" : {
+            "type" : "string",
+            "format" : "車牌號碼",
+            "example" : "SVQ-014"
+          }
+        }
+      },
+      "Payments" : {
+        "required" : [ "payments", "uuid" ],
+        "type" : "object",
+        "properties" : {
+          "uuid" : {
+            "type" : "string"
+          },
+          "payments" : {
+            "$ref" : "#/components/schemas/payments_records"
+          }
+        }
+      },
+      "payments_records" : {
+        "required" : [ "id", "pay_category", "pay_date", "pay_status", "payments_period", "policy_no" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "policy_no" : {
+            "type" : "string",
+            "format" : "保單號碼",
+            "example" : "SPF000001"
+          },
+          "pay_status" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "pay_date" : {
+            "type" : "string",
+            "format" : "最近一期已繳納時間(YYYY-MM-DD)",
+            "example" : "2019-06-01"
+          },
+          "pay_category" : {
+            "type" : "string",
+            "format" : "繳納方式 (信用卡、超商繳費、匯款/轉帳或代收、現金或支票)",
+            "example" : "信用卡"
+          },
+          "payments_period" : {
+            "type" : "string",
+            "format" : "繳費期限",
+            "example" : "2019-06-01"
+          }
+        }
+      },
+      "Reports" : {
+        "required" : [ "reports_record" ],
+        "type" : "object",
+        "properties" : {
+          "identity_id" : {
+            "type" : "string",
+            "format" : "A123456789 //身分證字號",
+            "example" : "A123456789"
+          },
+          "license_no" : {
+            "type" : "string",
+            "format" : "SQV-123 //車牌號碼",
+            "example" : "SQV-123"
+          },
+          "reports_record" : {
+            "$ref" : "#/components/schemas/reports_record"
+          }
+        }
+      },
+      "reports_record" : {
+        "required" : [ "claim_date", "id", "policy_no" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "uuid",
+            "example" : 1
+          },
+          "policy_no" : {
+            "type" : "string",
+            "format" : "保單號碼",
+            "example" : "SPF000001"
+          },
+          "claim_date" : {
+            "type" : "string",
+            "format" : "出險日期(YYYY-MM-DD)",
+            "example" : "2019-06-01"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "ApiKeyAuth" : {
+        "type" : "apiKey",
+        "name" : "api_key",
+        "in" : "query"
+      }
+    }
+  }
+}
