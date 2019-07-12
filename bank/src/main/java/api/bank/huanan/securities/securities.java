@@ -17,13 +17,14 @@ import api.modules.ErrorHandler;
 import api.modules.LogHandler;
 import api.modules.SqliteHandler;
 import api.modules.TokenHandler;
+import api.modules.TransUUID;
 
 @Path("huanan/securities")
 public class securities
 {
     @GET
     @Path("/history")
-    public String history(@QueryParam("user_id") int id, @QueryParam("api_key") String token,
+    public String history(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         
@@ -33,9 +34,9 @@ public class securities
         jsonObject = new JSONObject();
         boolean t = TokenHandler.TokenHandler(token);
         
-        if (id != 0 && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
         {
-            
+            int serial = TransUUID.serialHandler(uuid);
             if (t)
             {
                 try
@@ -46,7 +47,7 @@ public class securities
                     
                     if (conn != null)
                     {
-                        String sql = "select * from stock_history where user_id =" + id;
+                        String sql = "select * from stock_history where serial =" + serial;
                         Statement stat = null;
                         ResultSet rs = null;
                         stat = conn.createStatement();
@@ -74,7 +75,7 @@ public class securities
                                 
                             } while (rs.next());
                             
-                            jsonObject.put("user_id", id);
+                            jsonObject.put("uuid", uuid);
                             jsonObject.put("stock_history", jsonArray);
                             return jsonObject.toString();
                             
