@@ -60,7 +60,6 @@ public class securities
                             do
                             {
                                 dataJson = new JSONObject();
-                                dataJson.put("id", rs.getString("id"));
                                 dataJson.put("stock_code", rs.getString("stock_code"));
                                 dataJson.put("completion_date", rs.getString("completion_date"));
                                 dataJson.put("num_of_shares", rs.getInt("num_of_shares"));
