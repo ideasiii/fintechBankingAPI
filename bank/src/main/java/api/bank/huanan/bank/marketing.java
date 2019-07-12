@@ -4,6 +4,8 @@ import api.modules.ErrorHandler;
 import api.modules.LogHandler;
 import api.modules.SqliteHandler;
 import api.modules.TokenHandler;
+import api.modules.TransUUID;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,20 +25,22 @@ public class marketing {
 
     @GET
     @Path("/mortgage_customer_info")
-    public String mortagageInfo(@QueryParam("user_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request){
+    public String mortagageInfo(@QueryParam("uuid") String uuid,
+            @QueryParam("api_key") String token,
+            @Context HttpServletRequest request){
 
         LogHandler.log(token, request);
         boolean tokenChecker = TokenHandler.TokenHandler(token);
         JSONObject result = new JSONObject();
 
-        if (id != 0 && token != null && !token.equals("")){
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals("")){
             if (tokenChecker){
                 try {
                     JSONObject data;
                     SqliteHandler sqliteHandler = new SqliteHandler();
                     Connection conn = sqliteHandler.getConnection("database/huanan.db");
                     if (conn != null){
-                        String sql = "select * from bank_account where id =" + id;
+                        String sql = "select * from bank_account where uuid ='" + uuid + "'";
                         Statement stat;
                         ResultSet rs;
                         stat = conn.createStatement();
@@ -88,14 +92,16 @@ public class marketing {
 
     @GET
     @Path("/loan_conditions_info")
-    public String loanConditionsInfo(@QueryParam("user_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request){
+    public String loanConditionsInfo(@QueryParam("uuid") String uuid,
+            @QueryParam("api_key") String token, @Context HttpServletRequest request){
 
         LogHandler.log(token, request);
         boolean tokenChecker = TokenHandler.TokenHandler(token);
         JSONObject result = new JSONObject();
 
-        if (id != 0 && token != null && !token.equals("")){
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals("")){
             if (tokenChecker){
+                int id = TransUUID.UUIDHandler(uuid);
                 try {
                     JSONObject data;
                     SqliteHandler sqliteHandler = new SqliteHandler();
@@ -125,7 +131,7 @@ public class marketing {
                             dataJsonArray.put(data);
                         }
 
-                        result.put("user_id", id);
+                        result.put("uuid", uuid);
                         result.put("loan_conditions_data", dataJsonArray);
                         return result.toString();
                     }
@@ -160,14 +166,16 @@ public class marketing {
 
     @GET
     @Path("/construction_info")
-    public String constructionInfo(@QueryParam("user_id") int id, @QueryParam("api_key") String token, @Context HttpServletRequest request){
+    public String constructionInfo(@QueryParam("uuid") String uuid,
+            @QueryParam("api_key") String token, @Context HttpServletRequest request){
 
         LogHandler.log(token, request);
         boolean tokenChecker = TokenHandler.TokenHandler(token);
         JSONObject result = new JSONObject();
 
-        if (id != 0 && token != null && !token.equals("")){
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals("")){
             if (tokenChecker){
+                int id = TransUUID.UUIDHandler(uuid);
                 try {
                     JSONObject data;
                     SqliteHandler sqliteHandler = new SqliteHandler();
@@ -190,7 +198,7 @@ public class marketing {
                             dataJsonArray.put(data);
                         }
 
-                        result.put("user_id", id);
+                        result.put("uuid", uuid);
                         result.put("loan_conditions_data", dataJsonArray);
                         return result.toString();
                     }
