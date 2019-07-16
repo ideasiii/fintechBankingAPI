@@ -1,0 +1,321 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Securities API",
+    "description" : "Huanan bank of Securities Department",
+    "contact" : {
+      "email" : "digisandboxreport@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://www.fintechersapi.com/bank/huanan/securities/",
+    "description" : "Server"
+  } ],
+  "security" : [ {
+    "ApiKeyAuth" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "securities",
+    "description" : "證券相關資料"
+  } ],
+  "paths" : {
+    "/customers" : {
+      "get" : {
+        "tags" : [ "securities" ],
+        "summary" : "查詢證券客戶資料",
+        "description" : "利用 UUID 查詢證券客戶資料\n",
+        "parameters" : [ {
+          "name" : "uuid",
+          "in" : "query",
+          "description" : "UUID",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳證券客戶資料",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Customer"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/history" : {
+      "get" : {
+        "tags" : [ "securities" ],
+        "summary" : "查詢客戶交易歷史資料",
+        "description" : "利用 UUID 查詢客戶交易歷史資料 (西元2016年-西元2018年)\n",
+        "parameters" : [ {
+          "name" : "uuid",
+          "in" : "query",
+          "description" : "UUID",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "year",
+          "in" : "query",
+          "description" : "西元年 (查詢範圍 2016 - 2018)",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "month",
+          "in" : "query",
+          "description" : "月份 (請填兩位數)",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳客戶交易歷史資料",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/History"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/trade" : {
+      "get" : {
+        "tags" : [ "securities" ],
+        "summary" : "盤中報價",
+        "description" : "利用股票代碼查詢西元2016年-西元2018年之盤中報價紀錄\n",
+        "parameters" : [ {
+          "name" : "stock_code",
+          "in" : "query",
+          "description" : "股票代碼",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "year",
+          "in" : "query",
+          "description" : "西元年 (查詢範圍 2016 - 2018)",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "month",
+          "in" : "query",
+          "description" : "月份 (請填兩位數)",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳此股票代碼西元2016年-西元2018年之盤中報價紀錄",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Trade"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Customer" : {
+        "required" : [ "birthday", "career", "credit_level", "dependents", "education", "gender", "income", "marital", "residence", "service_units", "uuid" ],
+        "type" : "object",
+        "properties" : {
+          "uuid" : {
+            "type" : "string"
+          },
+          "birthday" : {
+            "type" : "string",
+            "format" : "1993-10-10",
+            "example" : "1993-10-10"
+          },
+          "gender" : {
+            "type" : "string",
+            "example" : "男"
+          },
+          "career" : {
+            "type" : "string",
+            "example" : "工程師"
+          },
+          "residence" : {
+            "type" : "string",
+            "example" : "台北市松山區民生東路四段133號"
+          },
+          "income" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "service_units" : {
+            "type" : "string",
+            "format" : "服務單位",
+            "example" : "xx公司"
+          },
+          "marital" : {
+            "type" : "string",
+            "format" : "婚姻狀況",
+            "example" : "已婚"
+          },
+          "education" : {
+            "type" : "string",
+            "format" : "教育程度",
+            "example" : "碩士"
+          },
+          "dependents" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "credit_level" : {
+            "type" : "string",
+            "example" : "A //信用分級"
+          }
+        }
+      },
+      "History" : {
+        "type" : "object",
+        "properties" : {
+          "uuid" : {
+            "type" : "string"
+          },
+          "trans_record" : {
+            "$ref" : "#/components/schemas/RecordItem"
+          }
+        }
+      },
+      "RecordItem" : {
+        "required" : [ "buy_category", "channel_category", "completion_date", "num_of_shares", "stock_code", "strike_price", "trans_category", "trans_price" ],
+        "type" : "object",
+        "properties" : {
+          "stock_code" : {
+            "type" : "string",
+            "example" : "1216 //股票代碼"
+          },
+          "completion_date" : {
+            "type" : "string",
+            "format" : "2019-07-01",
+            "example" : "2019-07-01"
+          },
+          "num_of_shares" : {
+            "type" : "integer"
+          },
+          "channel_category" : {
+            "type" : "string",
+            "example" : "網路 //通路別"
+          },
+          "trans_category" : {
+            "type" : "string",
+            "example" : "現股 //交易別"
+          },
+          "buy_category" : {
+            "type" : "string",
+            "example" : "買 //買賣別"
+          },
+          "strike_price" : {
+            "type" : "number"
+          },
+          "trans_price" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "Trade" : {
+        "type" : "object",
+        "properties" : {
+          "uuid" : {
+            "type" : "string"
+          },
+          "trans_record" : {
+            "$ref" : "#/components/schemas/Stock_price"
+          }
+        }
+      },
+      "Stock_price" : {
+        "required" : [ "Date", "close_price", "ex_price", "max_price", "min_price", "stock_code", "stock_name" ],
+        "type" : "object",
+        "properties" : {
+          "stock_code" : {
+            "type" : "string",
+            "example" : "1216 //股票代碼"
+          },
+          "stock_name" : {
+            "type" : "string",
+            "example" : "味王 //股票名稱"
+          },
+          "ex_price" : {
+            "type" : "number"
+          },
+          "max_price" : {
+            "type" : "number"
+          },
+          "min_price" : {
+            "type" : "number"
+          },
+          "close_price" : {
+            "type" : "number"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "ApiKeyAuth" : {
+        "type" : "apiKey",
+        "name" : "api_key",
+        "in" : "query"
+      }
+    }
+  }
+}
