@@ -3762,7 +3762,7 @@ button:disabled,
 
 #menu>ul>li>ul>li img, #menu>ul>li img {
 	width: 100%;
-	height: fit-content;
+	height: max-content;
 	display: flex;
 	margin: 5px;
 	flex: 0 0 2vw;
@@ -3774,7 +3774,7 @@ button:disabled,
 	flex: 0 0 2vw;
 }
 
-#insurance, #fund, #book {
+#insurance, #fund, #book, #securities {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;

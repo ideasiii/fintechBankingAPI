@@ -118,7 +118,8 @@ public class securities
     
     @GET
     @Path("/history")
-    public String history(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
+    public String history(@QueryParam("uuid") String uuid, @QueryParam("year") String year,
+            @QueryParam("month") String month, @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         
@@ -141,7 +142,8 @@ public class securities
                     
                     if (conn != null)
                     {
-                        String sql = "select * from stock_history where serial =" + serial;
+                        String sql = "select * from stock_history where serial = " + serial + " AND"
+                                + " completion_date like '" + year + "-" + month + "%'";
                         Statement stat = null;
                         ResultSet rs = null;
                         stat = conn.createStatement();
@@ -175,8 +177,8 @@ public class securities
                         }
                         else
                         {
-                            jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_USER_CODE);
-                            jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_USER);
+                            jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_RECORD_CODE);
+                            jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_RECORD);
                             return jsonObject.toString();
                         }
                         
@@ -218,8 +220,9 @@ public class securities
     
     @GET
     @Path("/trade")
-    public String trade(@QueryParam("stock_code") String code,
-            @QueryParam("api_key") String token, @Context HttpServletRequest request)
+    public String trade(@QueryParam("stock_code") String code, @QueryParam("year") String year,
+            @QueryParam("month") String month, @QueryParam("api_key") String token,
+            @Context HttpServletRequest request)
     {
         
         LogHandler.log(token, request);
@@ -241,7 +244,8 @@ public class securities
                     
                     if (conn != null)
                     {
-                        String sql = "select * from stock_price where stock_code =" + code;
+                        String sql = "select * from stock_price where stock_code =" + code + " AND"
+                                + " Date like '" + year + "-" + month + "%'";
                         Statement stat = null;
                         ResultSet rs = null;
                         stat = conn.createStatement();
@@ -253,19 +257,19 @@ public class securities
                         {
                             do
                             {
-    
+                                
                                 dataJson = new JSONObject();
                                 dataJson.put("stock_name", rs.getString("stock_name"));
                                 dataJson.put("ex_price", rs.getFloat("ex_price"));
                                 dataJson.put("close_price", rs.getFloat("close_price"));
                                 dataJson.put("max_price", rs.getFloat("max_price"));
                                 dataJson.put("min_price", rs.getFloat("min_price"));
-                                dataJson.put("date",rs.getString("Date"));
+                                dataJson.put("date", rs.getString("Date"));
                                 jsonArray.put(dataJson);
                                 
                                 
                             } while (rs.next());
-    
+                            
                             jsonObject.put("stock_code", code);
                             jsonObject.put("stock_price", jsonArray);
                             
