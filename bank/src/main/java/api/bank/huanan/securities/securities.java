@@ -10,6 +10,7 @@ import java.sql.Statement;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 
@@ -22,6 +23,99 @@ import api.modules.TransUUID;
 @Path("huanan/securities")
 public class securities
 {
+    
+    @GET
+    @Produces("application/json;charset=utf8")
+    @Path("/customers")
+    public String customers(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
+            @Context HttpServletRequest request)
+    {
+        LogHandler.log(token, request);
+        JSONObject jsonObject;
+        jsonObject = new JSONObject();
+        boolean t = TokenHandler.TokenHandler(token);
+        
+        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        {
+//            int id = TransUUID.UUIDHandler(uuid);
+            
+            if (t)
+            {
+                try
+                {
+                    
+                    SqliteHandler sqliteHandler = new SqliteHandler();
+                    Connection conn = sqliteHandler.getConnection("database/huanan.db");
+                    
+                    if (conn != null)
+                    {
+                        
+                        String sql = "select * from bank_account where uuid = '" + uuid + "'";
+                        Statement stat = null;
+                        ResultSet rs = null;
+                        stat = conn.createStatement();
+                        rs = stat.executeQuery(sql);
+                        
+                        if (rs.next())
+                        {
+
+//                            jsonObject.put("id", rs.getInt("id"));
+                            jsonObject.put("uuid", rs.getString("uuid"));
+                            jsonObject.put("birthday", rs.getString("birthday"));
+                            jsonObject.put("gender", rs.getInt("gender"));
+                            jsonObject.put("career", rs.getString("career"));
+                            jsonObject.put("residence", rs.getString("residence"));
+                            jsonObject.put("income", rs.getInt("income"));
+                            jsonObject.put("service_units", rs.getString("service_units"));
+                            jsonObject.put("marital", rs.getString("marital"));
+                            jsonObject.put("education", rs.getString("education"));
+                            jsonObject.put("dependents", rs.getInt("dependents"));
+                            jsonObject.put("credit_level", rs.getString("credit_level"));
+                            return jsonObject.toString();
+                            
+                        }
+                        else
+                        {
+                            jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_NO_USER_CODE);
+                            jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_NO_USER);
+                            return jsonObject.toString();
+                        }
+                    }
+                    else
+                    {
+//
+                        System.out.println("Database Connect Fail");
+                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CONNECT_DB_CODE);
+                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_CONNECT_DB);
+                        return jsonObject.toString();
+                    }
+                    
+                    
+                }
+                catch (Exception e)
+                {
+                    
+                    System.out.println(e.getMessage());
+                    
+                    jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_EXCEPTION);
+                    jsonObject.put("ERROR_MESSAGE", e.getMessage());
+                    
+                    return jsonObject.toString();
+                }
+            }
+            else
+            {
+                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TOKEN_CODE);
+                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TOKEN);
+                return jsonObject.toString();
+            }
+            
+        }
+        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_PARM_CODE);
+        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_PARM);
+        return jsonObject.toString();
+    }
+    
     @GET
     @Path("/history")
     public String history(@QueryParam("uuid") String uuid, @QueryParam("api_key") String token,
@@ -137,7 +231,7 @@ public class securities
         if (code != null && !code.equals("") && token != null && !token.equals(""))
         {
             
-            if (t == true)
+            if (t)
             {
                 try
                 {
