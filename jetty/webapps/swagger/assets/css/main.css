@@ -3774,7 +3774,7 @@ button:disabled,
 	flex: 0 0 2vw;
 }
 
-#insurance, #fund, #book {
+#insurance, #fund, #book, #securities {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
