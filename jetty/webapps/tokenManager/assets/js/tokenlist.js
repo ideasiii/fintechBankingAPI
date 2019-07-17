@@ -115,7 +115,7 @@ function list() {
 						cell.data("").draw;
 					}else{
 						$.ajax({
-							url: 'http://localhost:8080/bank/huanan/token/list/' + rowID,
+							url: 'http://http://www.fintechersapi.com/bank/huanan/token/list/' + rowID,
 							type: "PATCH",
 							dataType: 'json',
 							contentType: "application/json",
