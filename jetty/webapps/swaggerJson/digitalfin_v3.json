@@ -10,10 +10,10 @@
       "name" : "Apache 2.0",
       "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version" : "1.0.2"
+    "version" : "1.0.3"
   },
   "servers" : [ {
-    "url" : "http://54.92.0.255/bank/huanan/digitalfin/",
+    "url" : "http://www.fintechersapi.com/bank/huanan/digitalfin/",
     "description" : "Server"
   } ],
   "security" : [ {

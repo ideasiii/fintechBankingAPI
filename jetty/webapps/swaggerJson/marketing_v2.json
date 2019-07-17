@@ -13,7 +13,7 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "http://54.92.0.255/bank/huanan/marketing/",
+    "url" : "http://www.fintechersapi.com/bank/huanan/marketing/",
     "description" : "SwaggerHub API Auto Mocking"
   } ],
   "tags" : [ {

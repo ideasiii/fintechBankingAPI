@@ -13,7 +13,7 @@
     "version" : "1.0.1"
   },
   "servers" : [{
-    "url" : "http://54.92.0.255/bank/huanan/yongchang/investing",
+    "url" : "http://www.fintechersapi.com/bank/huanan/yongchang/investing",
     "description" : "Server"
   } ],
   "security" : [ {

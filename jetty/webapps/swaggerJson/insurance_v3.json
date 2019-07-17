@@ -13,7 +13,7 @@
     "version" : "1.0.1"
   },
   "servers" : [ {
-    "url" : "http://54.92.0.255/bank/huanan/insurance/",
+    "url" : "http://www.fintechersapi.com/bank/huanan/insurance/",
     "description" : "Server"
   } ],
   "security" : [ {
