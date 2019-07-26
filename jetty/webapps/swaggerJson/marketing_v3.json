@@ -1,0 +1,301 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Marketing API",
+    "description" : "提供不同構面之房貸交易數據，新創團隊可由銀行經營者或購屋需求者的角度，發展有關於服務體驗、成本效益、風險管理、內部流程或外部競爭…等各個場景之金融科技創新應。",
+    "contact" : {
+      "email" : "digisandboxreport@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [{
+    "url" : "http://54.92.0.255/bank/huanan/marketing/",
+    "description" : "SwaggerHub API Auto Mocking"
+  } ],
+  "tags" : [ {
+    "name" : "marketing_info",
+    "description" : "房貸交易之客群、授信條件及建物屬性API"
+  } ],
+  "paths" : {
+    "/mortgage_customer_info" : {
+      "get" : {
+        "tags" : [ "marketing_info" ],
+        "summary" : "查詢申請房貸的客戶基本資料",
+        "description" : "透過UUID和api_key查詢申請房屋貸款的客戶基本資料",
+        "operationId" : "searchMarketing_info",
+        "parameters" : [ {
+          "name" : "uuid",
+          "in" : "query",
+          "description" : "UUID",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳申請房屋貸款的客戶基本資料",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/mortgage_customer_info"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/loan_conditions_info" : {
+      "get" : {
+        "tags" : [ "marketing_info" ],
+        "summary" : "查詢客戶各項房屋貸款紀錄",
+        "description" : "透過UUID和api_key查詢客戶各項房屋貸款紀錄",
+        "operationId" : "searchLoan_conditions_info",
+        "parameters" : [ {
+          "name" : "uuid",
+          "in" : "query",
+          "description" : "UUID",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳客戶各項房屋貸款紀錄",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/loan_conditions_info"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    },
+    "/construction_info" : {
+      "get" : {
+        "tags" : [ "marketing_info" ],
+        "summary" : "查詢客戶建物擔保狀況",
+        "description" : "透過UUID和api_key查詢客戶建物擔保狀況",
+        "operationId" : "searchConstruction_info",
+        "parameters" : [ {
+          "name" : "uuid",
+          "in" : "query",
+          "description" : "UUID",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "回傳客戶建物擔保狀況",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/construction_info"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "mortgage_customer_info" : {
+        "required" : [ "birth", "carrer", "credit_level", "dependents", "education", "income", "martial", "residence" ],
+        "type" : "object",
+        "properties" : {
+          "birth" : {
+            "type" : "string",
+            "example" : "1973-02-08"
+          },
+          "carrer" : {
+            "type" : "string",
+            "example" : "資訊/科技"
+          },
+          "residence" : {
+            "type" : "string",
+            "example" : "台北市民生東路四段133號8樓"
+          },
+          "income" : {
+            "type" : "integer",
+            "example" : 1000000
+          },
+          "martial" : {
+            "type" : "string",
+            "example" : "已婚"
+          },
+          "education" : {
+            "type" : "string",
+            "example" : "國小"
+          },
+          "dependents" : {
+            "type" : "integer",
+            "example" : 0
+          },
+          "credit_level" : {
+            "type" : "string",
+            "example" : "A"
+          }
+        }
+      },
+      "loan_conditions_info" : {
+        "required" : [ "loan_conditions_data", "uuid" ],
+        "type" : "object",
+        "properties" : {
+          "uuid" : {
+            "type" : "string",
+            "example" : "HAA000001"
+          },
+          "loan_conditions_data" : {
+            "$ref" : "#/components/schemas/loan_conditions_data"
+          }
+        }
+      },
+      "loan_conditions_data" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/loan_conditions_data_inner"
+        }
+      },
+      "construction_info" : {
+        "required" : [ "construction_data", "uuid" ],
+        "type" : "object",
+        "properties" : {
+          "uuid" : {
+            "type" : "string",
+            "example" : "HAA000001"
+          },
+          "loan_conditions_data" : {
+            "$ref" : "#/components/schemas/construction_data"
+          }
+        }
+      },
+      "construction_data" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/construction_data_inner"
+        }
+      },
+      "loan_conditions_data_inner" : {
+        "required" : [ "amount", "appraisal", "balance", "grace_period", "interest_rate", "payment_sources", "percent", "period", "property", "situation", "usage", "value" ],
+        "type" : "object",
+        "properties" : {
+          "amount" : {
+            "type" : "integer",
+            "example" : 1000000
+          },
+          "percent" : {
+            "type" : "integer"
+          },
+          "usage" : {
+            "type" : "string",
+            "example" : "購置不動產(自用)"
+          },
+          "period" : {
+            "type" : "string",
+            "example" : "20年"
+          },
+          "payment_sources" : {
+            "type" : "string",
+            "example" : "投資收入"
+          },
+          "grace_period" : {
+            "type" : "string",
+            "example" : "0-1年"
+          },
+          "property" : {
+            "type" : "string",
+            "example" : "一般房貸"
+          },
+          "appraisal" : {
+            "type" : "integer",
+            "example" : 12000000
+          },
+          "balance" : {
+            "type" : "integer",
+            "example" : 8000000
+          },
+          "value" : {
+            "type" : "integer",
+            "example" : 80000
+          },
+          "situation" : {
+            "type" : "string",
+            "example" : "無限延遲款"
+          },
+          "interest_rate" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "construction_data_inner" : {
+        "required" : [ "building_type", "house_age", "location", "peoperty", "proximity_attr" ],
+        "type" : "object",
+        "properties" : {
+          "peoperty" : {
+            "type" : "string",
+            "example" : "正擔保"
+          },
+          "location" : {
+            "type" : "string",
+            "example" : "台北市"
+          },
+          "building_type" : {
+            "type" : "string",
+            "example" : "公寓"
+          },
+          "proximity_attr" : {
+            "type" : "string",
+            "example" : "住宅區"
+          },
+          "house_age" : {
+            "type" : "string",
+            "example" : "20年"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "ApiKeyAuth" : {
+        "type" : "apiKey",
+        "name" : "api_key",
+        "in" : "query"
+      }
+    }
+  }
+}
