@@ -1,3 +1,4 @@
 keytool -import -trustcacerts -alias fintechersapi -file fintechersapi_com.crt -keypass 123456 -keystore fintechersapi -storepass 123456
 keytool -list -v -keystore fintechersapi > fintechersapi.txt
 keytool -importkeystore -srckeystore fintechersapi -srcstoretype PKCS12 -destkeystore keystore
+java -jar start.jar --add-to-start=https
