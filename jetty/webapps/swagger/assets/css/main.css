@@ -3705,7 +3705,7 @@ button:disabled,
 	color: #9fa3a6;
 	content: '\f078';
 	position: absolute;
-	right: 0;
+	left: 15vw;
 }
 
 #menu ul a.opener:hover:before,
@@ -3749,7 +3749,7 @@ button:disabled,
 
 #menu>ul>li>ul>li {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	margin: 0.125em 0 0 0;
 	padding: 0.125em 0 0 0;
 }
@@ -3774,7 +3774,7 @@ button:disabled,
 	flex: 0 0 2vw;
 }
 
-#insurance, #fund, #book, #securities {
+#bank, #insurance, #fund, #book, #securities, #futures {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
