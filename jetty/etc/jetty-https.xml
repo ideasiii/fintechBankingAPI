@@ -12,7 +12,9 @@
     <Arg>
       <New class="org.eclipse.jetty.server.SslConnectionFactory">
         <Arg name="next">http/1.1</Arg>
-        <Arg name="sslContextFactory"><Ref refid="sslContextFactory"/></Arg>
+        <Arg name="sslContextFactory">
+	<Ref refid="sslContextFactory"/>
+	</Arg>
       </New>
     </Arg>
   </Call>
