@@ -5,8 +5,8 @@
     "description" : "API項目說明：<br> 提供銀行客戶之基本個人資料及客戶最近10筆交易資料。<br><br> API名稱： <br> 1.查詢帳戶交易紀錄 <br> [交易項目/交易通路/金額/交易時間/客戶帳戶餘額] <br> 2.查詢客戶基本資料 <br> [出生年月日/性別/職業/居住地/年收入/服務單位/婚姻狀況/教育程度/扶養人數/是否具有SNY帳戶/是否開通網路銀行/是否申裝網路行動銀行(APP)/是否開通電子錢包(行動支付)]",
     "version" : "1.0.3"
   },
-  "servers" : [ {
-    "url" : "http://www.fintechersapi.com/bank/huanan/digitalfin/",
+  "servers" : [{
+    "url" : "https://www.fintechersapi.com/bank/huanan/digitalfin/",
     "description" : "Server"
   } ],
   "security" : [ {
