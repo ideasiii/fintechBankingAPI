@@ -1,0 +1,111 @@
+Keystore type: PKCS12
+Keystore provider: SUN
+
+Your keystore contains 1 entry
+
+Alias name: fintechersapi
+Creation date: 2019年7月31日
+Entry type: trustedCertEntry
+
+Owner: CN=fintechersapi.com, OU=PositiveSSL, OU=Domain Control Validated
+Issuer: CN=Sectigo RSA Domain Validation Secure Server CA, O=Sectigo Limited, L=Salford, ST=Greater Manchester, C=GB
+Serial number: 939488b17044f39f930b6c3ec305873f
+Valid from: Tue Jul 30 08:00:00 CST 2019 until: Thu Jul 30 07:59:59 CST 2020
+Certificate fingerprints:
+	 SHA1: 8C:DF:03:25:B0:84:94:C3:7F:FF:AD:EA:EB:2F:62:58:4C:31:F0:07
+	 SHA256: 03:88:2F:26:27:C3:4C:7A:19:DC:CF:27:75:11:58:D8:74:21:81:72:96:CC:B7:6B:69:4C:B6:ED:C4:E7:8A:18
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions: 
+
+#1: ObjectId: 1.3.6.1.4.1.11129.2.4.2 Criticality=false
+0000: 04 81 F3 00 F1 00 76 00   B2 1E 05 CC 8B A2 CD 8A  ......v.........
+0010: 20 4E 87 66 F9 2B B9 8A   25 20 67 6B DA FA 70 E7   N.f.+..% gk..p.
+0020: B2 49 53 2D EF 8B 90 5E   00 00 01 6C 44 3E 4F 55  .IS-...^...lD>OU
+0030: 00 00 04 03 00 47 30 45   02 21 00 D1 71 A7 34 E7  .....G0E.!..q.4.
+0040: 5B 82 8B ED 15 09 49 3C   D1 FA F9 EB CA AA 56 90  [.....I<......V.
+0050: 14 84 78 D0 28 37 12 4E   A3 30 BC 02 20 09 A4 DA  ..x.(7.N.0.. ...
+0060: AA E4 AD 17 DB 30 DF B1   12 DE AD 8D 69 26 08 3B  .....0......i&.;
+0070: 49 EF 68 AF A0 FD 9D 0F   E6 C1 2C 19 9F 00 77 00  I.h.......,...w.
+0080: 5E A7 73 F9 DF 56 C0 E7   B5 36 48 7D D0 49 E0 32  ^.s..V...6H..I.2
+0090: 7A 91 9A 0C 84 A1 12 12   84 18 75 96 81 71 45 58  z.........u..qEX
+00A0: 00 00 01 6C 44 3E 4F 79   00 00 04 03 00 48 30 46  ...lD>Oy.....H0F
+00B0: 02 21 00 EB 88 8E 39 D1   E7 3B 17 48 A3 F2 FF 86  .!....9..;.H....
+00C0: 9A 3C D1 F0 5E 1D 2C 05   1E 09 11 A4 9B 47 12 C7  .<..^.,......G..
+00D0: C3 4F D9 02 21 00 F0 05   0E 25 AA 41 DD A4 61 C1  .O..!....%.A..a.
+00E0: B1 E1 80 05 C8 40 04 D1   D1 3E D2 65 E9 84 AA 4E  .....@...>.e...N
+00F0: 0C B7 B0 67 7E 0F                                  ...g..
+
+
+#2: ObjectId: 1.3.6.1.5.5.7.1.1 Criticality=false
+AuthorityInfoAccess [
+  [
+   accessMethod: caIssuers
+   accessLocation: URIName: http://crt.sectigo.com/SectigoRSADomainValidationSecureServerCA.crt
+, 
+   accessMethod: ocsp
+   accessLocation: URIName: http://ocsp.sectigo.com
+]
+]
+
+#3: ObjectId: 2.5.29.35 Criticality=false
+AuthorityKeyIdentifier [
+KeyIdentifier [
+0000: 8D 8C 5E C4 54 AD 8A E1   77 E9 9B F9 9B 05 E1 B8  ..^.T...w.......
+0010: 01 8D 61 E1                                        ..a.
+]
+]
+
+#4: ObjectId: 2.5.29.19 Criticality=true
+BasicConstraints:[
+  CA:false
+  PathLen: undefined
+]
+
+#5: ObjectId: 2.5.29.32 Criticality=false
+CertificatePolicies [
+  [CertificatePolicyId: [1.3.6.1.4.1.6449.1.2.2.7]
+[PolicyQualifierInfo: [
+  qualifierID: 1.3.6.1.5.5.7.2.1
+  qualifier: 0000: 16 17 68 74 74 70 73 3A   2F 2F 73 65 63 74 69 67  ..https://sectig
+0010: 6F 2E 63 6F 6D 2F 43 50   53                       o.com/CPS
+
+]]  ]
+  [CertificatePolicyId: [2.23.140.1.2.1]
+[]  ]
+]
+
+#6: ObjectId: 2.5.29.37 Criticality=false
+ExtendedKeyUsages [
+  serverAuth
+  clientAuth
+]
+
+#7: ObjectId: 2.5.29.15 Criticality=true
+KeyUsage [
+  DigitalSignature
+  Key_Encipherment
+]
+
+#8: ObjectId: 2.5.29.17 Criticality=false
+SubjectAlternativeName [
+  DNSName: fintechersapi.com
+  DNSName: www.fintechersapi.com
+]
+
+#9: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 6B A4 CD E5 0F 7E 01 FA   88 42 67 E3 76 B6 FE 87  k........Bg.v...
+0010: 28 32 6F 3E                                        (2o>
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

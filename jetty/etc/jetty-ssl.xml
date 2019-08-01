@@ -11,6 +11,7 @@
   <!-- =========================================================== -->
   <!-- Add a SSL Connector with no protocol factories              -->
   <!-- =========================================================== -->
+
   <Call  name="addConnector">
     <Arg>
       <New id="sslConnector" class="org.eclipse.jetty.server.ServerConnector">
@@ -19,15 +20,12 @@
         <Arg name="selectors" type="int"><Property name="jetty.ssl.selectors" deprecated="ssl.selectors" default="-1"/></Arg>
         <Arg name="factories">
           <Array type="org.eclipse.jetty.server.ConnectionFactory">
-            <!-- uncomment to support proxy protocol
-            <Item>
-              <New class="org.eclipse.jetty.server.ProxyConnectionFactory"/>
-            </Item>-->
+           
           </Array>
         </Arg>
 
         <Set name="host"><Property name="jetty.ssl.host" deprecated="jetty.host" /></Set>
-        <Set name="port"><Property name="jetty.ssl.port" deprecated="ssl.port" default="8443" /></Set>
+        <Set name="port"><Property name="jetty.ssl.port" deprecated="ssl.port" default="443" /></Set>
         <Set name="idleTimeout"><Property name="jetty.ssl.idleTimeout" deprecated="ssl.timeout" default="30000"/></Set>
         <Set name="acceptorPriorityDelta"><Property name="jetty.ssl.acceptorPriorityDelta" deprecated="ssl.acceptorPriorityDelta" default="0"/></Set>
         <Set name="acceptQueueSize"><Property name="jetty.ssl.acceptQueueSize" deprecated="ssl.acceptQueueSize" default="0"/></Set>
@@ -38,6 +36,12 @@
     </Arg>
   </Call>
 
+
+--------------------- 
+作者：昭zzz 
+来源：CSDN 
+原文：https://blog.csdn.net/xiaozhaorui/article/details/72910931 
+版权声明：本文为博主原创文章，转载请附上博文链接！
   <!-- =========================================================== -->
   <!-- Create a TLS specific HttpConfiguration based on the        -->
   <!-- common HttpConfiguration defined in jetty.xml               -->
