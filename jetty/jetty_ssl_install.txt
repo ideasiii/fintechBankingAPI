@@ -81,7 +81,7 @@ jetty　https服务启动
 
 2.生成csr文件
 
-keytool -certreq -alias jetty -keystore mykeystore -file centreq.csr
+   keytool -certreq -alias jetty -keystore mykeystore -file centreq.csr
 
 3.提交证书验证机构，获取中级证书和服务器证书
 
@@ -89,11 +89,11 @@ keytool -certreq -alias jetty -keystore mykeystore -file centreq.csr
 
 4.导入中级证书  
 
- keytool -import -trustcacerts -keystore mykeystore -alias zhongji -file zhongji.cer 
+   keytool -import -trustcacerts -keystore mykeystore -alias zhongji -file zhongji.cer 
 
 5.导入服务器证书
 
-   keytool -import -trustcacerts -keystore mykeystore -alias server -file server.cer
+   keytool -import -trustcacerts -keystore mykeystore -alias jetty -file server.cer
 
 注意：
 
