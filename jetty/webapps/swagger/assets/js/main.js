@@ -271,8 +271,10 @@
 	} else {
 
 		$.getScript("assets/js/swaggerJS/digitalfin.js");
+		$('#banner_image').attr("src", "assets/image/digitalfin_banner.jpg")
 		$('.opener').addClass("active");
 		$('#digitalfin').addClass("active");
+
 
 	}
 	if(getSpecies == "digitalfin" || getSpecies == "marketing"){
