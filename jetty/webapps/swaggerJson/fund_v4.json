@@ -5,10 +5,7 @@
     "description" : "API項目說明：<br> 提供新創團隊依據查詢資料設計出基金淨值及受益人基金庫存等相關查詢報表。<br><br> API名稱： <br> 1.查詢客戶投資的基金基本資訊 <br> [基金代碼/基金名稱/基金計價幣別/基金配息種類] <br> 2.查詢客戶投資的基金淨值 <br> [基金代碼/基金淨值日期/基金淨值] <br> 3.查詢受益人基本資料 <br> [受益人編號/受益人姓名/受益人出生年月日/受益人之KYC風險承受度/受益人之KYC有效期限] <br> 4.查詢受益人帳戶資料 <br> [受益人編號/帳號種類/銀行代碼/銀行帳號] <br> 5.查詢受益人基金庫存資料 <br> [受益人編號/基金代碼/基金名稱/計價幣別/庫存單位數/投資成本]",
     "version" : "1.0.3"
   },
-  "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/iii_fintech/insurance/1.0.0",
-    "description" : "SwaggerHub API Auto Mocking"
-  }, {
+  "servers" : [  {
     "url" : "http://www.fintechersapi.com/bank/huanan/yongchang/investing",
     "description" : "Server"
   } ],

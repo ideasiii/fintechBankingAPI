@@ -6,9 +6,6 @@
     "version" : "1.0.3"
   },
   "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/iii_fintech/securities/1.0.0",
-    "description" : "SwaggerHub API Auto Mocking"
-  }, {
     "url" : "http://www.fintechersapi.com/bank/huanan/securities/",
     "description" : "Server"
   } ],
