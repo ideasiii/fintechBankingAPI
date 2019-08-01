@@ -66,7 +66,6 @@ public class securities
                             jsonObject.put("career", rs.getString("career"));
                             jsonObject.put("residence", rs.getString("residence"));
                             jsonObject.put("income", rs.getInt("income"));
-                            jsonObject.put("service_units", rs.getString("service_units"));
                             jsonObject.put("marital", rs.getString("marital"));
                             jsonObject.put("education", rs.getString("education"));
                             jsonObject.put("dependents", rs.getInt("dependents"));
