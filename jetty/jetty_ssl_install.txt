@@ -49,7 +49,7 @@ jetty　https服务启动
 
 　２）What is your first and last name?
 
-　　　　输入域名
+　　　　输入域名 fintechersapi.com
 
 　３）What is the name of your organizational unit?
 
@@ -93,7 +93,7 @@ keytool -certreq -alias jetty -keystore mykeystore -file centreq.csr
 
 5.导入服务器证书
 
-   keytool -import -trustcacerts -keystore mykeystore -alias jetty -file server.cer
+   keytool -import -trustcacerts -keystore mykeystore -alias server -file server.cer
 
 注意：
 
