@@ -3467,9 +3467,9 @@ button:disabled,
 /* Header */
 
 #header {
-	/* display: -moz-flex;
+	display: -moz-flex;
 	display: -webkit-flex;
-	display: -ms-flex; */
+	display: -ms-flex;
 	display: flex;
 	border-bottom: solid 5px #f56a6a;
 	padding: 6em 0 1em 0;
