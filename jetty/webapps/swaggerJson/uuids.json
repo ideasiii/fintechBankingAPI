@@ -5,7 +5,7 @@
     "description" : "取得10組客戶編號",
     "version" : "1.0.0"
   },
-  "servers" : [ {
+  "servers" : [  {
     "url" : "https://www.fintechersapi.com/bank/huanan/",
     "description" : "Server"
   } ],
@@ -49,11 +49,9 @@
     "schemas" : {
       "uuids" : {
         "required" : [ "uuid_list" ],
-        "type" : "object",
-        "properties" : {
-          "uuid_list" : {
-            "type" : "string"
-          }
+        "type" : "array",
+        "items" : {
+          "type" : "string"
         }
       }
     },
