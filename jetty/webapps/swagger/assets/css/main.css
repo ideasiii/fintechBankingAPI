@@ -3496,7 +3496,7 @@ button:disabled,
 }
 
 #header img {
-	width: 100%; 
+	width: 100%;
 	height: auto;
 }
 
@@ -3528,16 +3528,16 @@ button:disabled,
 	}
 
 	#header img {
-		width: 100%; 
+		width: 100%;
 		height: 12vh;
 	}
 
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (orientation: portrait) and (max-width: 480px) {
 
 	#header img {
-		width: 100%; 
+		width: 100%;
 		height: 5vh;
 	}
 
@@ -3749,7 +3749,7 @@ button:disabled,
 	border-top: solid 1px rgba(210, 215, 217, 0.75);
 	margin: 0.5em 0 0 0;
 	padding: 0.5em 0 0 0;
-	
+
 }
 
 #menu>ul>li>ul {
@@ -3779,7 +3779,8 @@ button:disabled,
 	padding-top: 0;
 }
 
-#menu>ul>li>ul>li img, #menu>ul>li img {
+#menu>ul>li>ul>li img,
+#menu>ul>li img {
 	width: 100%;
 	height: max-content;
 	display: flex;
@@ -3793,7 +3794,21 @@ button:disabled,
 	flex: 0 0 2vw;
 }
 
-#bank, #insurance, #fund, #book, #securities, #futures {
+@media screen and (orientation: portrait) and (max-width: 480px) {
+
+	#menu ul a.opener:before,
+	#menu ul span.opener:before {
+		left: 46vw;
+	}
+
+}
+
+#bank,
+#insurance,
+#fund,
+#book,
+#securities,
+#futures {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
