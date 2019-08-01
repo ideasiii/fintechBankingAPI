@@ -1,8 +1,8 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "Insurance API",
-    "description" : "提供新創團隊查詢產險客戶的投保及繳費紀錄和理賠紀錄",
+    "title" : "客戶帳戶及理賠資訊API",
+    "description" : "## 產險客戶帳戶資訊API\nAPI項目說明：<br> 提供新創團隊查詢產險客戶的投保及繳費紀錄。<br><br>\nAPI名稱：<br>\n1.提供新創團隊查詢產險客戶的投保及繳費紀錄<br>[保單號碼/投保險種/產品種類名稱/承保金額/起保日/到期日/車種]<br>\n2.查詢有效客戶<br>[被保險人身份證字號/到期日(YYYY-MM-DD)/是否為有效客戶]<br>\n3.查詢客戶繳費狀況及方式<br> [保單繳費狀態/繳納方式/保單號碼/最近一期已繳納時間/繳費期限]<br>\n4.查詢關懷名單<br>[被保險人身份證字號/牌照號碼/是否為關懷名單]\n___\n\n## 產險客戶理賠資訊API\nAPI項目說明：<br> 提供新創團隊查詢產險客戶的理賠紀錄。<br><br>\nAPI名稱：<br>\n1.查詢理賠資料<br>[理賠號碼/保單號碼/理賠日期/理賠金額/出險原因]<br>\n2.查詢線上報案紀錄<br>[保單號碼/被保險人身份證字號/牌照號碼/出險日期]\n",
     "contact" : {
       "email" : "digisandboxreport@gmail.com"
     },
@@ -10,10 +10,10 @@
       "name" : "Apache 2.0",
       "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version" : "1.0.1"
+    "version" : "1.0.2"
   },
-  "servers" : [{
-    "url" : "http://54.92.0.255/bank/huanan/insurance/",
+  "servers" : [ {
+    "url" : "http://www.fintechersapi.com/bank/huanan/insurance/",
     "description" : "Server"
   } ],
   "security" : [ {
@@ -31,7 +31,7 @@
       "get" : {
         "tags" : [ "Customer" ],
         "summary" : "查詢客戶承保紀錄",
-        "description" : "利用 UUID 查詢客戶承保紀錄\n",
+        "description" : "## 利用 UUID 查詢客戶承保紀錄 \n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| policy_no   | 保單號碼    |\n| insurance_category   | 投保險種    |\n| insurance_name   | 產品種類名稱    |\n| insurance_premiums   | 承保金額    |\n| insurance_date   | 起保日    |\n| insurance_exp_date   | 到期日    |\n| car_type   | 車種    |\n",
         "parameters" : [ {
           "name" : "uuid",
           "in" : "query",
@@ -70,7 +70,7 @@
       "get" : {
         "tags" : [ "Cliam" ],
         "summary" : "查詢理賠資料",
-        "description" : "利用保單號碼查詢理賠資料\n",
+        "description" : "## 利用保單號碼查詢理賠資料 \n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| policy_no   | 保單號碼    |\n| claim_no   | 理賠號碼    |\n| claim_date   | 理賠日期    |\n| claim_amount   | 理賠金額    |\n| claim_descript   | 出險原因    |\n",
         "parameters" : [ {
           "name" : "policy_no",
           "in" : "query",
@@ -107,7 +107,7 @@
       "get" : {
         "tags" : [ "Customer" ],
         "summary" : "查詢有效客戶",
-        "description" : "利用身分證字號查詢是否為有效客戶\n",
+        "description" : "## 利用身分證字號查詢是否為有效客戶 \n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| identity_id   | 身分證字號    |\n| exp_date   | 到期日(YYYY-MM-DD)    |\n| is_active   | 是否為有效客戶    |\n",
         "parameters" : [ {
           "name" : "identity_id",
           "in" : "query",
@@ -140,7 +140,7 @@
       "get" : {
         "tags" : [ "Customer" ],
         "summary" : "查詢是否為關懷名單",
-        "description" : "利用身分證字號 or 車牌號碼查詢客戶是否為關懷名單\n",
+        "description" : "## 利用身分證字號 or 車牌號碼查詢客戶是否為關懷名單\n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| is_blacklist   | 是否為關懷名單 (0 為沒在名單中, 1 為在名單中)    |\n| identity_id   | 被保險人身份證字號    |\n| license_no   | 牌照號碼    |\n",
         "parameters" : [ {
           "name" : "number",
           "in" : "query",
@@ -186,7 +186,7 @@
       "get" : {
         "tags" : [ "Customer" ],
         "summary" : "查詢客戶繳費狀況及方式",
-        "description" : "利用 UUID 查詢客戶繳費狀況及方式\n",
+        "description" : "## 利用 UUID 查詢客戶繳費狀況及方式\n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| policy_no   | 保單號碼    |\n| pay_status   | 保單繳費狀態 (0 為未繳費, 1 為已繳費)    |\n| pay_date   | 最近一期已繳納時間    |\n| pay_category   | 繳納方式 (信用卡、超商繳費、匯款/轉帳或代收、現金或支票)    |\n| pay_date   | 繳費期限    |\n",
         "parameters" : [ {
           "name" : "uuid",
           "in" : "query",
@@ -222,7 +222,7 @@
       "get" : {
         "tags" : [ "Cliam" ],
         "summary" : "查詢線上報案紀錄",
-        "description" : "利用身分證字號 or 車牌號碼查詢線上報案紀錄\n",
+        "description" : "## 利用身分證字號 or 車牌號碼查詢線上報案紀錄\n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| identity_id   | 被保險人身份證字號    |\n| license_no   | 牌照號碼    |\n| policy_no   | 保單號碼    |\n| claim_date   | 出險日期    |\n",
         "parameters" : [ {
           "name" : "number",
           "in" : "query",
@@ -297,31 +297,29 @@
           },
           "insurance_category" : {
             "type" : "string",
-            "format" : "投保種類",
             "example" : "強制險"
           },
           "insurance_name" : {
             "type" : "string",
-            "format" : "承保名稱",
             "example" : "汽車駕駛人傷害險"
           },
           "insurance_premiums" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 10000
           },
           "insurance_date" : {
             "type" : "string",
-            "format" : "起保日(YYYY-MM-DD)",
+            "format" : "YYYY-MM-DD",
             "example" : "2019-06-01"
           },
           "insurance_exp_date" : {
             "type" : "string",
-            "format" : "到期日(YYYY-MM-DD)",
+            "format" : "YYYY-MM-DD",
             "example" : "2020-06-01"
           },
           "car_type" : {
             "type" : "string",
-            "format" : "車種",
             "example" : "03自小客"
           }
         }
@@ -332,7 +330,6 @@
         "properties" : {
           "policy_no" : {
             "type" : "string",
-            "format" : "保單號碼",
             "example" : "SPF000001"
           },
           "claim_records" : {
@@ -351,12 +348,11 @@
           },
           "claim_no" : {
             "type" : "string",
-            "format" : "理賠號碼",
             "example" : "SCF000001"
           },
           "claim_date" : {
             "type" : "string",
-            "format" : "出險日(YYYY-MM-DD)",
+            "format" : "YYYY-MM-DD",
             "example" : "2019-06-01"
           },
           "claim_amount" : {
@@ -366,7 +362,6 @@
           },
           "claim_descript" : {
             "type" : "string",
-            "format" : "出險原因",
             "example" : "駕駛人過失"
           }
         }
@@ -382,12 +377,11 @@
           },
           "exp_date" : {
             "type" : "string",
-            "format" : "到期日(YYYY-MM-DD)",
+            "format" : "YYYY-MM-DD",
             "example" : "2020-06-10"
           },
           "is_active" : {
             "type" : "integer",
-            "format" : "0 為無效客戶, 1為有效客戶",
             "example" : 1
           }
         }
@@ -397,16 +391,15 @@
         "properties" : {
           "is_blacklist" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 1
           },
           "identity_id" : {
             "type" : "string",
-            "format" : "身分證字號",
             "example" : "A196690935"
           },
           "license_no" : {
             "type" : "string",
-            "format" : "車牌號碼",
             "example" : "SVQ-014"
           }
         }
@@ -434,26 +427,25 @@
           },
           "policy_no" : {
             "type" : "string",
-            "format" : "保單號碼",
             "example" : "SPF000001"
           },
           "pay_status" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 1
           },
           "pay_date" : {
             "type" : "string",
-            "format" : "最近一期已繳納時間(YYYY-MM-DD)",
+            "format" : "YYYY-MM-DD",
             "example" : "2019-06-01"
           },
           "pay_category" : {
             "type" : "string",
-            "format" : "繳納方式 (信用卡、超商繳費、匯款/轉帳或代收、現金或支票)",
             "example" : "信用卡"
           },
           "payments_period" : {
             "type" : "string",
-            "format" : "繳費期限",
+            "format" : "YYYY-MM-DD",
             "example" : "2019-06-01"
           }
         }
@@ -464,12 +456,10 @@
         "properties" : {
           "identity_id" : {
             "type" : "string",
-            "format" : "A123456789 //身分證字號",
             "example" : "A123456789"
           },
           "license_no" : {
             "type" : "string",
-            "format" : "SQV-123 //車牌號碼",
             "example" : "SQV-123"
           },
           "reports_record" : {
@@ -488,12 +478,11 @@
           },
           "policy_no" : {
             "type" : "string",
-            "format" : "保單號碼",
             "example" : "SPF000001"
           },
           "claim_date" : {
             "type" : "string",
-            "format" : "出險日期(YYYY-MM-DD)",
+            "format" : "YYYY-MM-DD",
             "example" : "2019-06-01"
           }
         }

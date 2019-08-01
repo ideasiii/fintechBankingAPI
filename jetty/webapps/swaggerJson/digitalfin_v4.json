@@ -1,8 +1,8 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "DigitalFin API",
-    "description" : "提供銀行客戶之基本個人資料及客戶最近10筆交易資料。",
+    "title" : "銀行客戶帳戶API",
+    "description" : "API項目說明：<br> 提供銀行客戶之基本個人資料及客戶最近10筆交易資料。<br><br> API名稱： <br> 1.查詢帳戶交易紀錄 <br> [交易項目/交易通路/金額/交易時間/客戶帳戶餘額] <br> 2.查詢客戶基本資料 <br> [出生年月日/性別/職業/居住地/年收入/服務單位/婚姻狀況/教育程度/扶養人數/是否具有SNY帳戶/是否開通網路銀行/是否申裝網路行動銀行(APP)/是否開通電子錢包(行動支付)]",
     "contact" : {
       "email" : "digisandboxreport@gmail.com"
     },
@@ -28,7 +28,7 @@
       "get" : {
         "tags" : [ "accounts" ],
         "summary" : "查詢帳戶交易紀錄",
-        "description" : "利用 UUID 查詢帳戶交易紀錄\n",
+        "description" : "## 利用 UUID 查詢帳戶交易紀錄 \n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| type   | 交易項目    |\n| trans_channel   | 交易通路    |\n| amount   | 金額    |\n| time   | 交易時間    |\n| balance   | 客戶帳戶餘額    |\n",
         "operationId" : "searchInventory",
         "parameters" : [ {
           "name" : "uuid",
@@ -68,7 +68,7 @@
       "get" : {
         "tags" : [ "accounts" ],
         "summary" : "查詢客戶基本資料",
-        "description" : "利用 UUID 查詢客戶基本資料\n",
+        "description" : "## 利用 UUID 查詢客戶基本資料 \n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| birthday   | 出生年月日    |\n| gender   | 性別    |\n| career   | 職業    |\n| residence   | 居住地    |\n| income   | 年收入    |\n| service_units   | 服務單位    |\n| marital   | 婚姻狀況    |\n| education   | 教育程度    |\n| dependents   | 扶養人數    |\n| is_SYN   | 是否有SYN帳戶    |\n| is_register_web_bank   | 是否開通網路銀行    |\n| is_app_bank   | 是否申裝網路行動銀行    |\n| is_register_mobile_pay   | 是否開通電子錢包(行動支付)    |\n",
         "parameters" : [ {
           "name" : "uuid",
           "in" : "query",
@@ -122,18 +122,19 @@
           },
           "type" : {
             "type" : "string",
-            "example" : "基金 //交易項目"
+            "example" : "基金"
           },
           "trans_channel" : {
             "type" : "string",
-            "example" : "ATM //交易通路"
+            "example" : "ATM"
           },
           "amount" : {
-            "type" : "integer"
+            "type" : "integer",
+            "example" : 10000
           },
           "time" : {
             "type" : "string",
-            "format" : "2019-07-01",
+            "format" : "YYYY-MM-DD",
             "example" : "2019-07-01"
           },
           "balance" : {
@@ -168,42 +169,45 @@
           },
           "income" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 19999999
           },
           "service_units" : {
             "type" : "string",
-            "format" : "服務單位",
             "example" : "xx公司"
           },
           "marital" : {
             "type" : "string",
-            "format" : "婚姻狀況",
             "example" : "已婚"
           },
           "education" : {
             "type" : "string",
-            "format" : "教育程度",
             "example" : "碩士"
           },
           "dependents" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 1
           },
           "is_SYN" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 1
           },
           "is_register_web_bank" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 1
           },
           "is_app_bank" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 1
           },
           "is_register_mobile_pay" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 1
           }
         }
       }

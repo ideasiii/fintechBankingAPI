@@ -1,8 +1,8 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "Securities API",
-    "description" : "運用股票歷史資料、去識別化客戶資料及去識別化客戶交易資料，分析客戶的投資行為模式",
+    "title" : "華南永昌證劵-交易行為分析API",
+    "description" : "API項目說明：<br> 運用股票歷史資料、去識別化客戶資料及去識別化客戶交易資料，分析客戶的投資行為模式。<br><br> API名稱： <br> 1.查詢去識別化客戶資料 <br> [出生日/職業/性別/居住地/年收入/婚姻/教育程度/扶養人數/信用分級] <br> 2.查詢去識別化客戶交易資料 <br> [成交日/股票代碼/股數/成交價/成交價金/通路別/交易別/買賣別] <br> 3.查詢股票歷史資料 <br> [股票代碼/股票名稱/開盤價/收盤價/最高價/最低價]",
     "contact" : {
       "email" : "digisandboxreport@gmail.com"
     },
@@ -28,7 +28,7 @@
       "get" : {
         "tags" : [ "securities" ],
         "summary" : "查詢證券客戶資料",
-        "description" : "利用 UUID 查詢證券客戶資料\n",
+        "description" : "## 利用 UUID 查詢證券客戶資料 \n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| birthday   | 出生年月日    |\n| gender   | 性別    |\n| career   | 職業    |\n| residence   | 居住地    |\n| income   | 年收入    |\n| marital   | 婚姻狀況    |\n| education   | 教育程度    |\n| dependents   | 扶養人數    |\n| credit_level   | 信用分級    |\n",
         "parameters" : [ {
           "name" : "uuid",
           "in" : "query",
@@ -67,7 +67,7 @@
       "get" : {
         "tags" : [ "securities" ],
         "summary" : "查詢客戶交易資料",
-        "description" : "利用 UUID 查詢客戶交易歷史資料 (西元2016年-西元2018年)\n",
+        "description" : "## 利用 UUID 查詢客戶交易歷史資料 (西元2016年-西元2018年) \n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| stock_code   | 股票代碼    |\n| completion_date   | 成交日    |\n| num_of_shares   | 股數    |\n| channel_category   | 通路別    |\n| trans_category   | 交易別    |\n| buy_category   | 買賣別    |\n| strike_price   | 成交價    |\n| trans_price   | 成交價金    |\n",
         "parameters" : [ {
           "name" : "uuid",
           "in" : "query",
@@ -120,7 +120,7 @@
       "get" : {
         "tags" : [ "securities" ],
         "summary" : "查詢股票歷史資料",
-        "description" : "利用股票代碼查詢西元2016年-西元2018年之盤中報價紀錄\n",
+        "description" : "## 利用股票代碼查詢西元2016年-西元2018年之盤中報價紀錄 \n---\n### 回傳參數說明\n| 參數名稱 | 中文名稱 |\n| ------- | -------- |\n| stock_code   | 股票代碼    |\n| stock_name   | 股票名稱    |\n| ex_price   | 開盤價    |\n| max_price   | 最高價    |\n| min_price   | 最低價    |\n| close_price   | 收盤價    |\n",
         "parameters" : [ {
           "name" : "stock_code",
           "in" : "query",
@@ -181,7 +181,7 @@
           },
           "birthday" : {
             "type" : "string",
-            "format" : "1993-10-10",
+            "format" : "YYYY-MM-DD",
             "example" : "1993-10-10"
           },
           "gender" : {
@@ -198,30 +198,25 @@
           },
           "income" : {
             "type" : "integer",
-            "format" : "int64"
-          },
-          "service_units" : {
-            "type" : "string",
-            "format" : "服務單位",
-            "example" : "xx公司"
+            "format" : "int64",
+            "example" : 19999999
           },
           "marital" : {
             "type" : "string",
-            "format" : "婚姻狀況",
             "example" : "已婚"
           },
           "education" : {
             "type" : "string",
-            "format" : "教育程度",
             "example" : "碩士"
           },
           "dependents" : {
             "type" : "integer",
-            "format" : "int64"
+            "format" : "int64",
+            "example" : 1
           },
           "credit_level" : {
             "type" : "string",
-            "example" : "A //信用分級"
+            "example" : "A"
           }
         }
       },
@@ -242,33 +237,36 @@
         "properties" : {
           "stock_code" : {
             "type" : "string",
-            "example" : "1216 //股票代碼"
+            "example" : "1216"
           },
           "completion_date" : {
             "type" : "string",
-            "format" : "2019-07-01",
+            "format" : "YYYY-MM-DD",
             "example" : "2019-07-01"
           },
           "num_of_shares" : {
-            "type" : "integer"
+            "type" : "integer",
+            "example" : 1000
           },
           "channel_category" : {
             "type" : "string",
-            "example" : "網路 //通路別"
+            "example" : "網路"
           },
           "trans_category" : {
             "type" : "string",
-            "example" : "現股 //交易別"
+            "example" : "現股"
           },
           "buy_category" : {
             "type" : "string",
-            "example" : "買 //買賣別"
+            "example" : "買"
           },
           "strike_price" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 59.6
           },
           "trans_price" : {
-            "type" : "integer"
+            "type" : "integer",
+            "example" : 59600
           }
         }
       },
@@ -289,23 +287,27 @@
         "properties" : {
           "stock_code" : {
             "type" : "string",
-            "example" : "1216 //股票代碼"
+            "example" : "1216"
           },
           "stock_name" : {
             "type" : "string",
-            "example" : "味王 //股票名稱"
+            "example" : "味王"
           },
           "ex_price" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 23.05
           },
           "max_price" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 23.05
           },
           "min_price" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 23.05
           },
           "close_price" : {
-            "type" : "number"
+            "type" : "number",
+            "example" : 23.05
           }
         }
       }
