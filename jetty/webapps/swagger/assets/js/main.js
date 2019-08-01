@@ -277,7 +277,9 @@
 		$('#futures').addClass("active");
 
 	} else if (getSpecies == "uuids") {
-		$('#banner_image').hide();
+
+		$('#banner_image').attr("src", "");
+
 	} else {
 
 		$.getScript("assets/js/swaggerJS/digitalfin.js");
