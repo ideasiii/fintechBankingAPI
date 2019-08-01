@@ -3,16 +3,12 @@
   "info" : {
     "title" : "銀行房貸交易之客群、授信條件及建物屬性API",
     "description" : "API項目說明：<br> 提供不同構面之房貸交易數據，新創團隊可由銀行經營者或購屋需求者的角度，發展有關於服務體驗、成本效益、風險管理、內部流程或外部競爭…等各個場景之金融科技創新應用。<br><br> API名稱： <br> 1.查詢申請房貸的客戶基本資料 <br> [出生年月日/職業/居住地/年收入/服務單位/婚姻狀況/教育程度/扶養人數/信用分級] <br> 2.查詢客戶各項房屋貸款紀錄 <br> [貸款金額/貸款成數/資金用途/借款期間/還款來源/寬限期(期間)/貸款性質/不動產鑑估值/不動產放款值/不動產餘額/還款情形/借款利率：承做、調整歷程] <br> 3.查詢客戶建物擔保狀況 <br> [擔保性質：正擔保、加強債權、信用/縣市/建物型態屬性/鄰近地區屬性/屋齡區間]",
-    "contact" : {
-      "email" : "digisandboxreport@gmail.com"
-    },
-    "license" : {
-      "name" : "Apache 2.0",
-      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
     "version" : "1.0.3"
   },
   "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/iii_fintech/marketing/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
     "url" : "http://www.fintechersapi.com/bank/huanan/marketing/",
     "description" : "SwaggerHub API Auto Mocking"
   } ],

@@ -363,7 +363,7 @@ public class yongchang
                                 
                             } while (rs.next());
                             
-                            jsonObject.put("uuid", uuid);
+                            jsonObject.put("benefit_id", id);
                             jsonObject.put("account_records", jsonArray);
                             return jsonObject.toString();
                             
@@ -443,7 +443,6 @@ public class yongchang
                         rs = stat.executeQuery(sql);
                         jsonArray = new JSONArray();
                         
-                        
                         if (rs.next())
                         {
                             do
@@ -461,8 +460,8 @@ public class yongchang
                                 
                                 
                             } while (rs.next());
-                            
-                            jsonObject.put("uuid", uuid);
+    
+                            jsonObject.put("benefit_id", id);
                             jsonObject.put("inventory_records", jsonArray);
                             return jsonObject.toString();
                             

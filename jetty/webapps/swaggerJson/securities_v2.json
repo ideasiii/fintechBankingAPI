@@ -3,16 +3,12 @@
   "info" : {
     "title" : "華南永昌證劵-交易行為分析API",
     "description" : "API項目說明：<br> 運用股票歷史資料、去識別化客戶資料及去識別化客戶交易資料，分析客戶的投資行為模式。<br><br> API名稱： <br> 1.查詢去識別化客戶資料 <br> [出生日/職業/性別/居住地/年收入/婚姻/教育程度/扶養人數/信用分級] <br> 2.查詢去識別化客戶交易資料 <br> [成交日/股票代碼/股數/成交價/成交價金/通路別/交易別/買賣別] <br> 3.查詢股票歷史資料 <br> [股票代碼/股票名稱/開盤價/收盤價/最高價/最低價]",
-    "contact" : {
-      "email" : "digisandboxreport@gmail.com"
-    },
-    "license" : {
-      "name" : "Apache 2.0",
-      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
-    "version" : "1.0.0"
+    "version" : "1.0.3"
   },
   "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/iii_fintech/securities/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
     "url" : "http://www.fintechersapi.com/bank/huanan/securities/",
     "description" : "Server"
   } ],

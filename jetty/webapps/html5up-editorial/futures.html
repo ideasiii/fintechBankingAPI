@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>華南金控FinTech校園競賽API平台</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+	<link rel="stylesheet" href="assets/css/main.css?v3" />
+	<link rel="stylesheet" type="text/css" href="assets/css/swagger-ui.css">
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Header -->
+				<header id="header">
+					<!-- <p class="logo" id="api_category"></p> -->
+					<img id="banner_image" src="assets/image/digitalfin_banner.jpg" style="width: 100%; height: inherit;">
+				</header>
+				<div id="swagger-ui"></div>
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h3>華南金控FinTech校園競賽API平台</h3>
+					</header>
+					<ul>
+						<li id="bank">
+							<img src="assets/image/icon.png">
+							<span class="opener">華南銀行API</span>
+							<ul>
+								<li id="digitalfin">
+									<img src="assets/image/digitalfin.png">
+									<a href="index.html?digitalfin">銀行客戶帳戶API</a>
+								</li>
+								<li id="marketing"><img src="assets/image/marketing.png"><a href="index.html?marketing">銀行房貸交易之客群、<br>授信條件及建物屬性API</a></li>
+							</ul>
+						</li>
+
+						<li id="insurance"><img src="assets/image/insurance.png"><a href="index.html?insurance">華南產險-<br>客戶帳戶及理賠資訊API</a></li>
+						<li id="securities"><img src="assets/image/securities.png"><a href="index.html?securities">華南永昌證劵-<br>交易行為分析API</a></li>
+						<li id="fund"><img src="assets/image/fund.png"><a href="index.html?fund">華南永昌投信-<br>基金資料API</a></li>
+						<li id="futures"><img src="assets/image/futures.png"><a href="index.html?fund">華南期貨-<br>期貨交易與帳務查詢API</a></li>
+						<li id="book"><i class="fas fa-book"></i><a href="">API平台使用手冊</a></li>
+						<!-- <li>
+											<span class="opener">Submenu</span>
+											<ul>
+												<li><a href="#">Lorem Dolor</a></li>
+												<li><a href="#">Ipsum Adipiscing</a></li>
+												<li><a href="#">Tempus Magna</a></li>
+												<li><a href="#">Feugiat Veroeros</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Etiam Dolore</a></li>
+										<li><a href="#">Adipiscing</a></li>
+										<li>
+											<span class="opener">Another Submenu</span>
+											<ul>
+												<li><a href="#">Lorem Dolor</a></li>
+												<li><a href="#">Ipsum Adipiscing</a></li>
+												<li><a href="#">Tempus Magna</a></li>
+												<li><a href="#">Feugiat Veroeros</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Maximus Erat</a></li>
+										<li><a href="#">Sapien Mauris</a></li>
+										<li><a href="#">Amet Lacinia</a></li> -->
+					</ul>
+				</nav>
+
+				<!-- Section -->
+				<!-- <section>
+									<header class="major">
+										<h2>Ante interdum</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">More</a></li>
+									</ul>
+								</section> -->
+
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>聯絡資訊</h2>
+					</header>
+					<ul class="contact">
+						<li class="icon solid fa-envelope"><a href="#">digisandboxreport@gmail.com</a></li>
+						<!-- <li class="icon solid fa-phone">(000) 000-0000</li>
+						<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+							Nashville, TN 00000-0000</li> -->
+					</ul>
+				</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a
+							href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5
+							UP</a>.</p>
+				</footer>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js?v3"></script>
+	<script src="./swagger-ui-bundle.js"> </script>
+	<script src="./swagger-ui-standalone-preset.js"> </script>
+	<script>
+		function HideTopbarPlugin() {
+			// this plugin overrides the Topbar component to return nothing
+			return {
+				components: {
+					Topbar: function () {
+						return null
+					}
+				}
+			}
+		}
+
+		function HideInfoUrlPlugin() {
+			// this plugin overrides the Topbar component to return nothing
+			return {
+				wrapComponents: {
+					InfoUrl: () => () => null
+				}
+			}
+		}
+	</script>
+
+</body>
+
+</html>

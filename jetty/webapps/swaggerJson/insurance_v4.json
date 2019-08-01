@@ -2,17 +2,13 @@
   "openapi" : "3.0.0",
   "info" : {
     "title" : "客戶帳戶及理賠資訊API",
-    "description" : "## 產險客戶帳戶資訊API\nAPI項目說明：<br> 提供新創團隊查詢產險客戶的投保及繳費紀錄。<br><br>\nAPI名稱：<br>\n1.提供新創團隊查詢產險客戶的投保及繳費紀錄<br>[保單號碼/投保險種/產品種類名稱/承保金額/起保日/到期日/車種]<br>\n2.查詢有效客戶<br>[被保險人身份證字號/到期日(YYYY-MM-DD)/是否為有效客戶]<br>\n3.查詢客戶繳費狀況及方式<br> [保單繳費狀態/繳納方式/保單號碼/最近一期已繳納時間/繳費期限]<br>\n4.查詢關懷名單<br>[被保險人身份證字號/牌照號碼/是否為關懷名單]\n___\n\n## 產險客戶理賠資訊API\nAPI項目說明：<br> 提供新創團隊查詢產險客戶的理賠紀錄。<br><br>\nAPI名稱：<br>\n1.查詢理賠資料<br>[理賠號碼/保單號碼/理賠日期/理賠金額/出險原因]<br>\n2.查詢線上報案紀錄<br>[保單號碼/被保險人身份證字號/牌照號碼/出險日期]\n",
-    "contact" : {
-      "email" : "digisandboxreport@gmail.com"
-    },
-    "license" : {
-      "name" : "Apache 2.0",
-      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
-    "version" : "1.0.2"
+    "description" : "## 1. 產險客戶帳戶資訊API\nAPI項目說明：<br> 提供新創團隊查詢產險客戶的投保及繳費紀錄。<br><br>\nAPI名稱：<br>\n1.提供新創團隊查詢產險客戶的投保及繳費紀錄<br>[保單號碼/投保險種/產品種類名稱/承保金額/起保日/到期日/車種]<br>\n2.查詢有效客戶<br>[被保險人身份證字號/到期日(YYYY-MM-DD)/是否為有效客戶]<br>\n3.查詢客戶繳費狀況及方式<br> [保單繳費狀態/繳納方式/保單號碼/最近一期已繳納時間/繳費期限]<br>\n4.查詢關懷名單<br>[被保險人身份證字號/牌照號碼/是否為關懷名單]\n___\n\n## 2. 產險客戶理賠資訊API\nAPI項目說明：<br> 提供新創團隊查詢產險客戶的理賠紀錄。<br><br>\nAPI名稱：<br>\n1.查詢理賠資料<br>[理賠號碼/保單號碼/理賠日期/理賠金額/出險原因]<br>\n2.查詢線上報案紀錄<br>[保單號碼/被保險人身份證字號/牌照號碼/出險日期]\n",
+    "version" : "1.0.3"
   },
   "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/iii_fintech/insurance/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
     "url" : "http://www.fintechersapi.com/bank/huanan/insurance/",
     "description" : "Server"
   } ],
