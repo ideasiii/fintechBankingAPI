@@ -1,0 +1,63 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "客戶編號",
+    "description" : "取得10組客戶編號",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://www.fintechersapi.com/bank/huanan/",
+    "description" : "Server"
+  } ],
+  "security" : [ {
+    "ApiKeyAuth" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "getUUID",
+    "description" : "取得 UUIDs"
+  } ],
+  "paths" : {
+    "/getUUIDs" : {
+      "get" : {
+        "tags" : [ "getUUID" ],
+        "summary" : "取得10組 UUID",
+        "responses" : {
+          "200" : {
+            "description" : "回傳 uuid_list",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/uuids"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        },
+        "security" : [ {
+          "ApiKeyAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "uuids" : {
+        "required" : [ "uuid_list" ],
+        "type" : "array"
+      }
+    },
+    "securitySchemes" : {
+      "ApiKeyAuth" : {
+        "type" : "apiKey",
+        "name" : "api_key",
+        "in" : "query"
+      }
+    }
+  }
+}
