@@ -269,16 +269,17 @@
 	if (getSpecies != undefined) {
 
 		$.getScript("assets/js/swaggerJS/" + getSpecies + ".js");
-		$('#banner_image').attr("src", "assets/image/" + getSpecies + "_banner.jpg")
+		if (getSpecies == "uuids") {
+			$('#banner_image').hide();
+		} else {
+			$('#banner_image').attr("src", "assets/image/" + getSpecies + "_banner.jpg")
+		}
+
 
 	} else if (window.location.href.split("/")[window.location.href.split("/").length - 1] == "futures.html") {
 
 		$('#banner_image').attr("src", "assets/image/futures_banner.jpg")
 		$('#futures').addClass("active");
-
-	} else if (getSpecies == "uuids") {
-
-		$('#banner_image').attr("src", "");
 
 	} else {
 
