@@ -267,19 +267,22 @@
 	if (getSpecies != undefined) {
 
 		$.getScript("assets/js/swaggerJS/" + getSpecies + ".js");
+		$('#banner_image').attr("src", "assets/image/" + getSpecies + "_banner.jpg")
 
 	} else {
 
 		$.getScript("assets/js/swaggerJS/digitalfin.js");
+		$('#banner_image').attr("src", "assets/image/digitalfin_banner.jpg")
 		$('.opener').addClass("active");
 		$('#digitalfin').addClass("active");
+
 
 	}
 	if(getSpecies == "digitalfin" || getSpecies == "marketing"){
 		$('.opener').addClass("active");
 	}
 	$('#' + getSpecies).addClass("active");
-	$('#banner_image').attr("src", "assets/image/" + getSpecies + "_banner.jpg")
+	
 	// $('#api_category').html('<strong>'+$('#' + getSpecies).text()+'</strong>');
 
 })(jQuery);
