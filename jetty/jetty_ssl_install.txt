@@ -1,3 +1,22 @@
+java -jar start.jar --create-startd --add-to-start=ssl
+openssl rsa -in private.key -text > private.pem
+openssl x509 -inform PEM -in certificate.crt > certificate.pem
+openssl x509 -inform PEM -in ca_bundle.crt > ca_bundle.pem
+cat certificate.pem ca_bundle.pem >> fullchain.pem
+openssl pkcs12 -export -in fullchain.pem -inkey private.pem -out pkcs.p12 -name NAME
+keytool -importkeystore -deststorepass 123456 -destkeypass 123456 -destkeystore keystore.jks -srckeystore pkcs.p12 -srcstoretype PKCS12 -srcstorepass 123456 -alias NAME
+
+
+Ref.
+https://blog.csdn.net/qq_28893679/article/details/81101575
+https://justhodl.blogspot.com/2018/04/tls-ssl-crt-key-to-pem-openssl.html
+
+===============================================================================================================================================
+
+
+
+
+
 jetty https证书的安装
 2017年12月28日 14:04:30 梨花飘香 阅读数 1053
 jetty启动https服务以及https证书的安装；证书是由第三方提供，使用keytool安装
