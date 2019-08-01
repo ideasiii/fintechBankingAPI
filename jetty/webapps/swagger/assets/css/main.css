@@ -3529,7 +3529,16 @@ button:disabled,
 
 	#header img {
 		width: 100%; 
-		height: 8vh;
+		height: 12vh;
+	}
+
+}
+
+@media screen and (max-width: 375px) {
+
+	#header img {
+		width: 100%; 
+		height: 5vh;
 	}
 
 }
