@@ -264,10 +264,17 @@
 	});
 	var strUrl = location.search;
 	var getSpecies = strUrl.split("?")[1];
+
+	
 	if (getSpecies != undefined) {
 
 		$.getScript("assets/js/swaggerJS/" + getSpecies + ".js");
 		$('#banner_image').attr("src", "assets/image/" + getSpecies + "_banner.jpg")
+
+	}else if(window.location.href.split("/")[window.location.href.split("/").length-1]){
+
+		$('#banner_image').attr("src", "assets/image/futures_banner.jpg")
+		$('#futures').addClass("active");
 
 	} else {
 
