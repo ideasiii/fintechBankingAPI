@@ -265,17 +265,19 @@
 	var strUrl = location.search;
 	var getSpecies = strUrl.split("?")[1];
 
-	
+
 	if (getSpecies != undefined) {
 
 		$.getScript("assets/js/swaggerJS/" + getSpecies + ".js");
 		$('#banner_image').attr("src", "assets/image/" + getSpecies + "_banner.jpg")
 
-	}else if(window.location.href.split("/")[window.location.href.split("/").length-1] == "futures.html"){
+	} else if (window.location.href.split("/")[window.location.href.split("/").length - 1] == "futures.html") {
 
 		$('#banner_image').attr("src", "assets/image/futures_banner.jpg")
 		$('#futures').addClass("active");
 
+	} else if (getSpecies == "uuids") {
+		$('#banner_image').hide();
 	} else {
 
 		$.getScript("assets/js/swaggerJS/digitalfin.js");
@@ -283,13 +285,10 @@
 		$('.opener').addClass("active");
 		$('#digitalfin').addClass("active");
 
+	}
 
-	}
-	if(getSpecies == "digitalfin" || getSpecies == "marketing"){
-		$('.opener').addClass("active");
-	}
 	$('#' + getSpecies).addClass("active");
-	
+
 	// $('#api_category').html('<strong>'+$('#' + getSpecies).text()+'</strong>');
 
 })(jQuery);
