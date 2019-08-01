@@ -1,0 +1,141 @@
+jetty https证书的安装
+2017年12月28日 14:04:30 梨花飘香 阅读数 1053
+jetty启动https服务以及https证书的安装；证书是由第三方提供，使用keytool安装
+
+部署环境：centos6，jetty 9， java 1.7
+
+
+
+jetty　https服务启动
+
+　1.修改etc/jetty-https.xml（浏览器默认https端口为443，需要修改端口则执行此步骤）
+
+　　　<Set name="port"><Property name="https.port" default="443" /></Set>
+
+　　为
+
+　　　<Set name="port"><Property name="https.port" default="8443" /></Set>    
+
+　2.修改start.ini
+
+　　　jetty.dump.stop=false
+
+　　为
+
+　　　jetty.dump.stop=
+　　　etc/jetty-ssl.xml
+
+　　　etc/jetty-https.xml
+
+　3.重启jetty服务
+
+　　访问https://localhost  页面会提示　证书不被信任　，则说明服务启动成功。需要安装可信证书
+
+
+
+证书安装：
+
+1.生成keystore文件
+
+ keytool -genkey -alias jetty -keyalg RSA -keysize 2048 -keystore mykeystore
+
+    １）Enter keystore password:
+
+　　　　输入密码，在之后要使用，须谨记
+
+　　　Re-enter new password：
+
+　　　　确认密码
+
+　２）What is your first and last name?
+
+　　　　输入域名
+
+　３）What is the name of your organizational unit?
+
+　　　　输入组织单位名称
+
+　４）What is the name of your organization?
+
+                输入组织名称      
+
+　５）What is the name of your City or Locality?
+
+      　　 输入您所在城市或区域的名称，如：Shanghai
+
+　６）What is the name of your State or Province?
+
+　　　   输入您所在州或省份的名称，如：Shanghai
+
+　７)   What is the two-letter country code for this unit?
+
+                输入单位的两字母国家代码，一般是CN
+
+　８）然后会有一个确认信息，输入Ｙ<Enter>
+
+　９）Enter key password for <jetty>
+
+　　　(RETURN if same as keystore password)
+
+　　　直接按<Enter>
+
+2.生成csr文件
+
+keytool -certreq -alias jetty -keystore mykeystore -file centreq.csr
+
+3.提交证书验证机构，获取中级证书和服务器证书
+
+　　中级证书和服务器证书是一段字符集，拷贝到文本，分别保存文件名为zhongji.cer和server.cer
+
+4.导入中级证书  
+
+ keytool -import -trustcacerts -keystore mykeystore -alias zhongji -file zhongji.cer 
+
+5.导入服务器证书
+
+   keytool -import -trustcacerts -keystore mykeystore -alias jetty -file server.cer
+
+注意：
+
+　导入服务器证书的别名与生成keystore文件的别名一致
+
+　
+
+附：删除证书：keytool -delete -alias jetty -keystore server.jks （别名与证书别名一致）
+
+      查看证书：keytool -list -v -keystore server.jks
+
+
+
+jetty９配置
+
+1.将导入好证书的mykeystore放入jetty目录的etc目录下
+
+2.打开jetty-ssl.xml,原始配置如下
+
+
+<Set name="KeyStorePath"><Property name="jetty.base" default="." />/<Property name="jetty.keystore" default="etc/keystore"/></Set>
+
+  <Set name="KeyStorePassword"><Property name="jetty.keystore.password" default="OBF:1vny1zlo1x8e1vnw1vn61x8g1zlu1vn4"/></Set>
+
+  <Set name="KeyManagerPassword"><Property name="jetty.keymanager.password" default="OBF:1u2u1wml1z7s1z7a1wnl1u2g"/></Set>
+
+  <Set name="TrustStorePath"><Property name="jetty.base" default="." />/<Property name="jetty.truststore" default="etc/keystore"/></Set>
+
+  <Set name="TrustStorePassword"><Property name="jetty.truststore.password" default="OBF:1vny1zlo1x8e1vnw1vn61x8g1zlu1vn4"/></Set>
+
+  <Set name="EndpointIdentificationAlgorithm"></Set>
+
+改为：
+
+<Set name="KeyStorePath"><Property name="jetty.base" default="." />/<Property name="jetty.keystore" default="etc/mykeystore"/></Set>
+
+  <Set name="KeyStorePassword">123456</Set>
+
+  <Set name="KeyManagerPassword">123456</Set>
+
+  <Set name="TrustStorePath"><Property name="jetty.base" default="." />/<Property name="jetty.truststore" default="etc/mykeystore"/></Set>
+
+  <Set name="TrustStorePassword">123456</Set>
+
+3.重启服务器，再次访问jetty，成功
