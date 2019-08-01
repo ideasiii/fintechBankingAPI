@@ -3810,7 +3810,8 @@ button:disabled,
 #fund,
 #book,
 #securities,
-#futures {
+#futures,
+#website {
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
