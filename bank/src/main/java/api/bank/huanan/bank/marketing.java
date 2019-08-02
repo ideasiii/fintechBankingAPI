@@ -33,8 +33,9 @@ public class marketing {
         boolean tokenChecker = TokenHandler.TokenHandler(token);
         JSONObject result = new JSONObject();
 
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals("")){
-            if (tokenChecker){
+        if (uuid != null && !uuid.equals("") ){
+            
+            if (tokenChecker && token != null && !token.equals("")){
                 try {
                     JSONObject data;
                     SqliteHandler sqliteHandler = new SqliteHandler();
@@ -99,8 +100,8 @@ public class marketing {
         boolean tokenChecker = TokenHandler.TokenHandler(token);
         JSONObject result = new JSONObject();
 
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals("")){
-            if (tokenChecker){
+        if (uuid != null && !uuid.equals("") ){
+            if (tokenChecker && token != null && !token.equals("")){
                 int id = TransUUID.UUIDHandler(uuid);
                 try {
                     JSONObject data;
@@ -173,8 +174,8 @@ public class marketing {
         boolean tokenChecker = TokenHandler.TokenHandler(token);
         JSONObject result = new JSONObject();
 
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals("")){
-            if (tokenChecker){
+        if (uuid != null && !uuid.equals("") ){
+            if (tokenChecker && token != null && !token.equals("")){
                 int id = TransUUID.UUIDHandler(uuid);
                 try {
                     JSONObject data;

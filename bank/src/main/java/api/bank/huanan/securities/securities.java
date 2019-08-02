@@ -33,13 +33,13 @@ public class securities
         LogHandler.log(token, request);
         JSONObject jsonObject;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") )
         {
 //            int id = TransUUID.UUIDHandler(uuid);
             
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -126,12 +126,12 @@ public class securities
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals(""))
         {
             int serial = TransUUID.serialHandler(uuid);
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -228,12 +228,12 @@ public class securities
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (code != null && !code.equals("") && token != null && !token.equals(""))
+        if (code != null && !code.equals(""))
         {
             
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {

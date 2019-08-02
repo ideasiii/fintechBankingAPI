@@ -41,7 +41,7 @@ public class digitalfin
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        
         
 
 //        if(!jsonRequest.isEmpty()){
@@ -50,11 +50,12 @@ public class digitalfin
 //            token = jsonRequest.getString("token");
 //        }
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals(""))
         {
     
+            boolean tokenChecker = TokenHandler.TokenHandler(token);
             int id = TransUUID.UUIDHandler(uuid);
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -160,13 +161,13 @@ public class digitalfin
         
         JSONObject jsonObject;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals(""))
         {
 //            int id = TransUUID.UUIDHandler(uuid);
+            boolean tokenChecker = TokenHandler.TokenHandler(token);
             
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {

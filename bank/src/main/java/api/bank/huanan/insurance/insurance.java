@@ -36,12 +36,12 @@ public class insurance
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals(""))
         {
             int id = TransUUID.UUIDHandler(uuid);
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -145,11 +145,11 @@ public class insurance
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (policy_no != null && !policy_no.equals("") && token != null && !token.equals(""))
+        if (policy_no != null && !policy_no.equals("") )
         {
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -244,11 +244,11 @@ public class insurance
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (identity_id != null && !identity_id.equals("") && token != null && !token.equals(""))
+        if (identity_id != null && !identity_id.equals("") )
         {
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -346,13 +346,13 @@ public class insurance
         LogHandler.log(token, request);
         JSONObject jsonObject;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         String para = "";
-        if (number != null && !number.equals("") && token != null && !token.equals(""))
+        if (number != null && !number.equals("") )
         {
             if (type != null && !type.equals(""))
             {
-                if (t)
+                if (tokenChecker && token != null && !token.equals(""))
                 {
                     try
                     {
@@ -456,11 +456,11 @@ public class insurance
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") )
         {
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 int id = TransUUID.UUIDHandler(uuid);
                 try
@@ -555,14 +555,14 @@ public class insurance
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         String para = "";
         
-        if (number != null && !number.equals("") && token != null && !token.equals(""))
+        if (number != null && !number.equals(""))
         {
             if (type != null && !type.equals(""))
             {
-                if (t)
+                if (tokenChecker && token != null && !token.equals(""))
                 {
                     try
                     {

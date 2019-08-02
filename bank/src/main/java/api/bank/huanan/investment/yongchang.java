@@ -35,12 +35,12 @@ public class yongchang
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") )
         {
             int id = TransUUID.UUIDHandler(uuid);
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -134,12 +134,12 @@ public class yongchang
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") )
         {
             int id = TransUUID.UUIDHandler(uuid);
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -230,12 +230,12 @@ public class yongchang
         LogHandler.log(token, request);
         JSONObject jsonObject;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") )
         {
             int id = TransUUID.UUIDHandler(uuid);
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -322,12 +322,12 @@ public class yongchang
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals("") )
         {
             int id = TransUUID.UUIDHandler(uuid);
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
@@ -421,12 +421,12 @@ public class yongchang
         JSONObject jsonObject, dataJson;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-        boolean t = TokenHandler.TokenHandler(token);
+        boolean tokenChecker = TokenHandler.TokenHandler(token);
         
-        if (uuid != null && !uuid.equals("") && token != null && !token.equals(""))
+        if (uuid != null && !uuid.equals(""))
         {
             int id = TransUUID.UUIDHandler(uuid);
-            if (t)
+            if (tokenChecker && token != null && !token.equals(""))
             {
                 try
                 {
