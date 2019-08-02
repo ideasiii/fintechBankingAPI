@@ -35,56 +35,57 @@ public class getUUIDs
         JSONObject jsonObject;
         JSONArray jsonArray;
         jsonObject = new JSONObject();
-    
-        if (token != null && !token.equals("")){
-            if (tokenChecker){
-                try
+        
+        if (tokenChecker && token != null && !token.equals(""))
+        {
+            try
+            {
+                SqliteHandler sqliteHandler = new SqliteHandler();
+                Connection conn = sqliteHandler.getConnection("database/huanan.db");
+                if (conn != null)
                 {
-                    SqliteHandler sqliteHandler = new SqliteHandler();
-                    Connection conn = sqliteHandler.getConnection("database/huanan.db");
-                    if(conn != null){
-                        String sql = "select * from bank_account order by random() limit 10";
-                        Statement stat;
-                        ResultSet rs;
-                        stat = conn.createStatement();
-                        rs = stat.executeQuery(sql);
-                        jsonArray = new JSONArray();
-    
-                        if (rs.next())
+                    String sql = "select * from bank_account order by random() limit 10";
+                    Statement stat;
+                    ResultSet rs;
+                    stat = conn.createStatement();
+                    rs = stat.executeQuery(sql);
+                    jsonArray = new JSONArray();
+                    
+                    if (rs.next())
+                    {
+                        do
                         {
-                            do
-                            {
-                                jsonArray.put(rs.getString("uuid"));
-            
-                            } while (rs.next());
+                            jsonArray.put(rs.getString("uuid"));
                             
-                            jsonObject.put("uuid_list", jsonArray);
-                            return jsonObject.toString();
-                        }
-                    } else {
-                        System.out.println("Database Connect Fail");
-                        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CONNECT_DB_CODE);
-                        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_CONNECT_DB);
+                        } while (rs.next());
+                        
+                        jsonObject.put("uuid_list", jsonArray);
                         return jsonObject.toString();
                     }
-                    
-                }catch (Exception e){
-                    System.out.println(e.getMessage());
-    
-                    jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_EXCEPTION);
-                    jsonObject.put("ERROR_MESSAGE", e.getMessage());
-    
+                }
+                else
+                {
+                    System.out.println("Database Connect Fail");
+                    jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_CONNECT_DB_CODE);
+                    jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_CONNECT_DB);
                     return jsonObject.toString();
                 }
-            } else {
-                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TOKEN_CODE);
-                jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TOKEN);
+                
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                
+                jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_EXCEPTION);
+                jsonObject.put("ERROR_MESSAGE", e.getMessage());
+                
                 return jsonObject.toString();
+                
             }
             
         }
-        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_PARM_CODE);
-        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_PARM);
+        jsonObject.put("ERROR_CODE", ErrorHandler.ERROR_TOKEN_CODE);
+        jsonObject.put("ERROR_MESSAGE", ErrorHandler.ERROR_TOKEN);
         return jsonObject.toString();
     }
 }
