@@ -50,7 +50,7 @@ public abstract class LogHandler
                 Document document = new Document();
                 Document doc_url = new Document();
                 Date dNow = new Date();
-                SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 doc_url.put("url", m_strURL);
                 doc_url.put("param", m_strParam);
                 doc_url.put("method", m_strMethod);
