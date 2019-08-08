@@ -259,7 +259,7 @@ public class yongchang
                                 
                                 jsonObject.put("id", rs.getString("id"));
                                 jsonObject.put("benefit_id", rs.getString("benefit_id"));
-                                jsonObject.put("user_name", rs.getString("user_name"));
+                                jsonObject.put("user_name", rs.getString("benefit_name"));
                                 jsonObject.put("birth", rs.getString("birth"));
                                 jsonObject.put("risk", rs.getInt("risk"));
                                 jsonObject.put("risk_exp_date", rs.getString("risk_exp_date"));

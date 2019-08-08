@@ -190,6 +190,8 @@ public class digitalfin
 //                            jsonObject.put("id", rs.getInt("id"));
                             jsonObject.put("uuid", rs.getString("uuid"));
                             jsonObject.put("birthday", rs.getString("birthday"));
+                            jsonObject.put("identity_id", rs.getString("identity_id"));
+                            jsonObject.put("license_no", rs.getString("license_no"));
                             jsonObject.put("gender", rs.getInt("gender"));
                             jsonObject.put("career", rs.getString("career"));
                             jsonObject.put("residence", rs.getString("residence"));
