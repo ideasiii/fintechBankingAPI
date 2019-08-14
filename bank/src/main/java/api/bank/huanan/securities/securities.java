@@ -118,7 +118,7 @@ public class securities
     @GET
     @Path("/history")
     public String history(@QueryParam("uuid") String uuid, @QueryParam("year") String year,
-            @QueryParam("month") String month, @QueryParam("api_key") String token,
+            @QueryParam("api_key") String token,
             @Context HttpServletRequest request)
     {
         
@@ -142,7 +142,7 @@ public class securities
                     if (conn != null)
                     {
                         String sql = "select * from stock_history where serial = " + serial + " AND"
-                                + " completion_date like '" + year + "-" + month + "%'";
+                                + " completion_date like '" + year + "-%'";
                         Statement stat = null;
                         ResultSet rs = null;
                         stat = conn.createStatement();
