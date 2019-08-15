@@ -243,6 +243,7 @@ public class securities
                     
                     if (conn != null)
                     {
+                        month = String.format("%02d", Integer.valueOf(month));
                         String sql = "select * from stock_price where stock_code =" + code + " AND"
                                 + " Date like '" + year + "-" + month + "%'";
                         Statement stat = null;
