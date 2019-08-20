@@ -1,0 +1,56 @@
+{
+  "uuid": "97b8f9abadc748c08e2989489fd237ef",
+  "loan_conditions_data": [
+    {
+      "amount": 5881608,
+      "period": "12",
+      "balance": 7535897,
+      "usage": "投資理財與其他",
+      "property": "一般房貸",
+      "appraisal": 2937411,
+      "interest_rate": 1.82,
+      "percent": 70,
+      "value": 8800000,
+      "payment_sources": "營利收入",
+      "grace_period": "1~2年",
+      "situation": "無延遲繳款"
+    }
+  ]
+}
+ 
+有關欄位數值條件說明:
+
+appraisal > balance > value 
+(appraisal * 85%) > balance
+balance > amount
+
+
+appraisal不動產鑑估值  大於balance不動產放款值  大於value不動產餘額 
+value不動產餘額不能超過balance不動產放款值，初始balance不動產放款值不可高於appraisal不動產鑑估值之85成 
+amount貸款金額表示客戶實際申辦貸款的金額，所以balance不動產放款值 會大於或等於amount貸款金額
+ 
+value不動產餘額à 計算方式為放款值扣掉每期還款之餘額,通常寬限期滿時只還利息,不動產的餘額就會很接近放款值
+ 
+舉例:
+ 
+假設一棟房屋銀行鑑價為1000萬元，客戶貸款資需求為300萬元，每期償還1萬元，已償還第1期，則:
+ 
+appraisal不動產鑑估值à 1000萬元
+balance不動產放款值à 850萬元
+amount貸款金額à 300萬元
+value不動產餘額à 299萬元
+ 
+ 
+參數名稱 中文名稱
+amount      貸款金額
+percent      貸款成數
+usage        資金用途
+period       借款期間
+payment_sources        還款來源
+grace_period      寬限期(期間)
+property    貸款性質
+appraisal    不動產鑑估值
+balance      不動產放款值
+value 不動產餘額
+situation    還款情形
+interest_rate       借款利率(承做/調整歷程)
