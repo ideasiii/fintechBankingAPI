@@ -2,9 +2,14 @@ package api.bank.huanan;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -17,6 +22,7 @@ import api.modules.Logs;
 import api.modules.Restapiclient.HttpConfig;
 
 import java.sql.*;
+import java.util.Locale;
 
 /**
  * Created by Jugo on 2019/6/17
@@ -25,9 +31,9 @@ import java.sql.*;
 @Path("/api")
 public class ApiGateway
 {
-    private final String url =" jdbc:mysql://localhost:3306/apigateway";
-    String user="apim";
-    String password="apim";
+    private final String url = " jdbc:mysql://localhost:3306/apigateway";
+    String user = "apim";
+    String password = "apim";
     
     private String gateway(HttpServletRequest request)
     {

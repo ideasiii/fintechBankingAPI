@@ -1,0 +1,11 @@
+update trans_record set amount = 6000 where trans_channel = 'ATM' and trans_type = '領現' and amount > 30000 limit 1000;
+update trans_record set trans_type = '台幣轉帳' where trans_channel = '網路ATM';
+update trans_record set amount = 5000 where trans_channel = '網路ATM'  and amount > 20000 limit 100;
+update trans_record set trans_type = '台幣轉帳' where trans_channel = '網銀' and trans_type = '領現';
+update trans_record set amount = 2000 where trans_channel = '臨櫃' and amount > 100000 limit 300;
+update trans_record set amount = 27000 where trans_channel = '行銀' and amount > 30000 limit 1000;
+update trans_record set amount = 7000 where amount > 30000 and trans_channel = 'ATM' limit 300;
+update bank_account set income = 500000 where income > 2000000 limit 1000;
+update bank_account set service_units = '公共企業' where career = '政府／公營事業';
+update bank_account set service_units = '私人企業' where career = '製造／建築' and service_units = '學校';
+select is_register_mobile_pay,is_app_bank,is_register_web_bank,is_SNY from bank_account;
