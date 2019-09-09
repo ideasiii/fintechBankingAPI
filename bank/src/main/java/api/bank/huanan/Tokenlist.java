@@ -42,7 +42,7 @@ public class Tokenlist
         // Check remote IP
         String strRemote = request.getRemoteAddr();
         if (0 != strRemote.compareTo("211.21.93.157") && 0 != strRemote.compareTo("211.75.165" +
-                ".175") && 0 != strRemote.compareTo("211.75.165.176") && 0 != strRemote.compareTo("211.75.165.191"))
+                ".175") && 0 != strRemote.compareTo("211.75.165.176") && 0 != strRemote.compareTo("211.75.165.191") && 0 != strRemote.compareTo("127.0.0.1"))
         {
             try
             {
