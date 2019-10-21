@@ -1,0 +1,2 @@
+#限制同一IP單位時間連線數只有10個
+iptables -I INPUT -p tcp --dport 443 -m connlimit --connlimit-above 10 -j DROP
