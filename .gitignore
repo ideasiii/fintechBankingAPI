@@ -33,3 +33,5 @@ jetty/jetty.state
 # database
 bank/database/*.db
 jetty/database/*.db
+bank/database/*.zip
+jetty/database/*.zip
