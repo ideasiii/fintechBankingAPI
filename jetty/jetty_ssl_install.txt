@@ -1,10 +1,11 @@
 java -jar start.jar --create-startd --add-to-start=ssl
+
 openssl rsa -in private.key -text > private.pem
 openssl x509 -inform PEM -in certificate.crt > certificate.pem
 openssl x509 -inform PEM -in ca_bundle.crt > ca_bundle.pem
 cat certificate.pem ca_bundle.pem >> fullchain.pem
-openssl pkcs12 -export -in fullchain.pem -inkey private.pem -out pkcs.p12 -name NAME
-keytool -importkeystore -deststorepass 123456 -destkeypass 123456 -destkeystore keystore.jks -srckeystore pkcs.p12 -srcstoretype PKCS12 -srcstorepass 123456 -alias NAME
+openssl pkcs12 -export -in fullchain.pem -inkey private.pem -out pkcs.p12 -name mykeystore
+keytool -importkeystore -deststorepass 123456 -destkeypass 123456 -destkeystore keystore.jks -srckeystore pkcs.p12 -srcstoretype PKCS12 -srcstorepass 123456 -alias mykeystore
 
 
 Ref.
