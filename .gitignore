@@ -37,3 +37,4 @@ bank/database/*.db
 jetty/database/*.db
 bank/database/*.zip
 jetty/database/*.zip
+*/.well-known
